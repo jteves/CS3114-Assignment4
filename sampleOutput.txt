@@ -18,6 +18,3 @@ Freelist Blocks:
 (0, 75)
 (439, 277)
 (1001, 23)
-
-
-something stupid
