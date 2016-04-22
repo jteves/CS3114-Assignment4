@@ -113,7 +113,7 @@ public class SkipList<K extends Comparable<K>, E> implements Serializable
         //total = Serializer.serialize(pair.key()).length; 
         //total += Serializer.serialize(pair.value()).length; 
         total = Serializer.serialize(pair).length;
-        total += Serializer.serialize(node).length;
+        //total += Serializer.serialize(node).length;
         //checks to see if the head node needs to adjust its size
         if (node.size() > head.size())
         {
