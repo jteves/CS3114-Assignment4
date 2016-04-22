@@ -27,23 +27,23 @@ public class Processor {
     private static final String SEARCH = "search";
     private static final String DUMP = "dump";
     
-    /** 
-     * Constructor that converts a string to a File and 
-     * contains a DataBase object that contains the SkipList
-     * 
-     * Precondition: the input is a valid file in the project folder
-     * Postcondition: a new File and Database object is made
-     *  
-     * @param input the file name
-     */
-    public Processor(String input)
-    {
-        db          = new DataBase(0); 
-        
-        fileName    = input;
-        file        = new File(fileName);
-        bufSize = 0;
-    }
+//    /** 
+//     * Constructor that converts a string to a File and 
+//     * contains a DataBase object that contains the SkipList
+//     * 
+//     * Precondition: the input is a valid file in the project folder
+//     * Postcondition: a new File and Database object is made
+//     *  
+//     * @param input the file name
+//     */
+//    public Processor(String input)
+//    {
+//        db          = new DataBase(0); 
+//        
+//        fileName    = input;
+//        file        = new File(fileName);
+//        bufSize = 0;
+//    }
     
     /** 
      * Constructor that converts a string to a File and 
