@@ -20,14 +20,14 @@ public class RectangleDisk {
      * @throws IOException 
      */
     public static void main(String[] args) throws IOException {
-        if (args.length != 4) {
-            System.out.println("Usage: RectangleDisk <commandfile> "
-                + "<diskFile> <numBuffs> <buffSize>");
-        }
-        else {
+//        if (args.length != 4) {
+//            System.out.println("Usage: RectangleDisk <commandfile> "
+//                + "<diskFile> <numBuffs> <buffSize>");
+//        }
+//        else {
             Processor p = new Processor(args[0], 
                     Integer.parseInt(args[3]));
             p.process();
-        }
+        //}
     }
 }
