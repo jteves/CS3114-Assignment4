@@ -381,13 +381,13 @@ public class DataBase {
         m.dump();
     }
     
-    /**
-     * @return the size of the list
-     */
-    public int getSize()
-    {
-        return list.getSize();
-    }
+//    /**
+//     * @return the size of the list
+//     */
+//    public int getSize()
+//    {
+//        return list.getSize();
+//    }
    
 
 }
