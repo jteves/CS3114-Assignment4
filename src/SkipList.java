@@ -167,235 +167,235 @@ public class SkipList<K extends Comparable<K>, E> implements Serializable
         return total;
     }
 
-    /**
-     * precondition: look is a not null kvpair
-     * postcondition: the KVPair that has a matching
-     * key with look will be pointed to by the iterator
-     * 
-     * if look does not have a match then the iterator 
-     * will be set to null
-     * 
-     * @param look is the pair that has the key that
-     * We wish to find 
-     * sets the iterator to 
-     * the first instance of a kvpair with a key 
-     * that matches look
-     */
-    public void search(KVPair<K, E> look)
-    {
-        //will be used to compare keys in the list with look
-        SkipNode<K, E> temp = head;
-        //look is inserted into be a skipnode to help compare values
-        SkipNode<K, E> node = new SkipNode<K, E>(1, look);
-        // keeps track of which level of pointer is being looked
-        // at and compared to
-        int i               = head.size() - 1;
-        // represents the value of the compareTo() function
-        int x;
-        //iterator is set to null
-        ite = null;
-        while (i >= 0)
-        {    
-            if (temp.getPointer(i) == null)
-            {
-                i--;
-            }
-            else 
-            {
-                x = node.getPair().key().compareTo(
-                       temp.getPointer(i).getPair().key());
-                if (x > 0)
-                {
-                    temp = temp.getPointer(i);
-                }
-                else
-                {
-                    if (x == 0 && i == 0)
-                    {
-                        ite = temp.getPointer(i);
-                        // exits the loop once a match is found
-                        break;
-                    }
-                    i--;
-                }
-                    
-            }
-        }
-    }
-
-    /**
-     * 
-     * precondition: look is a not null kvpair
-     * postcondition: the node that matches keys with
-     * look has been found, removed, and returned
-     * 
-     * @param look is the pair we wish to remove
-     * 
-     * @return the kv pair that was removed from the list
-     * or null if there was no match
-     * 
-     * removes values based on the k value
-     */
-    public KVPair<K, E> remove(KVPair<K, E> look)
-    {
-        // will be returned
-        KVPair<K, E> ans    = null;
-        // will be used to compare items in the list
-        SkipNode<K, E> temp = head;
-        // look is made into  a skip node to make comparisons
-        // easier
-        SkipNode<K, E> node = new SkipNode<K, E>(1, look);
-        // keeps track of which level of pointer is being looked
-        // at and compared to
-        int i = head.size() - 1;
-        // holds the value of the compare to method
-        int x;
-        int _switch = 1;
-        int sizeMatch = 0;
-        while (i >= 0)
-        {    
-            if (temp.getPointer(i) == null)
-            {
-                i--;
-            }
-            else 
-            {
-                x = node.getPair().key().compareTo(
-                       temp.getPointer(i).getPair().key());
-                if (x > 0)
-                {
-                    temp = temp.getPointer(i);
-                }
-                else
-                {
-                    if (x == 0)
-                    {
-                        if (_switch == 1) {
-                            if (i == 0)
-                            {
-                                ans = temp.getPointer(0).getPair();
-                            }
-                            sizeMatch = temp.getPointer(i).size();
-                            temp.setPointer(i, temp.getPointer(i).getPointer(i));
-                            _switch = 0;
-                        }
-                        else {
-                            if (sizeMatch == temp.getPointer(i).size()) {
-                                
-                                if (i == 0)
-                                {
-                                    ans = temp.getPointer(0).getPair();
-                                }
-                                temp.setPointer(i, temp.getPointer(i).getPointer(i));
-                            }
-                            else {
-                                temp = temp.getPointer(i);
-                                i++;
-                            } 
-                        }
-                    }
-                    i--;
-                }
-                    
-            }
-        }
-        // decrements the size if an item has been removed
-        if (ans != null)
-        {
-            numEl--;
-        }
-        return ans;
-    }
-    
-    /**
-     * precondition: look is not null
-     * postcondition: look has been removed from the list
-     * and returned.  if look is not found then the function
-     * returns null
-     * 
-     * @param look is the parameter being removed
-     * @param s is the key being compared to
-     * 
-     * @return the kv pair that has been removed from
-     * the list
-     * 
-     * this method removes values based on the E value
-     */
-    public KVPair<K, E> remove2(KVPair<K, E> look)
-    {
-     // will be returned
-        KVPair<K, E> ans    = null;
-        // will be used to compare items in the list
-        SkipNode<K, E> temp = head;
-        // look is made into  a skip node to make comparisons
-        // easier
-        SkipNode<K, E> node = new SkipNode<K, E>(1, look);
-        // keeps track of which level of pointer is being looked
-        // at and compared to
-        int i = head.size() - 1;
-        // holds the value of the compare to method
-        int x;
-        int _switch = 1;
-        int sizeMatch = 0;
-        while (i >= 0)
-        {    
-            if (temp.getPointer(i) == null)
-            {
-                i--;
-            }
-            else 
-            {
-                x = node.getPair().key().compareTo(
-                       temp.getPointer(i).getPair().key());
-                if (x > 0)
-                {
-                    temp = temp.getPointer(i);
-                }
-                else
-                {
-                    if (x == 0 && temp.getPointer(i).getPair()
-                            .value().equals(look.value()))
-                    {
-                        if (_switch == 1) {
-                            if (i == 0)
-                            {
-                                ans = temp.getPointer(0).getPair();
-                            }
-                            sizeMatch = temp.getPointer(i).size();
-                            temp.setPointer(i, temp.getPointer(i).getPointer(i));
-                            _switch = 0;
-                        }
-                        else {
-                            if (sizeMatch == temp.getPointer(i).size()) {
-                                
-                                if (i == 0)
-                                {
-                                    ans = temp.getPointer(0).getPair();
-                                }
-                                temp.setPointer(i, temp.getPointer(i).getPointer(i));
-                            }
-                            else {
-                                temp = temp.getPointer(i);
-                                i++;
-                            } 
-                        }
-                    }
-                    else if (x == 0 && i == 0) {
-                        temp = temp.getPointer(i);
-                        i++;
-                    }
-                    i--;
-                }
-                    
-            }
-        }
-        // decrements the size if an item has been removed
-        if (ans != null)
-        {
-            numEl--;
-        }
-        return ans;
-    }
+//    /**
+//     * precondition: look is a not null kvpair
+//     * postcondition: the KVPair that has a matching
+//     * key with look will be pointed to by the iterator
+//     * 
+//     * if look does not have a match then the iterator 
+//     * will be set to null
+//     * 
+//     * @param look is the pair that has the key that
+//     * We wish to find 
+//     * sets the iterator to 
+//     * the first instance of a kvpair with a key 
+//     * that matches look
+//     */
+//    public void search(KVPair<K, E> look)
+//    {
+//        //will be used to compare keys in the list with look
+//        SkipNode<K, E> temp = head;
+//        //look is inserted into be a skipnode to help compare values
+//        SkipNode<K, E> node = new SkipNode<K, E>(1, look);
+//        // keeps track of which level of pointer is being looked
+//        // at and compared to
+//        int i               = head.size() - 1;
+//        // represents the value of the compareTo() function
+//        int x;
+//        //iterator is set to null
+//        ite = null;
+//        while (i >= 0)
+//        {    
+//            if (temp.getPointer(i) == null)
+//            {
+//                i--;
+//            }
+//            else 
+//            {
+//                x = node.getPair().key().compareTo(
+//                       temp.getPointer(i).getPair().key());
+//                if (x > 0)
+//                {
+//                    temp = temp.getPointer(i);
+//                }
+//                else
+//                {
+//                    if (x == 0 && i == 0)
+//                    {
+//                        ite = temp.getPointer(i);
+//                        // exits the loop once a match is found
+//                        break;
+//                    }
+//                    i--;
+//                }
+//                    
+//            }
+//        }
+//    }
+//
+//    /**
+//     * 
+//     * precondition: look is a not null kvpair
+//     * postcondition: the node that matches keys with
+//     * look has been found, removed, and returned
+//     * 
+//     * @param look is the pair we wish to remove
+//     * 
+//     * @return the kv pair that was removed from the list
+//     * or null if there was no match
+//     * 
+//     * removes values based on the k value
+//     */
+//    public KVPair<K, E> remove(KVPair<K, E> look)
+//    {
+//        // will be returned
+//        KVPair<K, E> ans    = null;
+//        // will be used to compare items in the list
+//        SkipNode<K, E> temp = head;
+//        // look is made into  a skip node to make comparisons
+//        // easier
+//        SkipNode<K, E> node = new SkipNode<K, E>(1, look);
+//        // keeps track of which level of pointer is being looked
+//        // at and compared to
+//        int i = head.size() - 1;
+//        // holds the value of the compare to method
+//        int x;
+//        int _switch = 1;
+//        int sizeMatch = 0;
+//        while (i >= 0)
+//        {    
+//            if (temp.getPointer(i) == null)
+//            {
+//                i--;
+//            }
+//            else 
+//            {
+//                x = node.getPair().key().compareTo(
+//                       temp.getPointer(i).getPair().key());
+//                if (x > 0)
+//                {
+//                    temp = temp.getPointer(i);
+//                }
+//                else
+//                {
+//                    if (x == 0)
+//                    {
+//                        if (_switch == 1) {
+//                            if (i == 0)
+//                            {
+//                                ans = temp.getPointer(0).getPair();
+//                            }
+//                            sizeMatch = temp.getPointer(i).size();
+//                            temp.setPointer(i, temp.getPointer(i).getPointer(i));
+//                            _switch = 0;
+//                        }
+//                        else {
+//                            if (sizeMatch == temp.getPointer(i).size()) {
+//                                
+//                                if (i == 0)
+//                                {
+//                                    ans = temp.getPointer(0).getPair();
+//                                }
+//                                temp.setPointer(i, temp.getPointer(i).getPointer(i));
+//                            }
+//                            else {
+//                                temp = temp.getPointer(i);
+//                                i++;
+//                            } 
+//                        }
+//                    }
+//                    i--;
+//                }
+//                    
+//            }
+//        }
+//        // decrements the size if an item has been removed
+//        if (ans != null)
+//        {
+//            numEl--;
+//        }
+//        return ans;
+//    }
+//    
+//    /**
+//     * precondition: look is not null
+//     * postcondition: look has been removed from the list
+//     * and returned.  if look is not found then the function
+//     * returns null
+//     * 
+//     * @param look is the parameter being removed
+//     * @param s is the key being compared to
+//     * 
+//     * @return the kv pair that has been removed from
+//     * the list
+//     * 
+//     * this method removes values based on the E value
+//     */
+//    public KVPair<K, E> remove2(KVPair<K, E> look)
+//    {
+//     // will be returned
+//        KVPair<K, E> ans    = null;
+//        // will be used to compare items in the list
+//        SkipNode<K, E> temp = head;
+//        // look is made into  a skip node to make comparisons
+//        // easier
+//        SkipNode<K, E> node = new SkipNode<K, E>(1, look);
+//        // keeps track of which level of pointer is being looked
+//        // at and compared to
+//        int i = head.size() - 1;
+//        // holds the value of the compare to method
+//        int x;
+//        int _switch = 1;
+//        int sizeMatch = 0;
+//        while (i >= 0)
+//        {    
+//            if (temp.getPointer(i) == null)
+//            {
+//                i--;
+//            }
+//            else 
+//            {
+//                x = node.getPair().key().compareTo(
+//                       temp.getPointer(i).getPair().key());
+//                if (x > 0)
+//                {
+//                    temp = temp.getPointer(i);
+//                }
+//                else
+//                {
+//                    if (x == 0 && temp.getPointer(i).getPair()
+//                            .value().equals(look.value()))
+//                    {
+//                        if (_switch == 1) {
+//                            if (i == 0)
+//                            {
+//                                ans = temp.getPointer(0).getPair();
+//                            }
+//                            sizeMatch = temp.getPointer(i).size();
+//                            temp.setPointer(i, temp.getPointer(i).getPointer(i));
+//                            _switch = 0;
+//                        }
+//                        else {
+//                            if (sizeMatch == temp.getPointer(i).size()) {
+//                                
+//                                if (i == 0)
+//                                {
+//                                    ans = temp.getPointer(0).getPair();
+//                                }
+//                                temp.setPointer(i, temp.getPointer(i).getPointer(i));
+//                            }
+//                            else {
+//                                temp = temp.getPointer(i);
+//                                i++;
+//                            } 
+//                        }
+//                    }
+//                    else if (x == 0 && i == 0) {
+//                        temp = temp.getPointer(i);
+//                        i++;
+//                    }
+//                    i--;
+//                }
+//                    
+//            }
+//        }
+//        // decrements the size if an item has been removed
+//        if (ans != null)
+//        {
+//            numEl--;
+//        }
+//        return ans;
+//    }
     
     //-------------------------------------------
     // Iterator methods
