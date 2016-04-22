@@ -27,8 +27,7 @@ public class MemMan {
     }
     
     public void dump() {
-        int x = start + freeSize;
         System.out.println("Freelist Blocks:");
-        System.out.println("(" + start + ", " + x + ")");
+        System.out.println("(" + start + ", " + freeSize + ")");
     }
 }

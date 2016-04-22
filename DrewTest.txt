@@ -8,5 +8,17 @@ insert a 1 1 1 0
 insert asdf 0 0 1 1
 insert eaasdf 0 0 1 1
 insert abc 0 0 1 1
+insert asdf 0 0 1 1
+insert eaasdf 0 0 1 1
+insert abc 0 0 1 1
+insert asdf 0 0 1 1
+insert eaasdf 0 0 1 1
+insert abc 0 0 1 1
+insert asdf 0 0 1 1
+insert eaasdf 0 0 1 1
+insert abc 0 0 1 1
+insert asdf 0 0 1 1
+insert eaasdf 0 0 1 1
+insert abc 0 0 1 1
 
 dump
