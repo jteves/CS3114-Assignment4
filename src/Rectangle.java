@@ -134,22 +134,22 @@ public class Rectangle implements Serializable
                 Character.isLetter(getName().charAt(0));
     }
       
-    /**
-     * Provides a human readable version of the coordinates
-     * 
-     * Precondition: the Rectangle has x, y, w, h properties that 
-     * aren't null.
-     * Postcondition: the String will be formatted as "x y w h"
-     * 
-     * @return a human readable version of the coordinates
-     */
-    public String toString()
-    {
-        String s;
-        s = getX() + " " + getY() + " " + getWidth() +
-                " " + getHeight();
-        return s;
-    }
+//    /**
+//     * Provides a human readable version of the coordinates
+//     * 
+//     * Precondition: the Rectangle has x, y, w, h properties that 
+//     * aren't null.
+//     * Postcondition: the String will be formatted as "x y w h"
+//     * 
+//     * @return a human readable version of the coordinates
+//     */
+//    public String toString()
+//    {
+//        String s;
+//        s = getX() + " " + getY() + " " + getWidth() +
+//                " " + getHeight();
+//        return s;
+//    }
 
 }
 
