@@ -1,0 +1,5 @@
+insert asdf 0 0 1 1
+insert eaasdf 0 0 1 1
+insert abc 0 0 1 1
+
+dump

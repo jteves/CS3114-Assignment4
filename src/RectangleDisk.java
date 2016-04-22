@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 /**
  * { your description of the project here }
  */
@@ -15,14 +17,17 @@ public class RectangleDisk {
      * The entry point for the application.
      *
      * @param args The command line arguments.
+     * @throws IOException 
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         if (args.length != 4) {
             System.out.println("Usage: RectangleDisk <commandfile> "
                 + "<diskFile> <numBuffs> <buffSize>");
         }
         else {
-            System.out.println("Found expected parameter list.");
+            Processor p = new Processor(args[0], 
+                    Integer.parseInt(args[3]));
+            p.process();
         }
     }
 }
