@@ -20,7 +20,7 @@ public class MemMan {
     
     public void add(int space) {
         freeSize = freeSize - (space + 2);
-        start = start + space + 8;
+        start = start + space;
         if (freeSize <= 0) {
             freeSize += bufSize;
         }
