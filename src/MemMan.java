@@ -11,6 +11,10 @@ public class MemMan {
     private int start;
     private int bufSize;
 
+    /**
+     * The Memory Manager that handles the data
+     * @param bufsize the size of the buffer
+     */
     public MemMan(int bufsize) {
         freeSize = bufsize;
         start = 0;
@@ -18,6 +22,11 @@ public class MemMan {
     }
     
     
+    /**
+     * Decreases the amount of free space, unless it needs to allocate
+     * space
+     * @param space The amount of space to take up
+     */
     public void add(int space) {
         freeSize = freeSize - (space);
         start = start + space;
@@ -26,6 +35,9 @@ public class MemMan {
         }
     }
     
+    /**
+     * Dumps the amount of space in the buffer
+     */
     public void dump() {
         System.out.println("Freelist Blocks:");
         System.out.println("(" + start + ", " + freeSize + ")");
