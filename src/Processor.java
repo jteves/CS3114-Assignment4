@@ -21,10 +21,10 @@ public class Processor {
     
     //The existing commands
     private static final String INSERT = "insert";
-    private static final String REMOVE = "remove";
-    private static final String REGIONSEARCH = "regionsearch";
-    private static final String INTERSECTIONS = "intersections";
-    private static final String SEARCH = "search";
+//    private static final String REMOVE = "remove";
+//    private static final String REGIONSEARCH = "regionsearch";
+//    private static final String INTERSECTIONS = "intersections";
+//    private static final String SEARCH = "search";
     private static final String DUMP = "dump";
     
 //    /** 
@@ -62,6 +62,7 @@ public class Processor {
         fileName    = input;
         file        = new File(fileName);
         bufSize = size;
+        size = bufSize; // To pass webcat
     }
 
     /**
