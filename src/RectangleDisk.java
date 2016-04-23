@@ -25,9 +25,9 @@ public class RectangleDisk {
 //                + "<diskFile> <numBuffs> <buffSize>");
 //        }
 //        else {
-            Processor p = new Processor(args[0], 
-                    Integer.parseInt(args[3]));
-            p.process();
+        Processor p = new Processor(args[0], 
+        	Integer.parseInt(args[3]));
+        p.process();
         //}
     }
 }
