@@ -49,10 +49,11 @@ public class SkipListTest extends TestCase {
         int expectedListSize = 1;
         
         try {
-			defaultList.insert(pair1);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+            defaultList.insert(pair1);
+        } 
+        catch (IOException e) {
+            e.printStackTrace();
+        }
 
         //Note: iterator on head node
         assertNull(defaultList.currentPair()); 
@@ -68,10 +69,11 @@ public class SkipListTest extends TestCase {
         String expectedValue     = "data";
         
         try {
-			defaultList.insert(pair1);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}        
+            defaultList.insert(pair1);
+        } 
+        catch (IOException e) {
+            e.printStackTrace();
+        }        
         defaultList.iteNext();
 
         assertEquals(expectedKey,     defaultList.currentPair().key());
@@ -90,11 +92,12 @@ public class SkipListTest extends TestCase {
     public void testInsert2Pairs()
     {
         try {
-			defaultList.insert(pair1);
-	        defaultList.insert(pair2);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+            defaultList.insert(pair1);
+            defaultList.insert(pair2);
+        } 
+        catch (IOException e) {
+            e.printStackTrace();
+        }
 
         defaultList.iteNext();
         assertEquals(pair1, defaultList.currentPair());
@@ -116,11 +119,12 @@ public class SkipListTest extends TestCase {
         int     expectedListSize    = 2;
 
         try {
-			defaultList.insert(pair1);
-	        defaultList.insert(pair1);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+            defaultList.insert(pair1);
+            defaultList.insert(pair1);
+        } 
+        catch (IOException e) {
+            e.printStackTrace();
+        }
 
         defaultList.iteNext();
 
@@ -146,14 +150,15 @@ public class SkipListTest extends TestCase {
                 new KVPair<String, String>("d", "moster");
         
         try {
-			defaultList.insert(pair1);
-	        defaultList.insert(pair2);
-	        defaultList.insert(pair3);
-	        defaultList.insert(pair4);
-	        defaultList.insert(pair1);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+            defaultList.insert(pair1);
+            defaultList.insert(pair2);
+            defaultList.insert(pair3);
+            defaultList.insert(pair4);
+            defaultList.insert(pair1);
+        } 
+        catch (IOException e) {
+            e.printStackTrace();
+        }
 
 //        defaultList.search(pair2);
 //        assertEquals(pair2, defaultList.currentPair());
@@ -178,16 +183,16 @@ public class SkipListTest extends TestCase {
         try {
             defaultList.insert(pair1);
             defaultList.insert(pair1);
-			defaultList.insert(pair2);
-	        defaultList.insert(pair3);
-	        defaultList.insert(pair4);
-	        
-	        defaultList.insert(pair3);
-	        defaultList.insert(pair4);
-	        defaultList.insert(pair4);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+            defaultList.insert(pair2);
+            defaultList.insert(pair3);
+            defaultList.insert(pair4);
+            
+            defaultList.insert(pair3);
+            defaultList.insert(pair4);
+            defaultList.insert(pair4);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 //        assertEquals(pair2, defaultList.remove(pair2));
 //        assertEquals(null, defaultList.remove(pair2));
