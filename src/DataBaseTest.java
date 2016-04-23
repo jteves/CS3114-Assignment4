@@ -1,5 +1,3 @@
-import java.io.IOException;
-
 import student.TestCase;
 
 /**
@@ -30,6 +28,7 @@ public class DataBaseTest extends TestCase {
 		db.insert("legal", 1, 1, 1, 1);
 		db.insert("legal2", 1, 1, 1, 2);
 
+		assertNotNull(db);
 //        db.search("illegal");
 //        
 //        db.search("legal2");
@@ -50,6 +49,7 @@ public class DataBaseTest extends TestCase {
 		db.insert("legal3", 1, 1, 1, 1);
 
         db.dump();
+        assertNotNull(db);
 
 //        db.remove("legal2");
 //        db.remove("Null Point");
