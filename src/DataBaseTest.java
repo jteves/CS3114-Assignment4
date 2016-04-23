@@ -25,10 +25,10 @@ public class DataBaseTest extends TestCase {
         DataBase db = new DataBase(100);
 
         db.insert("illegal", -1, 1, 0, 0);
-		db.insert("legal", 1, 1, 1, 1);
-		db.insert("legal2", 1, 1, 1, 2);
+        db.insert("legal", 1, 1, 1, 1);
+        db.insert("legal2", 1, 1, 1, 2);
 
-		assertNotNull(db);
+        assertNotNull(db);
 //        db.search("illegal");
 //        
 //        db.search("legal2");
@@ -44,9 +44,9 @@ public class DataBaseTest extends TestCase {
         DataBase db = new DataBase(100);
 
         db.insert("illegal", -1, 1, 0, 0);
-		db.insert("legal", 1, 1, 1, 1);
-		db.insert("legal2", 1, 1, 1, 1);
-		db.insert("legal3", 1, 1, 1, 1);
+        db.insert("legal", 1, 1, 1, 1);
+        db.insert("legal2", 1, 1, 1, 1);
+        db.insert("legal3", 1, 1, 1, 1);
 
         db.dump();
         assertNotNull(db);
