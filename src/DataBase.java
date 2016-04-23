@@ -52,10 +52,11 @@ public class DataBase {
             KVPair<String, Rectangle> pair = new 
                     KVPair<String, Rectangle>(rec.getName(), rec);
             try {
-				m.add(list.insert(pair));
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+                m.add(list.insert(pair));
+            } 
+            catch (IOException e) {
+                e.printStackTrace();
+            }
             
             // output: "Rectangle inserted: (name, x, y, w, h)"
             System.out.println("Rectangle inserted: (" + recName + 
