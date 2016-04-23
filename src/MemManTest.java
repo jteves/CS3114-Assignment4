@@ -11,5 +11,10 @@ public class MemManTest extends TestCase {
 		MemMan m = new MemMan(1000);
 		
 		m.add(10);
+		
+		m.dump();
+		
+		String expectedOutput = "";
+		assertEquals(expectedOutput, systemOut().getHistory());
 	}
 }
