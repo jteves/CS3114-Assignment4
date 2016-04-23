@@ -1,12 +1,4 @@
-import static org.junit.Assert.*;
-
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Scanner;
-
-import org.junit.Test;
-
 import student.TestCase;
 
 
@@ -43,7 +35,7 @@ public class ProcessorTest extends TestCase {
 //        Processor pro = new Processor("Test1.txt", 0);
 //
 //        try {
-//			pro.process();
+//          pro.process();
 //		} catch (IOException e) {
 //			e.printStackTrace();
 //		}
