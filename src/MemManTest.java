@@ -7,9 +7,9 @@ import student.TestCase;
  */
 public class MemManTest extends TestCase {
 
-	/**
-	 * Test for MemMan
-	 */
+    /**
+     * Test for MemMan
+     */
     public void testMemMan() {
         MemMan m = new MemMan(1000);
         
