@@ -278,7 +278,7 @@ public class SkipList<K extends Comparable<K>, E> implements Serializable
 //                            }
 //                            sizeMatch = temp.getPointer(i).size();
 //                            temp.setPointer(i, temp.getPointer(i).
-//                            		getPointer(i));
+//                                    getPointer(i));
 //                            _switch = 0;
 //                        }
 //                        else {
@@ -289,7 +289,7 @@ public class SkipList<K extends Comparable<K>, E> implements Serializable
 //                                    ans = temp.getPointer(0).getPair();
 //                                }
 //                                temp.setPointer(i, temp.getPointer(i).
-//                                		getPointer(i));
+//                                        getPointer(i));
 //                            }
 //                            else {
 //                                temp = temp.getPointer(i);
@@ -366,7 +366,7 @@ public class SkipList<K extends Comparable<K>, E> implements Serializable
 //                            }
 //                            sizeMatch = temp.getPointer(i).size();
 //                            temp.setPointer(i, temp.getPointer(i).
-//                            		getPointer(i));
+//                                    getPointer(i));
 //                            _switch = 0;
 //                        }
 //                        else {
@@ -377,7 +377,7 @@ public class SkipList<K extends Comparable<K>, E> implements Serializable
 //                                    ans = temp.getPointer(0).getPair();
 //                                }
 //                                temp.setPointer(i, temp.getPointer(i).
-//                                		getPointer(i));
+//                                        getPointer(i));
 //                            }
 //                            else {
 //                                temp = temp.getPointer(i);
