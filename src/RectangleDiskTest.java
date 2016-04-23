@@ -22,9 +22,10 @@ public class RectangleDiskTest extends TestCase {
      * @throws IOException 
      */
     public void testBadParams() throws IOException {
+    	RectangleDisk rd = new RectangleDisk());
         String[] params = { "DrewTest.txt", "dataFile.dat", "5", "4096" };
         RectangleDisk.main(params);
-        assertNotNull(new RectangleDisk());
+        assertNotNull(rd);
     }
 
 //    /**
