@@ -26,13 +26,9 @@ public class DataBaseTest extends TestCase {
     public void testInsertSearch() {
         DataBase db = new DataBase(100);
 
-        try {
-            db.insert("illegal", -1, 1, 0, 0);
-			db.insert("legal", 1, 1, 1, 1);
-	        db.insert("legal2", 1, 1, 1, 2);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+        db.insert("illegal", -1, 1, 0, 0);
+		db.insert("legal", 1, 1, 1, 1);
+		db.insert("legal2", 1, 1, 1, 2);
 
 //        db.search("illegal");
 //        
@@ -48,14 +44,10 @@ public class DataBaseTest extends TestCase {
     public void testDumpRemove() {
         DataBase db = new DataBase(100);
 
-        try{
-		    db.insert("illegal", -1, 1, 0, 0);
-		    db.insert("legal", 1, 1, 1, 1);
-		    db.insert("legal2", 1, 1, 1, 1);
-		    db.insert("legal3", 1, 1, 1, 1);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+        db.insert("illegal", -1, 1, 0, 0);
+		db.insert("legal", 1, 1, 1, 1);
+		db.insert("legal2", 1, 1, 1, 1);
+		db.insert("legal3", 1, 1, 1, 1);
 
         db.dump();
 
