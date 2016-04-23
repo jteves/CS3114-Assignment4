@@ -138,28 +138,28 @@ public class SkipListTest extends TestCase {
         assertEquals(expectedListSize, defaultList.getSize());
     }    
 
-    /**
-     * Tests to have the correct number of lines from the processor results
-     * as the given output file
-     */
-    public void testSearch()
-    {
-        KVPair<String, String> pair3 = 
-                new KVPair<String, String>("c", "most");
-        KVPair<String, String> pair4 = 
-                new KVPair<String, String>("d", "moster");
-        
-        try {
-            defaultList.insert(pair1);
-            defaultList.insert(pair2);
-            defaultList.insert(pair3);
-            defaultList.insert(pair4);
-            defaultList.insert(pair1);
-        } 
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-
+//    /**
+//     * Tests to have the correct number of lines from the processor results
+//     * as the given output file
+//     */
+//    public void testSearch()
+//    {
+//        KVPair<String, String> pair3 = 
+//                new KVPair<String, String>("c", "most");
+//        KVPair<String, String> pair4 = 
+//                new KVPair<String, String>("d", "moster");
+//        
+//        try {
+//            defaultList.insert(pair1);
+//            defaultList.insert(pair2);
+//            defaultList.insert(pair3);
+//            defaultList.insert(pair4);
+//            defaultList.insert(pair1);
+//        } 
+//        catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
 //        defaultList.search(pair2);
 //        assertEquals(pair2, defaultList.currentPair());
 //
@@ -167,7 +167,7 @@ public class SkipListTest extends TestCase {
 //        defaultList.search(pair4);
 //        defaultList.search(pair1);
 //        assertEquals(pair1, defaultList.currentPair());
-    }
+//    }
 
     /**
      * Tests to have the correct number of lines from the processor results
@@ -190,7 +190,8 @@ public class SkipListTest extends TestCase {
             defaultList.insert(pair3);
             defaultList.insert(pair4);
             defaultList.insert(pair4);
-        } catch (IOException e) {
+        } 
+        catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -208,12 +209,13 @@ public class SkipListTest extends TestCase {
 //        defaultList.remove(pair4);
 //        assertEquals(null, defaultList.remove(pair4));
     }
-    /**
-     * Tests to have the correct number of lines from the processor results
-     * as the given output file
-     */
-    public void testRemove2()
-    {
+    
+//    /**
+//     * Tests to have the correct number of lines from the processor results
+//     * as the given output file
+//     */
+//    public void testRemove2()
+//    {
 //        KVPair<String, String> pair3 = 
 //                new KVPair<String, String>("c", "most");
 //        KVPair<String, String> pair4 = 
@@ -248,7 +250,7 @@ public class SkipListTest extends TestCase {
 //        defaultList.remove2(pair4);
 //        defaultList.remove2(pair4);
 //        assertEquals(null, defaultList.remove2(pair4));
-    }
+//    }
 }
 
 
