@@ -100,6 +100,7 @@ public class SkipList<K extends Comparable<K>, E> implements Serializable
      * 
      * inserts a kvpair into the list
      * @param pair the  kvpair to be inserted
+     * @return the integer handler
      * @throws IOException 
      */
     public int insert(KVPair<K, E> pair) throws IOException
