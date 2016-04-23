@@ -17,7 +17,7 @@ public class Processor {
     private String fileName;
     private File file;
     private DataBase db;
-    private int bufSize;
+//    private int bufSize;
     
     //The existing commands
     private static final String INSERT = "insert";
@@ -61,8 +61,7 @@ public class Processor {
         
         fileName    = input;
         file        = new File(fileName);
-        bufSize = size;
-        size = bufSize; // To pass webcat
+//        bufSize = size;
     }
 
     /**
