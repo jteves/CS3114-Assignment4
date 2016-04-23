@@ -8,8 +8,8 @@ import java.io.IOException;
  * The class containing the main method, the entry point
  * of the application.
  *
- * @author { your name here }
- * @version { put something here }
+ * @author Drew Williams, Jacob Teves
+ * @version 4/22/2016
  */
 public class RectangleDisk {
 
