@@ -14,7 +14,7 @@ public class MemManTest extends TestCase {
 		
 		m.dump();
 		
-		String expectedOutput = "";
+		String expectedOutput = "Freelist Blocks:\n(10, 990)";
 		assertEquals(expectedOutput, systemOut().getHistory());
 	}
 }
