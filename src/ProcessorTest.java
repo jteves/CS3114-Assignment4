@@ -66,13 +66,13 @@ public class ProcessorTest extends TestCase {
 //        consoleScanner.close();
     }    
 
-    /**
-     * Tests to have the correct number of lines from the processor 
-     * results as the given output file
-     */
-    public void testMatchExampleOutputNumLines()
-    {
-        Processor pro = new Processor("Test1.txt", 0);
+//    /**
+//     * Tests to have the correct number of lines from the processor 
+//     * results as the given output file
+//     */
+//    public void testMatchExampleOutputNumLines()
+//    {
+//        Processor pro = new Processor("Test1.txt", 0);
 //
 //        //Outputs the lines onto the console
 //        try {
@@ -96,5 +96,5 @@ public class ProcessorTest extends TestCase {
 //        }
 //        consoleScanner.close();
 //        assertEquals(expectedNumLines, actualNumLines);
-    }
+//    }
 }
