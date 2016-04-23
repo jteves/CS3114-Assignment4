@@ -25,13 +25,13 @@ public class ProcessorTest extends TestCase {
         assertEquals(expectedFileName, pro.getFile());
     }
 
-    /**
-     * Tests to match the processor results lines in the console to 
-     * the lines in the given output file
-     * @throws FileNotFoundException when the input file doesn't exist 
-     */
-    public void testMatchExampleOutput() throws FileNotFoundException
-    {
+//    /**
+//     * Tests to match the processor results lines in the console to 
+//     * the lines in the given output file
+//     * @throws FileNotFoundException when the input file doesn't exist 
+//     */
+//    public void testMatchExampleOutput() throws FileNotFoundException
+//    {
 //        Processor pro = new Processor("Test1.txt", 0);
 //
 //        try {
@@ -64,7 +64,7 @@ public class ProcessorTest extends TestCase {
 //
 //        fileScanner.close();
 //        consoleScanner.close();
-    }    
+//    }    
 
 //    /**
 //     * Tests to have the correct number of lines from the processor 
