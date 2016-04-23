@@ -36,9 +36,9 @@ public class ProcessorTest extends TestCase {
 //
 //        try {
 //          pro.process();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 //        // String to be scanned
 //        String output = systemOut().getHistory(); 
 //        // File to be scanned
@@ -72,14 +72,14 @@ public class ProcessorTest extends TestCase {
      */
     public void testMatchExampleOutputNumLines()
     {
-//        Processor pro = new Processor("Test1.txt", 0);
+        Processor pro = new Processor("Test1.txt", 0);
 //
 //        //Outputs the lines onto the console
 //        try {
-//			pro.process();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
+//            pro.process();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 //
 //        String output = systemOut().getHistory();
 //
