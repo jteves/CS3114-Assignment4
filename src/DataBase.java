@@ -40,9 +40,8 @@ public class DataBase {
      * @param y         y coordinate
      * @param w         width
      * @param h         height
-     * @throws IOException 
      */
-    public void insert(String recName, int x, int y, int w, int h) throws IOException
+    public void insert(String recName, int x, int y, int w, int h) 
     {
         // The rectangle to be inserted into the SkipList
         Rectangle rec = new Rectangle(recName, x, y, w, h);
@@ -52,7 +51,11 @@ public class DataBase {
             // The KVPair inserted into the SkipList
             KVPair<String, Rectangle> pair = new 
                     KVPair<String, Rectangle>(rec.getName(), rec);
-            m.add(list.insert(pair));
+            try {
+				m.add(list.insert(pair));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
             
             // output: "Rectangle inserted: (name, x, y, w, h)"
             System.out.println("Rectangle inserted: (" + recName + 
