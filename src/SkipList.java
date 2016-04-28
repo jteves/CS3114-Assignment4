@@ -50,7 +50,7 @@ public class SkipList<K extends Comparable<K>, E> implements Serializable
         // random number generator used for nodes
         rnd   = new Random();
         // creates the head node
-        head  = new SkipNode<K, E>(1, null);
+        head  = new SkipNode<K, E>(1, -1);
         // represents the lists size. initially is 0
         numEl = 0;
 
@@ -104,16 +104,20 @@ public class SkipList<K extends Comparable<K>, E> implements Serializable
      * @param pair the  kvpair to be inserted
      * @return the integer handler
      * @throws IOException 
+     * @throws ClassNotFoundException 
      */
-    public void insert(KVPair<K, E> pair) throws IOException
+    @SuppressWarnings("unchecked")
+    public void insert(KVPair<K, E> pair) throws IOException, ClassNotFoundException
     {
-        int loc;
+        
         
         // increments the size of the list
         numEl++;
         //creates a node to hold the KVPair
-        SkipNode<K, E> node = new SkipNode<K, E>(randomLevel(), pair);
+        int loc = mem.insert(pair);
+        SkipNode<K, E> node = new SkipNode<K, E>(randomLevel(), loc);
         loc = mem.insert(node);
+        KVPair<K, E> nPair = (KVPair<K, E>) mem.getObj(node.getPair());
         //total = Serializer.serialize(pair.key()).length; 
         //total += Serializer.serialize(pair.value()).length; 
         //total = Serializer.serialize(pair).length;
@@ -145,8 +149,9 @@ public class SkipList<K extends Comparable<K>, E> implements Serializable
             }
             else 
             {
-                x = node.getPair().key().compareTo(
-                       temp.getPointer(i).getPair().key());
+                SkipNode<K, E> tNode = (SkipNode<K, E>)mem.getObj(temp.getPointer(i));
+                KVPair<K, E> tPair = (KVPair<K, E>) mem.getObj(tNode.getPair());
+                x = nPair.key().compareTo(tPair.key());
 //                // ensures that when keys are equal the largest one
 //                // will be first
 //                if (x == 0 && temp.getPointer(i).size() > node.size())
@@ -155,7 +160,7 @@ public class SkipList<K extends Comparable<K>, E> implements Serializable
 //                }
                 if (x > 0)
                 {
-                    temp = temp.getPointer(i);
+                    temp = (SkipNode<K, E>) mem.getObj(temp.getPointer(i));
                 }
                 else
                 {
@@ -414,8 +419,10 @@ public class SkipList<K extends Comparable<K>, E> implements Serializable
      * precondition: iterator ite is not null
      * postcondition: iterator now points to the
      * next node
+     * @throws IOException 
+     * @throws ClassNotFoundException 
      */
-    public void iteNext()
+    public void iteNext() throws ClassNotFoundException, IOException
     {
         ite = nextNode(ite);
     }
@@ -425,14 +432,18 @@ public class SkipList<K extends Comparable<K>, E> implements Serializable
      * 
      * @return the pair that the iterator
      * points to
+     * @throws IOException 
+     * @throws ClassNotFoundException 
      */
-    public KVPair<K, E> currentPair()
+    @SuppressWarnings("unchecked")
+    public KVPair<K, E> currentPair() 
+            throws ClassNotFoundException, IOException
     {
         if (ite == null)
         {
             return null;
         }
-        return ite.getPair();
+        return (KVPair<K, E>) mem.getObj(ite.getPair());
     }
 
     /**
@@ -462,10 +473,14 @@ public class SkipList<K extends Comparable<K>, E> implements Serializable
      * @param node that preceeds the node being
      * returned
      * @return the node after node
+     * @throws IOException 
+     * @throws ClassNotFoundException 
      */
-    private SkipNode<K, E> nextNode(SkipNode<K, E> node)
+    @SuppressWarnings("unchecked")
+    private SkipNode<K, E> nextNode(SkipNode<K, E> node) 
+            throws ClassNotFoundException, IOException
     {
-        return node.getPointer(0);
+        return (SkipNode<K, E>) mem.getObj(node.getPointer(0));
     }
 
 

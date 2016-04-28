@@ -55,9 +55,9 @@ public class Processor {
      * @param input the file name
      * @param size is the buffer size
      */
-    public Processor(String input, int size)
+    public Processor(String input, int size, int num, String disk)
     {
-        db          = new DataBase(size); 
+        db          = new DataBase(size, num, disk); 
         
         fileName    = input;
         file        = new File(fileName);

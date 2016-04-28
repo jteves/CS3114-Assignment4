@@ -26,7 +26,7 @@ public class SkipNode<K extends Comparable<K>, E> implements Serializable
     /**
      * the kv pair held by the node
      */
-    private KVPair<K, E> data;
+    private int data;
 
     /**
      * precondition: pair and numpoint are not null
@@ -41,7 +41,7 @@ public class SkipNode<K extends Comparable<K>, E> implements Serializable
      */
 
     @SuppressWarnings("unchecked")
-    public SkipNode(int numpoint, KVPair<K, E> pair)
+    public SkipNode(int numpoint, int pair)
     {
         // initializes the size field
         size     = numpoint;
@@ -61,7 +61,7 @@ public class SkipNode<K extends Comparable<K>, E> implements Serializable
      * 
      * @return the KVPair, data
      */
-    public KVPair<K, E> getPair()
+    public int getPair()
     {
         return data;
     }

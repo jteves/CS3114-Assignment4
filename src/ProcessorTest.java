@@ -17,6 +17,7 @@ public class ProcessorTest extends TestCase {
      */
     public void testFileInput()
     {
+        
         // A new Processor object with an existing text file name
         Processor pro = new Processor("test.txt", 0);
 
