@@ -18,6 +18,8 @@ public class MemMan {
     private FreeBlock tail;
     private int end;
     BufferPool bp;
+    
+    static int KEY = 2;
 
     /**
      * The Memory Manager that handles the data
@@ -62,16 +64,17 @@ public class MemMan {
         int space = -1;
         int loc = -1;
         FreeBlock block;
+        int length = arr.length + KEY;
         while (loc == -1) { 
             block = head.next();
             while (block != tail) {
-                if (block.getSpace() >= arr.length && space == -1) {
-                    space = block.getSpace() - arr.length;
+                if (block.getSpace() >= length && space == -1) {
+                    space = block.getSpace() - length;
                     loc = block.getBeg();
                 }
-                else if (block.getSpace() >= arr.length && 
-                        block.getSpace() - arr.length < space) {
-                    space = block.getSpace() - arr.length;
+                else if (block.getSpace() >= length && 
+                        block.getSpace() - length < space) {
+                    space = block.getSpace() - length;
                     loc = block.getBeg();
                 }
                 block = block.next();
@@ -92,8 +95,11 @@ public class MemMan {
             block = block.next();
         }
         
-        block.insert(arr.length);
-        bp.recieveFromMerge(loc, arr);
+        block.insert(length);
+        bp.recieveFromMerge(loc + KEY, arr);
+        byte[] temp = new byte[KEY];
+        temp[0] = (byte) (arr.length & 0xff);
+        temp[1] = (byte) (arr.length >> 8);
         return loc;
     }
     
