@@ -18,15 +18,16 @@ public class RectangleDisk {
      *
      * @param args The command line arguments.
      * @throws IOException 
+     * @throws ClassNotFoundException 
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
 //        if (args.length != 4) {
 //            System.out.println("Usage: RectangleDisk <commandfile> "
 //                + "<diskFile> <numBuffs> <buffSize>");
 //        }
 //        else {
-        Processor p = new Processor(args[0], 
-            Integer.parseInt(args[3]));
+        Processor p = new Processor(args[0], Integer.parseInt(args[3])
+                , Integer.parseInt(args[1]), args[2]);
         p.process();
         //}
     }

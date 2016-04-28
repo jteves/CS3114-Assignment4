@@ -20,12 +20,13 @@ public class RectangleDiskTest extends TestCase {
      * set of parameters and for initializing the
      * Driver class.
      * @throws IOException 
+     * @throws ClassNotFoundException 
      */
-    public void testBadParams() throws IOException {
+    public void testBadParams() throws IOException, ClassNotFoundException {
         RectangleDisk rd = new RectangleDisk();
         String[] params = { "DrewTest.txt", "dataFile.dat", "5", "4096" };
         RectangleDisk.main(params);
-        assertNotNull(rd);
+        //assertNotNull(rd);
     }
 
 //    /**

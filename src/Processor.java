@@ -73,8 +73,9 @@ public class Processor {
      * different commands. The SkipList will have been updated 
      * depending on the file commands.
      * @throws IOException 
+     * @throws ClassNotFoundException 
      */
-    public void process() throws IOException
+    public void process() throws IOException, ClassNotFoundException
     {
         // The properties for a rectangle
         String recName;
