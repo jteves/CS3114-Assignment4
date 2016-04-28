@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 /**
  * 
  * @author Drew, Jacob
@@ -12,6 +14,7 @@ public class MemMan {
     private int bufSize;
     private FreeBlock head;
     private FreeBlock tail;
+    private int end;
 
     /**
      * The Memory Manager that handles the data
@@ -21,6 +24,8 @@ public class MemMan {
         freeSize = bufsize;
         start = 0;
         bufSize = bufsize;
+        head.setNext(tail);
+        tail.setPrev(head);
     }
     
     
@@ -46,6 +51,46 @@ public class MemMan {
     }
     
     
+    public int insert(Object obj) throws IOException {
+        
+        byte[] arr = Serializer.serialize(obj);
+        int space = -1;
+        int loc = -1;
+        while (loc == -1) { 
+            FreeBlock block = head.next();
+            while (block != tail) {
+                if (block.getSpace() >= arr.length && space == -1) {
+                    space = block.getSpace() - arr.length;
+                    loc = block.getBeg();
+                }
+                else if (block.getSpace() >= arr.length && 
+                        block.getSpace() - arr.length < space) {
+                    space = block.getSpace() - arr.length;
+                    loc = block.getBeg();
+                }
+            }
+            if (loc == -1) {
+                FreeBlock temp = new FreeBlock(end, bufSize);
+                tail.previous().setNext(temp);
+                temp.setPrev(tail.previous());
+                tail.setPrev(temp);
+                temp.setNext(tail);
+                joinBlocks();
+            }
+        }
+        
+        block = head.next();
+        while (block != tail) {
+            
+        }
+        
+        return loc;
+    }
+    
+    
+    public void joinBlocks() {
+        
+    }
     
     
     
@@ -70,12 +115,28 @@ public class MemMan {
             beg = start;
         }
         
+        private void setNext(FreeBlock block) {
+            next = block;
+        }
+        
+        private void setPrev(FreeBlock block) {
+            prev = block;
+        }
+        
         private FreeBlock next() {
             return next;
         }
         
         private FreeBlock previous() {
             return prev;
+        }
+        
+        private int getSpace() {
+            return len;
+        }
+        
+        private int getBeg() {
+            return beg;
         }
         
     }
