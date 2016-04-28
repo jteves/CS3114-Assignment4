@@ -93,7 +93,16 @@ public class MemMan {
     
     
     public void joinBlocks() {
-        
+        FreeBlock block = head.next();
+        while (block != tail) {
+            if (block.previous().getBeg() + block.
+                    previous().getSpace() == block.getBeg()) {
+                block.previous().setNext(block.next());
+                block.next().setPrev(block.previous());
+                block.previous().addSpace(block.getSpace());
+            }  
+            block = block.next();
+        }
     }
     
     
@@ -146,6 +155,10 @@ public class MemMan {
         private void insert(int x) {
             beg = beg + x;
             len = len - x;
+        }
+        
+        private void addSpace(int x) {
+            len = len + x;
         }
         
     }
