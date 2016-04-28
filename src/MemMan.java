@@ -56,8 +56,9 @@ public class MemMan {
         byte[] arr = Serializer.serialize(obj);
         int space = -1;
         int loc = -1;
+        FreeBlock block;
         while (loc == -1) { 
-            FreeBlock block = head.next();
+            block = head.next();
             while (block != tail) {
                 if (block.getSpace() >= arr.length && space == -1) {
                     space = block.getSpace() - arr.length;
@@ -68,6 +69,7 @@ public class MemMan {
                     space = block.getSpace() - arr.length;
                     loc = block.getBeg();
                 }
+                block = block.next();
             }
             if (loc == -1) {
                 FreeBlock temp = new FreeBlock(end, bufSize);
@@ -80,10 +82,12 @@ public class MemMan {
         }
         
         block = head.next();
-        while (block != tail) {
-            
+        while (block.getBeg() != loc) {
+            block = block.next();
         }
         
+        block.insert(arr.length);
+        //TODO actually speak to the file
         return loc;
     }
     
@@ -137,6 +141,11 @@ public class MemMan {
         
         private int getBeg() {
             return beg;
+        }
+        
+        private void insert(int x) {
+            beg = beg + x;
+            len = len - x;
         }
         
     }
