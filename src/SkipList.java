@@ -105,18 +105,19 @@ public class SkipList<K extends Comparable<K>, E> implements Serializable
      * @return the integer handler
      * @throws IOException 
      */
-    public int insert(KVPair<K, E> pair) throws IOException
+    public void insert(KVPair<K, E> pair) throws IOException
     {
-        int total;
+        int loc;
         
         // increments the size of the list
         numEl++;
         //creates a node to hold the KVPair
         SkipNode<K, E> node = new SkipNode<K, E>(randomLevel(), pair);
+        loc = mem.insert(node);
         //total = Serializer.serialize(pair.key()).length; 
         //total += Serializer.serialize(pair.value()).length; 
         //total = Serializer.serialize(pair).length;
-        total = Serializer.serialize(node).length;
+        //total = Serializer.serialize(node).length;
         //checks to see if the head node needs to adjust its size
         if (node.size() > head.size())
         {
@@ -137,8 +138,8 @@ public class SkipList<K extends Comparable<K>, E> implements Serializable
                 if (node.size() > i)
                 {
                     node.setPointer(i, -1);
-                  //TODO serialize stuff
-                  //temp.setPointer(i, node);
+                  
+                  temp.setPointer(i, loc);
                 }
                 i--;
             }
@@ -161,15 +162,15 @@ public class SkipList<K extends Comparable<K>, E> implements Serializable
                     if (node.size() > i)
                     {
                         node.setPointer(i, temp.getPointerInt(i));
-                        //TODO serialize stuff
-                        //temp.setPointer(i, node);
+                        
+                        temp.setPointer(i, loc);
                     }
                     i--;
                 }
                     
             }
         }
-        return total;
+        
     }
 
 //    /**

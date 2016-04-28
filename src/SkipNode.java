@@ -77,11 +77,10 @@ public class SkipNode<K extends Comparable<K>, E> implements Serializable
      * @return the specific pointer in pointers[] at 
      * position x
      */
-    public SkipNode<K, E> getPointer(int x)
+    public int getPointer(int x)
     {
-        //TODO serialize stuff
-        //return pointers[x];
-        return null;
+        return pointers[x];
+        
     }
     
     
@@ -116,8 +115,7 @@ public class SkipNode<K extends Comparable<K>, E> implements Serializable
      */
     public void setPointer(int x, int node)
     {
-        //TODO serialize stuff
-        //pointers[x] = node.ser;
+        pointers[x] = node;
     }
 
     /**
