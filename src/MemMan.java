@@ -56,7 +56,12 @@ public class MemMan {
      */
     public void dump() {
         System.out.println("Freelist Blocks:");
-        System.out.println("(" + start + ", " + freeSize + ")");
+        FreeBlock block = head.next();
+        while (block != tail) {
+            System.out.println("(" + block.getBeg() + ", " + block.getSpace() + ")");
+            block = block.next();
+        }
+        
     }
     
     
