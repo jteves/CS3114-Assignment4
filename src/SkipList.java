@@ -128,7 +128,7 @@ public class SkipList<K extends Comparable<K>, E> implements Serializable
         // will represent the result of compareTo()
         int x;
         // keeps track of which level of pointer is being looked
-        // at and compared too
+        // at and compared to
         int i = head.size() - 1;
         while (i >= 0)
         {    
