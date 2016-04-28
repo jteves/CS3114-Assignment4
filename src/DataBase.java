@@ -23,6 +23,8 @@ public class DataBase {
     public DataBase(int x)
     {
         list = new SkipList<String, Rectangle>();
+        //TODO change constructor to take numbuffers and filename
+        BufferPool bp = new BufferPool(x);
         m = new MemMan(x);
     }
 

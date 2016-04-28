@@ -93,7 +93,7 @@ public class MemMan {
         }
         
         block.insert(arr.length);
-        //TODO actually speak to the file
+        bp.recieveFromMerge(loc, arr);
         return loc;
     }
     
