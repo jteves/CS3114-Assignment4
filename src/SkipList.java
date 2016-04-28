@@ -45,7 +45,7 @@ public class SkipList<K extends Comparable<K>, E> implements Serializable
      * numEl is 0
      * ite points to the head node
      */
-    public SkipList()
+    public SkipList(MemMan m)
     {
         // random number generator used for nodes
         rnd   = new Random();
@@ -55,6 +55,7 @@ public class SkipList<K extends Comparable<K>, E> implements Serializable
         numEl = 0;
 
         iteToHead();
+        mem = m;
 //        ser = new Serializer();
     }
 
@@ -108,15 +109,14 @@ public class SkipList<K extends Comparable<K>, E> implements Serializable
      */
     @SuppressWarnings("unchecked")
     public void insert(KVPair<K, E> pair) throws IOException, ClassNotFoundException
-    {
-        
-        
+    { 
         // increments the size of the list
         numEl++;
         //creates a node to hold the KVPair
         int loc = mem.insert(pair);
         SkipNode<K, E> node = new SkipNode<K, E>(randomLevel(), loc);
         loc = mem.insert(node);
+        System.out.println(loc);
         KVPair<K, E> nPair = (KVPair<K, E>) mem.getObj(node.getPair());
         //total = Serializer.serialize(pair.key()).length; 
         //total += Serializer.serialize(pair.value()).length; 

@@ -62,14 +62,14 @@ public class BufferPool  {
      * opens the file and sets the max size of the 
      * list of buffers 
      */
-    public BufferPool(String name, int x, int size) {
+    public BufferPool(String name, int x, int tsize) {
         head = new Node(-1, null); // head node
         last = null; //there are no values yet so last
         // is null
         size = 0; //no nodes yet
         max = x; // sets max
         iteToHead(); //moves the iterator to the head node
-        bufSize = size;
+        bufSize = tsize;
         try {
             raf = new RandomAccessFile(name, "rw");
             // opens the file
@@ -215,7 +215,7 @@ public class BufferPool  {
         }
         try {
             //reads from file to byte array
-            file.readFully(temp); 
+            file.read(temp); 
         } 
         catch (IOException e) {
             e.printStackTrace();
@@ -308,11 +308,9 @@ public class BufferPool  {
                 while (bytesRead < temp.length && i < bufSize) {
                     //reads the bytes
                     temp[bytesRead] = cur[i];
-                    temp[bytesRead + 1] = cur[i + 1];
-                    temp[bytesRead + 2] = cur[i + 2];
-                    temp[bytesRead + 3] = cur[i + 3];
-                    bytesRead += 4;
-                    i += 4;
+                    
+                    bytesRead += 1;
+                    i += 1;
 //                    merge.upCache(); // increments cache
                 }
                 iteNodeToHead(); // resents ite to head
@@ -334,11 +332,9 @@ public class BufferPool  {
                 while (bytesRead != temp.length && i < bufSize) {
                     //writes bytes to the answer array
                     temp[bytesRead] = cur[i];
-                    temp[bytesRead + 1] = cur[i + 1];
-                    temp[bytesRead + 2] = cur[i + 2];
-                    temp[bytesRead + 3] = cur[i + 3];
-                    bytesRead += 4;
-                    i += 4;
+                    
+                    bytesRead += 1;
+                    i += 1;
                 }
             }
         }
@@ -370,11 +366,9 @@ public class BufferPool  {
                 while (bytesRead < dif && i < bufSize) {
                     // writes to buffer
                     cur[i] = arr[bytesRead];
-                    cur[i + 1] = arr[bytesRead + 1];
-                    cur[i + 2] = arr[bytesRead + 2];
-                    cur[i + 3] = arr[bytesRead + 3];
-                    bytesRead += 4;
-                    i += 4;
+                    
+                    bytesRead += 1;
+                    i += 1;
                 }
                 iteNodeToHead();
                 head.next.data = cur; // new value for data
@@ -394,11 +388,9 @@ public class BufferPool  {
                 while (bytesRead < dif && i < bufSize) {
                     // writes to array
                     cur[i] = arr[bytesRead];
-                    cur[i + 1] = arr[bytesRead + 1];
-                    cur[i + 2] = arr[bytesRead + 2];
-                    cur[i + 3] = arr[bytesRead + 3];
-                    bytesRead += 4;
-                    i += 4;
+                    
+                    bytesRead += 1;
+                    i += 1;
                 }
                 //sets data
                 head.next.data = cur;

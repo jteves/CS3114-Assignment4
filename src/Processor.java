@@ -61,7 +61,7 @@ public class Processor {
         
         fileName    = input;
         file        = new File(fileName);
-//        bufSize = size;
+//      bufSize = size;
     }
 
     /**

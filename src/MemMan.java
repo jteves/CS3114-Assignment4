@@ -33,7 +33,7 @@ public class MemMan {
         tail = new FreeBlock(-1, -1);
         head.setNext(tail);
         tail.setPrev(head);
-        end = bufsize;
+        end = 0;
         bp = pool;
     }
     
@@ -106,7 +106,10 @@ public class MemMan {
         bp.recieveFromMerge(loc + KEY, arr);
         byte[] temp = new byte[KEY];
         temp[0] = (byte) (arr.length & 0xff);
-        temp[1] = (byte) (arr.length >> 8);
+        temp[1] = (byte) ((arr.length >> 8) & 0xff);
+        //System.out.println(arr.length);
+        //System.out.println(temp[0]);
+        bp.recieveFromMerge(loc, temp);
         return loc;
     }
     
@@ -127,8 +130,13 @@ public class MemMan {
     public Object getObj(int x) throws 
             ClassNotFoundException, IOException {
         byte[] key = bp.sendToMerge(x, x + KEY);
-        int len = key[0] + (key[1] << 8);
-        byte[] arr = bp.sendToMerge(x, x + len);
+        int len = key[0];
+        len = len & 0xff;
+        int t = key[1] & 0xff;
+        len = len + (t << 8);
+        //System.out.println(len);
+        byte[] arr = bp.sendToMerge(x + KEY, x + len + KEY);
+        System.out.println(x + " " + len);
         return Serializer.deserialize(arr);
     }
     

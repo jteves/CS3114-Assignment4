@@ -23,10 +23,11 @@ public class DataBase {
      */
     public DataBase(int size, int num, String store)
     {
-        list = new SkipList<String, Rectangle>();
+        
         //TODO change constructor to take numbuffers and filename
         BufferPool bp = new BufferPool(store, num, size);
         m = new MemMan(size, bp);
+        list = new SkipList<String, Rectangle>(m);
     }
 
     /**
@@ -43,8 +44,10 @@ public class DataBase {
      * @param y         y coordinate
      * @param w         width
      * @param h         height
+     * @throws IOException 
+     * @throws ClassNotFoundException 
      */
-    public void insert(String recName, int x, int y, int w, int h) 
+    public void insert(String recName, int x, int y, int w, int h) throws ClassNotFoundException, IOException 
     {
         // The rectangle to be inserted into the SkipList
         Rectangle rec = new Rectangle(recName, x, y, w, h);
@@ -53,14 +56,8 @@ public class DataBase {
         {
             // The KVPair inserted into the SkipList
             KVPair<String, Rectangle> pair = new 
-                    KVPair<String, Rectangle>(rec.getName(), rec);
-//            try {
-//                m.add(list.insert(pair));
-//            } 
-//            catch (IOException e) {
-//                e.printStackTrace();
-//            }
-            
+                    KVPair<String, Rectangle>(rec.getName(), rec);           
+            list.insert(pair);
             // output: "Rectangle inserted: (name, x, y, w, h)"
             System.out.println("Rectangle inserted: (" + recName + 
                     ", " + x + ", " + y + ", " + w + ", " + h + ")");
