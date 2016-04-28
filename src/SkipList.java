@@ -132,12 +132,13 @@ public class SkipList<K extends Comparable<K>, E> implements Serializable
         int i = head.size() - 1;
         while (i >= 0)
         {    
-            if (temp.getPointer(i) == -1)
+            if (temp.getPointerInt(i) == -1)
             {
                 if (node.size() > i)
                 {
                     node.setPointer(i, -1);
-                    temp.setPointer(i, node);
+                  //TODO serialize stuff
+                  //temp.setPointer(i, node);
                 }
                 i--;
             }
@@ -159,8 +160,9 @@ public class SkipList<K extends Comparable<K>, E> implements Serializable
                 {
                     if (node.size() > i)
                     {
-                        node.setPointer(i, temp.getPointer(i));
-                        temp.setPointer(i, node);
+                        node.setPointer(i, temp.getPointerInt(i));
+                        //TODO serialize stuff
+                        //temp.setPointer(i, node);
                     }
                     i--;
                 }

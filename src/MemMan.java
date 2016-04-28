@@ -10,6 +10,8 @@ public class MemMan {
     private int freeSize;
     private int start;
     private int bufSize;
+    private FreeBlock head;
+    private FreeBlock tail;
 
     /**
      * The Memory Manager that handles the data
@@ -41,5 +43,40 @@ public class MemMan {
     public void dump() {
         System.out.println("Freelist Blocks:");
         System.out.println("(" + start + ", " + freeSize + ")");
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    private class FreeBlock {
+        
+        private FreeBlock next;
+        private FreeBlock prev;
+        private int len;
+        private int beg;
+        
+        
+        private FreeBlock(int start, int space) {
+            next = null;
+            prev = null;
+            len = space;
+            beg = start;
+        }
+        
+        private FreeBlock next() {
+            return next;
+        }
+        
+        private FreeBlock previous() {
+            return prev;
+        }
+        
     }
 }
