@@ -29,6 +29,8 @@ public class MemMan {
         freeSize = bufsize;
         start = 0;
         bufSize = bufsize;
+        head = new FreeBlock(-1, -1);
+        tail = new FreeBlock(-1, -1);
         head.setNext(tail);
         tail.setPrev(head);
         end = bufsize;
