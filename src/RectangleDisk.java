@@ -27,7 +27,7 @@ public class RectangleDisk {
 //        }
 //        else {
         Processor p = new Processor(args[0], Integer.parseInt(args[3])
-                , Integer.parseInt(args[1]), args[2]);
+                , Integer.parseInt(args[2]), args[1]);
         p.process();
         //}
     }
