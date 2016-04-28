@@ -30,6 +30,8 @@ public class SkipList<K extends Comparable<K>, E> implements Serializable
      * nodes
      */
     private Random rnd;
+    
+    private MemMan mem;
 //    private Serializer ser;
     //---------------------------------------------------
 
