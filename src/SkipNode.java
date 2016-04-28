@@ -148,7 +148,7 @@ public class SkipNode<K extends Comparable<K>, E> implements Serializable
         // new value for data
         @SuppressWarnings("unchecked")
         int[] arr = new int[x];
-        for (int i = 0; i < arr.size; i++) {
+        for (int i = 0; i < arr.length; i++) {
             arr[i] = -1;
         }
         for (int i = 0; i < size; i++)
