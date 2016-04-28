@@ -18,7 +18,7 @@ public class SkipNode<K extends Comparable<K>, E> implements Serializable
     /**
      * the array of kvpair pointers the node will hold
      */
-    private SkipNode<K, E>[] pointers;
+    private int[] pointers;
     /**
      * the number of pointers the node holds
      */
@@ -79,6 +79,25 @@ public class SkipNode<K extends Comparable<K>, E> implements Serializable
      */
     public SkipNode<K, E> getPointer(int x)
     {
+        //TODO serialize stuff
+        //return pointers[x];
+        return null;
+    }
+    
+    
+    /**
+     * precondition: x is a 0 or positive
+     * integer that is not bigger than size
+     * postcondition: the pointer held in position
+     * x is returned
+     * 
+     * @param x the location of the pointer in
+     * pointers[]
+     * @return the specific pointer in pointers[] at 
+     * position x
+     */
+    public int getPointerInt(int x)
+    {
         return pointers[x];
     }
 
@@ -95,9 +114,10 @@ public class SkipNode<K extends Comparable<K>, E> implements Serializable
      * @param node the node that will now be contained
      * in pointers[x]
      */
-    public void setPointer(int x, SkipNode<K, E> node)
+    public void setPointer(int x, int node)
     {
-        pointers[x] = node;
+        //TODO serialize stuff
+        //pointers[x] = node.ser;
     }
 
     /**
@@ -129,7 +149,7 @@ public class SkipNode<K extends Comparable<K>, E> implements Serializable
     {
         // new value for data
         @SuppressWarnings("unchecked")
-        SkipNode<K, E>[] arr = new SkipNode[x];
+        int[] arr = new int[x];
         for (int i = 0; i < size; i++)
         {
             arr[i] = pointers[i];
