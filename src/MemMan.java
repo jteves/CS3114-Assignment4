@@ -1,4 +1,6 @@
 import java.io.IOException;
+import java.io.RandomAccessFile;
+
 
 /**
  * 
@@ -15,17 +17,20 @@ public class MemMan {
     private FreeBlock head;
     private FreeBlock tail;
     private int end;
+    BufferPool bp;
 
     /**
      * The Memory Manager that handles the data
      * @param bufsize the size of the buffer
      */
-    public MemMan(int bufsize) {
+    public MemMan(int bufsize, BufferPool pool) {
         freeSize = bufsize;
         start = 0;
         bufSize = bufsize;
         head.setNext(tail);
         tail.setPrev(head);
+        end = bufsize;
+        bp = pool;
     }
     
     
@@ -78,6 +83,7 @@ public class MemMan {
                 tail.setPrev(temp);
                 temp.setNext(tail);
                 joinBlocks();
+                end = end + bufSize;
             }
         }
         
