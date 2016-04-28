@@ -46,13 +46,13 @@ public class SkipNode<K extends Comparable<K>, E> implements Serializable
         // initializes the size field
         size     = numpoint;
         //initializes the pointers
-        pointers = new SkipNode[size];
+        pointers = new int[size];
         //sets all pointers to null
         // initializes the data field
         data     = pair;
         for (int i = 0; i < size; i++)
         {
-            pointers[i] = null;
+            pointers[i] = -1;
         }
 
     }
