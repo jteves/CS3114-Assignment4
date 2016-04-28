@@ -117,6 +117,14 @@ public class MemMan {
         }
     }
     
+    public Object getObj(int x) throws 
+            ClassNotFoundException, IOException {
+        byte[] key = bp.sendToMerge(x, x + KEY);
+        int len = key[0] + (key[1] << 8);
+        byte[] arr = bp.sendToMerge(x, x + len);
+        return Serializer.deserialize(arr);
+    }
+    
     
     
     
