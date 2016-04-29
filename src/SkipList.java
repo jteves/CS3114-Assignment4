@@ -12,6 +12,7 @@ import java.util.Random;
  */
 public class SkipList<K extends Comparable<K>, E> implements Serializable 
 {
+    //TODO update pointers when reset.
     /**
      * head node of the list
      */
@@ -118,11 +119,7 @@ public class SkipList<K extends Comparable<K>, E> implements Serializable
         loc = mem.insert(node);
         System.out.println(loc);
         KVPair<K, E> nPair = (KVPair<K, E>) mem.getObj(node.getPair());
-        //total = Serializer.serialize(pair.key()).length; 
-        //total += Serializer.serialize(pair.value()).length; 
-        //total = Serializer.serialize(pair).length;
-        //total = Serializer.serialize(node).length;
-        //checks to see if the head node needs to adjust its size
+        
         if (node.size() > head.size())
         {
             head.changeSize(node.size());
@@ -135,6 +132,7 @@ public class SkipList<K extends Comparable<K>, E> implements Serializable
         // keeps track of which level of pointer is being looked
         // at and compared to
         int i = head.size() - 1;
+        int upLoc = -1;
         while (i >= 0)
         {    
             if (temp.getPointerInt(i) == -1)
@@ -161,6 +159,7 @@ public class SkipList<K extends Comparable<K>, E> implements Serializable
                 if (x > 0)
                 {
                     temp = (SkipNode<K, E>) mem.getObj(temp.getPointer(i));
+                    upLoc = temp.getPointer(i);
                 }
                 else
                 {
@@ -169,6 +168,7 @@ public class SkipList<K extends Comparable<K>, E> implements Serializable
                         node.setPointer(i, temp.getPointerInt(i));
                         
                         temp.setPointer(i, loc);
+                        mem.update(upLoc, temp);
                     }
                     i--;
                 }
@@ -480,6 +480,9 @@ public class SkipList<K extends Comparable<K>, E> implements Serializable
     private SkipNode<K, E> nextNode(SkipNode<K, E> node) 
             throws ClassNotFoundException, IOException
     {
+        if (node.getPointer(0) == -1) {
+            return null;
+        }
         return (SkipNode<K, E>) mem.getObj(node.getPointer(0));
     }
 

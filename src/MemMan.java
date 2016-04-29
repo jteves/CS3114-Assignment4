@@ -140,6 +140,11 @@ public class MemMan {
         return Serializer.deserialize(arr);
     }
     
+    public void update(int loc, Object obj) throws IOException {
+        byte[] arr = Serializer.serialize(obj);
+        bp.recieveFromMerge(loc + KEY, arr);
+    }
+    
     
     
     
