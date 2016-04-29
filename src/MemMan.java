@@ -80,8 +80,7 @@ public class MemMan {
                     loc = block.getBeg();
                 }
                 else if (block.getSpace() >= length && 
-                        block.getSpace() - (length ) < space &&
-                        block.getSpace() - (length ) >= 0) {
+                        block.getSpace() - (length ) < space) {
                     space = block.getSpace() - (length);
                     loc = block.getBeg();
                 }
