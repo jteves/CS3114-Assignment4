@@ -18,7 +18,7 @@ public class MemMan {
     private FreeBlock tail;
     private int end;
     BufferPool bp;
-    
+    static int PAD = 25;
     static int KEY = 2;
 
     /**
@@ -71,17 +71,18 @@ public class MemMan {
         int space = -1;
         int loc = -1;
         FreeBlock block;
-        int length = arr.length + KEY;
+        int length = arr.length + KEY + PAD;
         while (loc == -1) { 
             block = head.next();
             while (block != tail) {
                 if (block.getSpace() >= length && space == -1) {
-                    space = block.getSpace() - length;
+                    space = block.getSpace() - (length);
                     loc = block.getBeg();
                 }
                 else if (block.getSpace() >= length && 
-                        block.getSpace() - length < space) {
-                    space = block.getSpace() - length;
+                        block.getSpace() - (length ) < space &&
+                        block.getSpace() - (length ) >= 0) {
+                    space = block.getSpace() - (length);
                     loc = block.getBeg();
                 }
                 block = block.next();
