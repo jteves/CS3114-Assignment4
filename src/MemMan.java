@@ -136,7 +136,7 @@ public class MemMan {
         len = len + (t << 8);
         //System.out.println(len);
         byte[] arr = bp.sendToMerge(x + KEY, x + len + KEY);
-        System.out.println(x + " " + len);
+       
         return Serializer.deserialize(arr);
     }
     

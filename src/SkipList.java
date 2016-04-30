@@ -116,7 +116,7 @@ public class SkipList<K extends Comparable<K>, E>
         int loc = mem.insert(pair);
         SkipNode<K, E> node = new SkipNode<K, E>(randomLevel(), loc);
         loc = mem.insert(node);
-        System.out.println(loc);
+        
         KVPair<K, E> nPair = (KVPair<K, E>) mem.getObj(node.getPair());
         
         if (node.size() > head.size())
@@ -147,7 +147,7 @@ public class SkipList<K extends Comparable<K>, E>
                   }
                   else {  
                       upLoc = head.getPointer(i);
-                      System.out.println("hello" + head.getPointer(i));
+                      
                   }
                   
                 }
@@ -168,7 +168,7 @@ public class SkipList<K extends Comparable<K>, E>
                 {
                     upLoc = temp.getPointer(i);
                     temp = (SkipNode<K, E>) mem.getObj(temp.getPointer(i)); 
-                    System.out.println(temp.getPointer(i) + "why");
+                    
                 }
                 else
                 {
