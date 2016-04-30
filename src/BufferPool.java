@@ -34,7 +34,7 @@ public class BufferPool  {
     /**
      * the last node of the list
      */
-    private Node last;
+    private Node tail;
     /**
      * This is the max size that the linked
      * list is allowed to grow to
@@ -66,8 +66,8 @@ public class BufferPool  {
      */
     public BufferPool(String name, int x, int tsize) {
         head = new Node(-1, null); // head node
-        last = null; //there are no values yet so last
-        
+        tail = new Node(-1, null); //there are no values yet so last
+        head.next = tail;
         // is null
         size = 0; //no nodes yet
         max = x; // sets max
@@ -113,9 +113,6 @@ public class BufferPool  {
         // inserts at the beginning
         node.next = head.next; 
         head.next = node;
-        if (size == 0) {
-            last = node; //sets the value for last
-        }
         size++; // increase the size of the list
     }
     
@@ -130,13 +127,12 @@ public class BufferPool  {
         byte[] ans;
         iteToHead();
         // Traverse to the second to last node
-        while (ite.next != last) {
+        while (ite.next.next != tail) {
             iteNext();
         }
-        last = ite; //sets last value to new
         // last node
         ans = ite.next.data; // returns this
-        ite.next = null; //last node has no next node
+        ite.next = tail; //last node has no next node
         size--; // decrements size
         return ans;
     }

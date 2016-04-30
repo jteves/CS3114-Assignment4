@@ -8,12 +8,14 @@ insert a 1 1 0 1024
 insert 1 1 1 1 0
 
 
-insert a 1 1 1 1
+
 insert b 1 1 1 10
+insert a 1 1 1 1
 insert c 1 100 1 1
 insert d 1 1 100 1
 insert e 1 144 1 1
 insert f 1 1 15 1
+
 insert g 1 1 1 1
 insert h 155 1 1 1
 

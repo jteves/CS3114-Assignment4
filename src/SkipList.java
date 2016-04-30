@@ -177,7 +177,9 @@ public class SkipList<K extends Comparable<K>, E>
                         node.setPointer(i, temp.getPointerInt(i));
                         mem.update(loc, node);
                         temp.setPointer(i, loc);
-                        mem.update(upLoc, temp);
+                        if (temp != head){
+                            mem.update(upLoc, temp);
+                        }
                     }
                     i--;
                 }
