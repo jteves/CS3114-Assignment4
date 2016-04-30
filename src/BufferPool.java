@@ -433,6 +433,8 @@ public class BufferPool  {
                 }
                 if ((bytesRead + beg)/ bufSize > fileBlocks) {
                     fileBlocks = (bytesRead + beg)/bufSize;
+                    byte[] temp = new byte[bufSize];
+                    insert((bytesRead + beg)/ bufSize, temp);
                     
                 }
                 else {
