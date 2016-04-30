@@ -141,6 +141,11 @@ public class Rectangle implements Serializable
                 && rec.getHeight() == this.getHeight() 
                 && rec.getWidth() == this.getWidth();
     }
+    
+    public boolean equals(Object o) {
+        Rectangle rec = (Rectangle) o;
+        return sameCords(rec) && rec.getName().equals(name);
+    }
       
 //    /**
 //     * Provides a human readable version of the coordinates

@@ -467,6 +467,7 @@ public class SkipList<K extends Comparable<K>, E>
             if (rec.sameCords((Rectangle) look.value())) {
                 return pair;
             }
+            temp = (SkipNode<K, E>) mem.getObj(temp.getPointer(0));
         }
         return null;
     }
