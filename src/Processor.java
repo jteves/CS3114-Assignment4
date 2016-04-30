@@ -151,7 +151,7 @@ public class Processor {
 //                }
                 else if (command.equals(INTERSECTIONS))
                 {
-                   // db.intersections();
+                    db.intersections();
                 }
                 else if (command.equals(SEARCH))
                 {
