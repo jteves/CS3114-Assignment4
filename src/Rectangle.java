@@ -133,6 +133,14 @@ public class Rectangle implements Serializable
                 getY() + getHeight() <= 1024) && 
                 Character.isLetter(getName().charAt(0));
     }
+    
+    
+    public boolean sameCords(Rectangle rec) {
+        return rec.getX() == this.getX() 
+                && rec.getY() == this.getX()
+                && rec.getHeight() == this.getHeight() 
+                && rec.getWidth() == this.getWidth();
+    }
       
 //    /**
 //     * Provides a human readable version of the coordinates

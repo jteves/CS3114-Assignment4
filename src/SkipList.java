@@ -451,6 +451,8 @@ public class SkipList<K extends Comparable<K>, E>
         return ans;
     }
     
+    public SkipNode<K, E> 
+    
     //-------------------------------------------
     // Iterator methods
 
