@@ -431,8 +431,14 @@ public class BufferPool  {
                     write(raf, last.pos);
                     remove();
                 }
-                if ((bytesRead + beg)/ bufSize > fileBlocks)
-                read(raf, (beg + bytesRead) / bufSize); // reads bytes
+                if ((bytesRead + beg)/ bufSize > fileBlocks) {
+                    fileBlocks = (bytesRead + beg)/bufSize;
+                    
+                }
+                else {
+                    read(raf, (beg + bytesRead) / bufSize); // reads bytes
+                }
+                
                 // gets beginning of write location in the array
                 int i = (beg + bytesRead) % bufSize; 
                 byte[] cur = head.next.data; //gets byte array
