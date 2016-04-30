@@ -121,7 +121,7 @@ public class Processor {
                         w = Integer.parseInt(lines.next());
                         h = Integer.parseInt(lines.next());
                         
-                       // db.remove(x, y, w, h);
+                        db.remove(x, y, w, h);
                     }
                     else // Removal by the rectangle name
                     {

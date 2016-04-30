@@ -20,6 +20,8 @@ insert f 1 1 15 1
 remove bob
 dump
 
+remove 1 1 1 10
+dump
 
 
 
