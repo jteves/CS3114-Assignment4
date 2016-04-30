@@ -231,48 +231,48 @@ public class DataBase {
             
         }
     }
-//    
-//    /**  
-//     * Searches through the SkipList for Rectangles contained in 
-//     * the specified region.
-//     * 
-//     * Precondition: the parameters are not null
-//     * Postcondition: Outputs all the Rectangles in the SkipList 
-//     * within the specified region to the console if they exist 
-//     * 
-//     * @param x the x coordinate
-//     * @param y the y coordinate
-//     * @param w the width
-//     * @param h the height
-//     */
-//    public void regionSearch(int x, int y, int w, int h)
-//    {
-//        // output: "Rectangles intersecting region: (x, y, w, h)"
-//        System.out.println("Rectangles intersecting region ("
-//                + x + ", " + y + ", " + w + ", " + h + "):");
-//        
-//        // new Rectangle containing the input values
-//        Rectangle rec = new Rectangle(null, x, y, w, h);
-//        
-//        // Rectangle used in traversing the SkipList as the iterator
-//        Rectangle temp;
-//        list.iteToHead();
-//        list.iteNext();
-//        while (list.currentPair() != null)
-//        {
-//            temp = list.currentPair().value();
-//            if (temp.intersect(rec) || rec.intersect(temp))
-//            {
-//                // output: "(name, x, y, w, h)"
-//                System.out.println("(" + temp.getName() + ", " +
-//                        temp.getX() + ", " + temp.getY() + 
-//                        ", " + temp.getWidth() + ", " + 
-//                        temp.getHeight() + ")");
-//            }
-//            list.iteNext();
-//        }
-//    }
-//    
+    
+    /**  
+     * Searches through the SkipList for Rectangles contained in 
+     * the specified region.
+     * 
+     * Precondition: the parameters are not null
+     * Postcondition: Outputs all the Rectangles in the SkipList 
+     * within the specified region to the console if they exist 
+     * 
+     * @param x the x coordinate
+     * @param y the y coordinate
+     * @param w the width
+     * @param h the height
+     */
+    public void regionSearch(int x, int y, int w, int h)
+    {
+        // output: "Rectangles intersecting region: (x, y, w, h)"
+        System.out.println("Rectangles intersecting region ("
+                + x + ", " + y + ", " + w + ", " + h + "):");
+        
+        // new Rectangle containing the input values
+        Rectangle rec = new Rectangle(null, x, y, w, h);
+        
+        // Rectangle used in traversing the SkipList as the iterator
+        Rectangle temp;
+        list.iteToHead();
+        list.iteNext();
+        while (list.currentPair() != null)
+        {
+            temp = list.currentPair().value();
+            if (temp.intersect(rec) || rec.intersect(temp))
+            {
+                // output: "(name, x, y, w, h)"
+                System.out.println("(" + temp.getName() + ", " +
+                        temp.getX() + ", " + temp.getY() + 
+                        ", " + temp.getWidth() + ", " + 
+                        temp.getHeight() + ")");
+            }
+            list.iteNext();
+        }
+    }
+    
     /**  
      * Searches through the SkipList for Rectangles that intersect
      * each other.
