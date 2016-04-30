@@ -154,7 +154,7 @@ public class DataBase {
             }
             else {
                 System.out.println("Rectangle removed: (" + 
-                        rec.getName()   + ", " + rec.getX()
+                        pair.key()   + ", " + rec.getX()
                         + ", " + rec.getY() + ", " + 
                         rec.getWidth() + ", " + rec.getHeight() + 
                         ")");
