@@ -26,6 +26,7 @@ public class DataBase {
         
         //TODO change constructor to take numbuffers and filename
         BufferPool bp = new BufferPool(store, num, size);
+        bp.read(bp.getFile(), 0);
         m = new MemMan(size, bp);
         list = new SkipList<String, Rectangle>(m);
     }
