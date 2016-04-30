@@ -141,19 +141,23 @@ public class DataBase {
             list.iteNext(); 
             
             pair = list.searchforR(pair);
+            pair = list.remove2(pair);
                     
              // output: "Rectangle removed: (name, x, y, w, h)"
-            System.out.println("Rectangle removed: (" + 
-                    rec.getName()   + ", " + rec.getX()
-                    + ", " + rec.getY() + ", " + 
-                    rec.getWidth() + ", " + rec.getHeight() + 
-                    ")");
-            if (!recExists)
+            
+            if (pair == null)
             {
                 // output: "Rectangle not found: (x, y, w, h)"
                 System.out.println("Rectangle not found: (" +
                         x + ", " + y + ", " + w + ", " + 
                         h + ")");
+            }
+            else {
+                System.out.println("Rectangle removed: (" + 
+                        rec.getName()   + ", " + rec.getX()
+                        + ", " + rec.getY() + ", " + 
+                        rec.getWidth() + ", " + rec.getHeight() + 
+                        ")");
             }
         }
         else // Rectangle coordinates are illegal
