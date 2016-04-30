@@ -131,7 +131,7 @@ public class SkipList<K extends Comparable<K>, E>
         // keeps track of which level of pointer is being looked
         // at and compared to
         int i = head.size() - 1;
-        int upLoc = -1;
+        int upLoc = head.getPointer(i);
         while (i >= 0)
         {    
             if (temp.getPointerInt(i) == -1)
@@ -141,8 +141,13 @@ public class SkipList<K extends Comparable<K>, E>
                     node.setPointer(i, -1);
                   
                   temp.setPointer(i, loc);
+                  mem.update(loc, node);
                   if (temp != head) {
-                      //mem.update(upLoc, temp);
+                     mem.update(upLoc, temp);
+                  }
+                  else {  
+                      upLoc = head.getPointer(i);
+                      System.out.println("hello" + head.getPointer(i));
                   }
                   
                 }
@@ -161,17 +166,18 @@ public class SkipList<K extends Comparable<K>, E>
 //                }
                 if (x > 0)
                 {
-                    temp = (SkipNode<K, E>) mem.getObj(temp.getPointer(i));
                     upLoc = temp.getPointer(i);
+                    temp = (SkipNode<K, E>) mem.getObj(temp.getPointer(i)); 
+                    System.out.println(temp.getPointer(i) + "why");
                 }
                 else
                 {
                     if (node.size() > i)
                     {
                         node.setPointer(i, temp.getPointerInt(i));
-                        //mem.update(loc, node);
+                        mem.update(loc, node);
                         temp.setPointer(i, loc);
-                        //mem.update(upLoc, temp);
+                        mem.update(upLoc, temp);
                     }
                     i--;
                 }

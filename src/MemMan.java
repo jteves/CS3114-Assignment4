@@ -18,7 +18,7 @@ public class MemMan {
     private FreeBlock tail;
     private int end;
     BufferPool bp;
-    static int PAD = 50;
+    static int PAD = 15;
     static int KEY = 2;
 
     /**
