@@ -53,6 +53,8 @@ public class BufferPool  {
      */
     private int bufSize;
     
+    private int fileBlocks;
+    
     /**
      * constructor
      * @param x is the max list size 
@@ -65,11 +67,13 @@ public class BufferPool  {
     public BufferPool(String name, int x, int tsize) {
         head = new Node(-1, null); // head node
         last = null; //there are no values yet so last
+        
         // is null
         size = 0; //no nodes yet
         max = x; // sets max
         iteToHead(); //moves the iterator to the head node
         bufSize = tsize;
+        fileBlocks = 0;
         try {
             raf = new RandomAccessFile(name, "rw");
             // opens the file
@@ -342,9 +346,6 @@ public class BufferPool  {
     }
     
     
-    public byte[] sendToSkip(int beg, int end) {
-        
-    }
     
     /**
      * writes the values in the byte array back into
@@ -386,6 +387,51 @@ public class BufferPool  {
                     write(raf, last.pos);
                     remove();
                 }
+                read(raf, (beg + bytesRead) / bufSize); // reads bytes
+                // gets beginning of write location in the array
+                int i = (beg + bytesRead) % bufSize; 
+                byte[] cur = head.next.data; //gets byte array
+                while (bytesRead < dif && i < bufSize) {
+                    // writes to array
+                    cur[i] = arr[bytesRead];
+                    
+                    bytesRead += 1;
+                    i += 1;
+                }
+                //sets data
+                head.next.data = cur;
+            }
+        }
+    }
+    
+    
+    public void recieveFromSkip(int beg, byte[] arr) {
+        int dif = arr.length; // length of the array
+        int bytesRead = 0; // keeps track of bytes written
+        while (bytesRead < dif) {
+            if (isContained((beg + bytesRead) / bufSize)) {
+                int i = (beg + bytesRead) % bufSize; //finds the 
+                // proper position in the buffer
+                byte[] cur = ite.data; // byte array to be written to
+                while (bytesRead < dif && i < bufSize) {
+                    // writes to buffer
+                    cur[i] = arr[bytesRead];
+                    
+                    bytesRead += 1;
+                    i += 1;
+                }
+                iteNodeToHead();
+                head.next.data = cur; // new value for data
+            }
+            else {
+                if (isFull()) {
+                    //writes to file and removes 
+                    //node because a new byte array must
+                    // be read
+                    write(raf, last.pos);
+                    remove();
+                }
+                if ((bytesRead + beg)/ bufSize > fileBlocks)
                 read(raf, (beg + bytesRead) / bufSize); // reads bytes
                 // gets beginning of write location in the array
                 int i = (beg + bytesRead) % bufSize; 
