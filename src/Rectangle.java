@@ -81,39 +81,39 @@ public class Rectangle implements Serializable
         return name;
     }
 
-//    /**
-//     * Determines if this Rectangle intersects with the provided
-//     * Rectangle object.
-//     * 
-//     * Precondition: this Rectangle and the provided Rectangle 
-//     * x, y, w, h properties aren't null and exist 
-//     * Postcondition: The Rectangles do or don't intersect
-//     * 
-//     * @param   rec the rectangle which will be compared
-//     *          against
-//     * @return  whether or not the rectangles intersect
-//     */
-//    public boolean intersect(Rectangle rec)
-//    {
-//        // The edges of this rectangle
-//        int left        = getX();
-//        int right       = getX() + getWidth();
-//        int top         = getY();
-//        int bottom      = getY() + getHeight();
-//        
-//        // The edges of the rectangle being compared to
-//        int recLeft     = rec.getX();
-//        int recRight    = rec.getX() + rec.getWidth();
-//        int recTop      = rec.getY();
-//        int recBottom   = rec.getY() + rec.getHeight();
-// 
-//        // True if the rectangles don't intersect
-//        boolean notIntersecting = left >= recRight || 
-//                right <= recLeft || top >= recBottom || 
-//                bottom <= recTop;
-//        
-//        return !notIntersecting;
-//    }
+    /**
+     * Determines if this Rectangle intersects with the provided
+     * Rectangle object.
+     * 
+     * Precondition: this Rectangle and the provided Rectangle 
+     * x, y, w, h properties aren't null and exist 
+     * Postcondition: The Rectangles do or don't intersect
+     * 
+     * @param   rec the rectangle which will be compared
+     *          against
+     * @return  whether or not the rectangles intersect
+     */
+    public boolean intersect(Rectangle rec)
+    {
+        // The edges of this rectangle
+        int left        = getX();
+        int right       = getX() + getWidth();
+        int top         = getY();
+        int bottom      = getY() + getHeight();
+        
+        // The edges of the rectangle being compared to
+        int recLeft     = rec.getX();
+        int recRight    = rec.getX() + rec.getWidth();
+        int recTop      = rec.getY();
+        int recBottom   = rec.getY() + rec.getHeight();
+ 
+        // True if the rectangles don't intersect
+        boolean notIntersecting = left >= recRight || 
+                right <= recLeft || top >= recBottom || 
+                bottom <= recTop;
+        
+        return !notIntersecting;
+    }
 
     /**
      * Determines if the Rectangle has an appropriate
