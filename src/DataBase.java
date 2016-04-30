@@ -174,61 +174,63 @@ public class DataBase {
 //        }
 //    }
 //
-//    /**
-//     * This method searches for a rectangle matching 
-//     * the key value, recName
-//     * 
-//     * Precondition: the parameter is not null
-//     * Postcondition: Outputs all the Rectangles in the SkipList with 
-//     * the specified name to the console if they exist 
-//     * 
-//     * @param recName the name of the rectangle being searched for
-//     */
-//    public void search(String recName)
-//    {
-//        // Pair with the recName parameter as the key
-//        KVPair<String, Rectangle> key = new 
-//                KVPair<String, Rectangle>(recName, null);  
-//        list.search(key);
-//        
-//        // The pair located at the current iterator of the SkipList
-//        KVPair<String, Rectangle> ans = list.currentPair();
-//
-//        // The rectangle doesn't exist in the list
-//        if (ans == null)
-//        {
-//            System.out.println("Rectangle not found: " + recName);
-//        }
-//        else
-//        {
-//            // Rectangle that was searched for
-//            Rectangle foundRec;
-//            
-//            // Used to compare the rectangles in the SkipList
-//            int x = 0;
-//            // Used for the SkipList logic 
-//            int y = list.currentNodeDepth();
-//
-//            // Traverses through the list
-//            do 
-//            {
-//                x = list.currentPair().compareTo(key);
-//                if (x == 0)
-//                {
-//                    foundRec = list.currentPair().value();
-//                    // output: "Rectangle rejected: (name, x, y, w, h)"
-//                    System.out.println("(" + foundRec.getName() + ", " +
-//                        foundRec.getX() + ", " + foundRec.getY() + 
-//                        ", " + foundRec.getWidth() + ", " + 
-//                        foundRec.getHeight() + ")");
-//                }
-//                list.iteNext();
-//                
-//            } while (list.currentPair() != null 
-//                    && list.currentNodeDepth() < y);
-//            
-//        }
-//    }
+    /**
+     * This method searches for a rectangle matching 
+     * the key value, recName
+     * 
+     * Precondition: the parameter is not null
+     * Postcondition: Outputs all the Rectangles in the SkipList with 
+     * the specified name to the console if they exist 
+     * 
+     * @param recName the name of the rectangle being searched for
+     * @throws IOException 
+     * @throws ClassNotFoundException 
+     */
+    public void search(String recName) throws ClassNotFoundException, IOException
+    {
+        // Pair with the recName parameter as the key
+        KVPair<String, Rectangle> key = new 
+                KVPair<String, Rectangle>(recName, null);  
+        list.search(key);
+        
+        // The pair located at the current iterator of the SkipList
+        KVPair<String, Rectangle> ans = list.currentPair();
+
+        // The rectangle doesn't exist in the list
+        if (ans == null)
+        {
+            System.out.println("Rectangle not found: " + recName);
+        }
+        else
+        {
+            // Rectangle that was searched for
+            Rectangle foundRec;
+            
+            // Used to compare the rectangles in the SkipList
+            int x = 0;
+            // Used for the SkipList logic 
+            int y = list.currentNodeDepth();
+
+            // Traverses through the list
+            do 
+            {
+                x = list.currentPair().compareTo(key);
+                if (x == 0)
+                {
+                    foundRec = list.currentPair().value();
+                    // output: "Rectangle rejected: (name, x, y, w, h)"
+                    System.out.println("(" + foundRec.getName() + ", " +
+                        foundRec.getX() + ", " + foundRec.getY() + 
+                        ", " + foundRec.getWidth() + ", " + 
+                        foundRec.getHeight() + ")");
+                }
+                list.iteNext();
+                
+            } while (list.currentPair() != null 
+                    && list.currentNodeDepth() < y);
+            
+        }
+    }
 //    
 //    /**  
 //     * Searches through the SkipList for Rectangles contained in 

@@ -11,7 +11,7 @@ import java.util.Random;
  */
 public class SkipList<K extends Comparable<K>, E>  
 {
-    //TODO update pointers when reset.
+    
     /**
      * head node of the list
      */
@@ -189,61 +189,64 @@ public class SkipList<K extends Comparable<K>, E>
         
     }
 
-//    /**
-//     * precondition: look is a not null kvpair
-//     * postcondition: the KVPair that has a matching
-//     * key with look will be pointed to by the iterator
-//     * 
-//     * if look does not have a match then the iterator 
-//     * will be set to null
-//     * 
-//     * @param look is the pair that has the key that
-//     * We wish to find 
-//     * sets the iterator to 
-//     * the first instance of a kvpair with a key 
-//     * that matches look
-//     */
-//    public void search(KVPair<K, E> look)
-//    {
-//        //will be used to compare keys in the list with look
-//        SkipNode<K, E> temp = head;
-//        //look is inserted into be a skipnode to help compare values
-//        SkipNode<K, E> node = new SkipNode<K, E>(1, look);
-//        // keeps track of which level of pointer is being looked
-//        // at and compared to
-//        int i               = head.size() - 1;
-//        // represents the value of the compareTo() function
-//        int x;
-//        //iterator is set to null
-//        ite = null;
-//        while (i >= 0)
-//        {    
-//            if (temp.getPointer(i) == null)
-//            {
-//                i--;
-//            }
-//            else 
-//            {
-//                x = node.getPair().key().compareTo(
-//                       temp.getPointer(i).getPair().key());
-//                if (x > 0)
-//                {
-//                    temp = temp.getPointer(i);
-//                }
-//                else
-//                {
-//                    if (x == 0 && i == 0)
-//                    {
-//                        ite = temp.getPointer(i);
-//                        // exits the loop once a match is found
-//                        break;
-//                    }
-//                    i--;
-//                }
-//                    
-//            }
-//        }
-//    }
+    /**
+     * precondition: look is a not null kvpair
+     * postcondition: the KVPair that has a matching
+     * key with look will be pointed to by the iterator
+     * 
+     * if look does not have a match then the iterator 
+     * will be set to null
+     * 
+     * @param look is the pair that has the key that
+     * We wish to find 
+     * sets the iterator to 
+     * the first instance of a kvpair with a key 
+     * that matches look
+     * @throws IOException 
+     * @throws ClassNotFoundException 
+     */
+    @SuppressWarnings("unchecked")
+    public void search(KVPair<K, E> look) throws ClassNotFoundException, IOException
+    {
+        //will be used to compare keys in the list with look
+        SkipNode<K, E> temp = head;
+        //look is inserted into be a skipnode to help compare values
+        // keeps track of which level of pointer is being looked
+        // at and compared to
+        int i               = head.size() - 1;
+        // represents the value of the compareTo() function
+        int x;
+        //iterator is set to null
+        ite = null;
+        while (i >= 0)
+        {    
+            if (temp.getPointer(i) == -1)
+            {
+                i--;
+            }
+            else 
+            {
+                SkipNode<K, E> tNode = (SkipNode<K, E>)mem.getObj(temp.getPointer(i));
+                KVPair<K, E> tPair = (KVPair<K, E>) mem.getObj(tNode.getPair());
+                x = look.key().compareTo(tPair.key());
+                if (x > 0)
+                {
+                    temp = (SkipNode<K, E>) mem.getObj(temp.getPointer(i));
+                }
+                else
+                {
+                    if (x == 0 && i == 0)
+                    {
+                        ite = (SkipNode<K, E>) mem.getObj(temp.getPointer(i));
+                        // exits the loop once a match is found
+                        break;
+                    }
+                    i--;
+                }
+                    
+            }
+        }
+    }
 //
 //    /**
 //     * 
