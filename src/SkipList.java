@@ -1,5 +1,4 @@
  import java.io.IOException;
-import java.io.Serializable;
 import java.util.Random;
 
 /**
@@ -10,7 +9,7 @@ import java.util.Random;
  *@param <K> is the key
  *@param <E> is the value
  */
-public class SkipList<K extends Comparable<K>, E> implements Serializable 
+public class SkipList<K extends Comparable<K>, E>  
 {
     //TODO update pointers when reset.
     /**
@@ -143,7 +142,7 @@ public class SkipList<K extends Comparable<K>, E> implements Serializable
                   
                   temp.setPointer(i, loc);
                   if (temp != head) {
-                      mem.update(upLoc, temp);
+                      //mem.update(upLoc, temp);
                   }
                   
                 }
@@ -170,9 +169,9 @@ public class SkipList<K extends Comparable<K>, E> implements Serializable
                     if (node.size() > i)
                     {
                         node.setPointer(i, temp.getPointerInt(i));
-                        mem.update(loc, node);
+                        //mem.update(loc, node);
                         temp.setPointer(i, loc);
-                        mem.update(upLoc, temp);
+                        //mem.update(upLoc, temp);
                     }
                     i--;
                 }

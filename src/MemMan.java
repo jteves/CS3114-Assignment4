@@ -141,7 +141,11 @@ public class MemMan {
     }
     
     public void update(int loc, Object obj) throws IOException {
+        byte[] temp = new byte[KEY];
         byte[] arr = Serializer.serialize(obj);
+        temp[0] = (byte) (arr.length & 0xff);
+        temp[1] = (byte) ((arr.length >> 8) & 0xff);
+        
         bp.recieveFromMerge(loc + KEY, arr);
     }
     
