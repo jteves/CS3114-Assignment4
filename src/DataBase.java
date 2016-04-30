@@ -281,8 +281,10 @@ public class DataBase {
      * that aren't null.
      * Postcondition: Outputs all the Rectangles in the SkipList 
      * that intersect with each other to the console if they exist
+     * @throws IOException 
+     * @throws ClassNotFoundException 
      */
-    public void intersections()
+    public void intersections() throws ClassNotFoundException, IOException
     {
         // The pair produced from the iterator
         KVPair<String, Rectangle> current;
