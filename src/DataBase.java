@@ -71,41 +71,43 @@ public class DataBase {
         }
     }
 
-//    /**
-//     * Removes a Rectangle object with the provided name if allowed
-//     * 
-//     * Precondition: recName is not null
-//     * Postcondition: The SkipList will have been updated to delete 
-//     * a Rectangle with the provided name if allowed. The console 
-//     * outputs the results.
-//     * 
-//     * @param recName the name of a Rectangle object
-//     */
-//    public void remove(String recName)
-//    {
-//        // KVPair containing the Rectangle that is being removed
-//        KVPair<String, Rectangle> pair = 
-//                new KVPair<String, Rectangle>(recName, null);
-//        
-//        pair = list.remove(pair);
-//        
-//        // The rectangle doesn't exist in the list
-//        if (pair == null)
-//        {
-//            // output: "Rectangle not found: (name)"
-//            System.out.println("Rectangle not found: (" + recName + 
-//                    ")");
-//        }
-//        else
-//        {
-//            Rectangle rec = pair.value();
-//            // output: "Rectangle removed: (name, x, y, w, h)"
-//            System.out.println("Rectangle removed: (" + rec.getName()
-//                    + ", " + rec.getX() + ", " + rec.getY() + ", "
-//                    + rec.getWidth() + ", " + rec.getHeight() +
-//                    ")");
-//        }
-//    }
+    /**
+     * Removes a Rectangle object with the provided name if allowed
+     * 
+     * Precondition: recName is not null
+     * Postcondition: The SkipList will have been updated to delete 
+     * a Rectangle with the provided name if allowed. The console 
+     * outputs the results.
+     * 
+     * @param recName the name of a Rectangle object
+     * @throws IOException 
+     * @throws ClassNotFoundException 
+     */
+    public void remove(String recName) throws ClassNotFoundException, IOException
+    {
+        // KVPair containing the Rectangle that is being removed
+        KVPair<String, Rectangle> pair = 
+                new KVPair<String, Rectangle>(recName, null);
+        
+        pair = list.remove(pair);
+        
+        // The rectangle doesn't exist in the list
+        if (pair == null)
+        {
+            // output: "Rectangle not found: (name)"
+            System.out.println("Rectangle not found: (" + recName + 
+                    ")");
+        }
+        else
+        {
+            Rectangle rec = pair.value();
+            // output: "Rectangle removed: (name, x, y, w, h)"
+            System.out.println("Rectangle removed: (" + rec.getName()
+                    + ", " + rec.getX() + ", " + rec.getY() + ", "
+                    + rec.getWidth() + ", " + rec.getHeight() +
+                    ")");
+        }
+    }
 //    
 //    /**
 //     * Removes a Rectangle object with the provided coordinates if 

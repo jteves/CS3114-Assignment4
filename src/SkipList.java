@@ -158,12 +158,12 @@ public class SkipList<K extends Comparable<K>, E>
                 SkipNode<K, E> tNode = (SkipNode<K, E>)mem.getObj(temp.getPointer(i));
                 KVPair<K, E> tPair = (KVPair<K, E>) mem.getObj(tNode.getPair());
                 x = nPair.key().compareTo(tPair.key());
-//                // ensures that when keys are equal the largest one
-//                // will be first
-//                if (x == 0 && temp.getPointer(i).size() > node.size())
-//                {
-//                    x++;
-//                }
+                // ensures that when keys are equal the largest one
+                // will be first
+                if (x == 0 && tNode.size() > node.size())
+                {
+                    x++;
+                }
                 if (x > 0)
                 {
                     upLoc = temp.getPointer(i);
@@ -247,92 +247,101 @@ public class SkipList<K extends Comparable<K>, E>
             }
         }
     }
-//
-//    /**
-//     * 
-//     * precondition: look is a not null kvpair
-//     * postcondition: the node that matches keys with
-//     * look has been found, removed, and returned
-//     * 
-//     * @param look is the pair we wish to remove
-//     * 
-//     * @return the kv pair that was removed from the list
-//     * or null if there was no match
-//     * 
-//     * removes values based on the k value
-//     */
-//    public KVPair<K, E> remove(KVPair<K, E> look)
-//    {
-//        // will be returned
-//        KVPair<K, E> ans    = null;
-//        // will be used to compare items in the list
-//        SkipNode<K, E> temp = head;
-//        // look is made into  a skip node to make comparisons
-//        // easier
-//        SkipNode<K, E> node = new SkipNode<K, E>(1, look);
-//        // keeps track of which level of pointer is being looked
-//        // at and compared to
-//        int i = head.size() - 1;
-//        // holds the value of the compare to method
-//        int x;
-//        int _switch = 1;
-//        int sizeMatch = 0;
-//        while (i >= 0)
-//        {    
-//            if (temp.getPointer(i) == null)
-//            {
-//                i--;
-//            }
-//            else 
-//            {
-//                x = node.getPair().key().compareTo(
-//                       temp.getPointer(i).getPair().key());
-//                if (x > 0)
-//                {
-//                    temp = temp.getPointer(i);
-//                }
-//                else
-//                {
-//                    if (x == 0)
-//                    {
-//                        if (_switch == 1) {
-//                            if (i == 0)
-//                            {
-//                                ans = temp.getPointer(0).getPair();
-//                            }
-//                            sizeMatch = temp.getPointer(i).size();
-//                            temp.setPointer(i, temp.getPointer(i).
-//                                    getPointer(i));
-//                            _switch = 0;
-//                        }
-//                        else {
-//                            if (sizeMatch == temp.getPointer(i).size()) {
-//                                
-//                                if (i == 0)
-//                                {
-//                                    ans = temp.getPointer(0).getPair();
-//                                }
-//                                temp.setPointer(i, temp.getPointer(i).
-//                                        getPointer(i));
-//                            }
-//                            else {
-//                                temp = temp.getPointer(i);
-//                                i++;
-//                            } 
-//                        }
-//                    }
-//                    i--;
-//                }
-//                    
-//            }
-//        }
-//        // decrements the size if an item has been removed
-//        if (ans != null)
-//        {
-//            numEl--;
-//        }
-//        return ans;
-//    }
+
+    /**
+     * 
+     * precondition: look is a not null kvpair
+     * postcondition: the node that matches keys with
+     * look has been found, removed, and returned
+     * 
+     * @param look is the pair we wish to remove
+     * 
+     * @return the kv pair that was removed from the list
+     * or null if there was no match
+     * 
+     * removes values based on the k value
+     * @throws IOException 
+     * @throws ClassNotFoundException 
+     */
+    @SuppressWarnings("unchecked")
+    public KVPair<K, E> remove(KVPair<K, E> look) throws ClassNotFoundException, IOException
+    {
+        // will be returned
+        KVPair<K, E> ans    = null;
+        // will be used to compare items in the list
+        SkipNode<K, E> temp = head;
+        // look is made into  a skip node to make comparisons
+        // easier
+        
+        // keeps track of which level of pointer is being looked
+        // at and compared to
+        int i = head.size() - 1;
+        // holds the value of the compare to method
+        int x;
+        int _switch = 1;
+        int sizeMatch = 0;
+        int upLoc = head.getPointer(i);
+        while (i >= 0)
+        {    
+            if (temp.getPointer(i) == -1)
+            {
+                i--;
+            }
+            else 
+            {
+                SkipNode<K, E> tNode = (SkipNode<K, E>)mem.getObj(temp.getPointer(i));
+                KVPair<K, E> tPair = (KVPair<K, E>) mem.getObj(tNode.getPair());
+                x = look.key().compareTo(tPair.key());
+                if (x > 0)
+                {
+                    temp = (SkipNode<K, E>) mem.getObj(temp.getPointer(i));
+                    upLoc = temp.getPointer(i);
+                }
+                else
+                {
+                    if (x == 0)
+                    {
+                        if (_switch == 1) {
+                            if (i == 0)
+                            {
+                                SkipNode<K, E> tNode2 = (SkipNode<K, E>)mem.getObj(temp.getPointer(0));
+                                ans = (KVPair<K, E>) mem.getObj(tNode2.getPair());
+                            }
+                            sizeMatch = tNode.size();
+                            temp.setPointer(i, tNode.getPointer(i));
+                            mem.update(upLoc, temp);
+                            _switch = 0;
+                        }
+                        else {
+                            if (sizeMatch == tNode.size()) {
+                                
+                                if (i == 0)
+                                {
+                                    SkipNode<K, E> tNode2 = (SkipNode<K, E>)mem.getObj(temp.getPointer(0));
+                                    ans = (KVPair<K, E>) mem.getObj(tNode2.getPair());
+                                }
+                                temp.setPointer(i, tNode.getPointer(i));
+                                mem.update(upLoc, temp);
+                            }
+                            else {
+                                temp = tNode;
+                                upLoc = temp.getPointer(i);
+                                i++;
+                            } 
+                        }
+                    }
+                    i--;
+                }
+                    
+            }
+        }
+        // decrements the size if an item has been removed
+        if (ans != null)
+        {
+            numEl--;
+        }
+        return ans;
+    }
 //    
 //    /**
 //     * precondition: look is not null
