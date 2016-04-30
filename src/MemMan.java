@@ -145,7 +145,7 @@ public class MemMan {
         byte[] arr = Serializer.serialize(obj);
         temp[0] = (byte) (arr.length & 0xff);
         temp[1] = (byte) ((arr.length >> 8) & 0xff);
-        
+        bp.recieveFromMerge(loc, temp);
         bp.recieveFromMerge(loc + KEY, arr);
     }
     
