@@ -122,13 +122,16 @@ public class DataBase {
      * @param y the y coordinate
      * @param w the width
      * @param h the height
+     * @throws IOException 
+     * @throws ClassNotFoundException 
      */
-    public void remove(int x, int y, int w, int h)
+    public void remove(int x, int y, int w, int h) throws ClassNotFoundException, IOException
     {
         // Set up as "x y w h"
         String      coordinates = x + " " + y + " " + w + " " + h;
         // The rectangle that is supposed to be removed
         Rectangle   rec         = new Rectangle("a", x, y, w, h);
+        KVPair<String, Rectangle> pair = new KVPair<String, Rectangle>(null, rec);
         // For outputting
         boolean     recExists   = false;
         
@@ -137,28 +140,13 @@ public class DataBase {
             list.iteToHead();
             list.iteNext(); 
             
-            // Traverse through the entire SkipList instance
-            while (list.currentPair() != null)
-            {
-                // The rectangle is at the list's iterator position  
-                if (list.currentPair().value().toString()
-                        .equals(coordinates))
-                {
-                    rec         = list.currentPair().value();
-                    recExists   = true;
                     
-                    list.remove2(list.currentPair(), rec.toString());
-                    
-                    // output: "Rectangle removed: (name, x, y, w, h)"
-                    System.out.println("Rectangle removed: (" + 
-                            rec.getName()   + ", " + rec.getX()
-                            + ", " + rec.getY() + ", " + 
-                            rec.getWidth() + ", " + rec.getHeight() + 
-                            ")");
-                    break; // End the traversal of the SkipList
-                }
-                list.iteNext();
-            }
+             // output: "Rectangle removed: (name, x, y, w, h)"
+            System.out.println("Rectangle removed: (" + 
+                    rec.getName()   + ", " + rec.getX()
+                    + ", " + rec.getY() + ", " + 
+                    rec.getWidth() + ", " + rec.getHeight() + 
+                    ")");
             if (!recExists)
             {
                 // output: "Rectangle not found: (x, y, w, h)"
