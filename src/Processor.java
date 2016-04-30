@@ -22,7 +22,7 @@ public class Processor {
     //The existing commands
     private static final String INSERT = "insert";
 //    private static final String REMOVE = "remove";
-//    private static final String REGIONSEARCH = "regionsearch";
+    private static final String REGIONSEARCH = "regionsearch";
     private static final String INTERSECTIONS = "intersections";
     private static final String SEARCH = "search";
     private static final String DUMP = "dump";
@@ -128,27 +128,27 @@ public class Processor {
 //                       // db.remove(next);
 //                    }
 //                }
-//                else if (command.equals(REGIONSEARCH))
-//                {
-//                    // string conversion to int of coordinates
-//                    x = Integer.parseInt(lines.next());
-//                    y = Integer.parseInt(lines.next());
-//                    w = Integer.parseInt(lines.next());
-//                    h = Integer.parseInt(lines.next());
-//                    
-//                    // Rectangle width and height are valid (positive)
-//                    if (w > 0 && h > 0) // 
-//                    {
-//                        db.regionSearch(x, y, w, h);
-//                    }
-//                    else 
-//                    {
-//                        // output: "Rectangle rejected: (x, y, w, h)"
-//                        System.out.println("Rectangle rejected: " +
-//                                "(" + x + ", " + y + ", " + w + ", " +
-//                                h + ")");
-//                    }
-//                }
+                else if (command.equals(REGIONSEARCH))
+                {
+                    // string conversion to int of coordinates
+                    x = Integer.parseInt(lines.next());
+                    y = Integer.parseInt(lines.next());
+                    w = Integer.parseInt(lines.next());
+                    h = Integer.parseInt(lines.next());
+                    
+                    // Rectangle width and height are valid (positive)
+                    if (w > 0 && h > 0) // 
+                    {
+                        db.regionSearch(x, y, w, h);
+                    }
+                    else 
+                    {
+                        // output: "Rectangle rejected: (x, y, w, h)"
+                        System.out.println("Rectangle rejected: " +
+                                "(" + x + ", " + y + ", " + w + ", " +
+                                h + ")");
+                    }
+                }
                 else if (command.equals(INTERSECTIONS))
                 {
                     db.intersections();
