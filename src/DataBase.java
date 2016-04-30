@@ -140,6 +140,7 @@ public class DataBase {
             list.iteToHead();
             list.iteNext(); 
             
+            pair = list.searchforR(pair);
                     
              // output: "Rectangle removed: (name, x, y, w, h)"
             System.out.println("Rectangle removed: (" + 

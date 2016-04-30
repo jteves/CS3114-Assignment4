@@ -452,7 +452,7 @@ public class SkipList<K extends Comparable<K>, E>
     }
     
     @SuppressWarnings("unchecked")
-    public SkipNode<K, E> searchforR(KVPair<K, E> look) throws ClassNotFoundException, IOException {
+    public KVPair<K, E> searchforR(KVPair<K, E> look) throws ClassNotFoundException, IOException {
         SkipNode<K, E> temp = (SkipNode<K, E>)
                 mem.getObj(head.getPointer(0));
         int _switch = 1;
@@ -465,7 +465,7 @@ public class SkipList<K extends Comparable<K>, E>
             pair = (KVPair<K, E>) mem.getObj(temp.getPair());
             rec = (Rectangle) pair.value();
             if (rec.sameCords((Rectangle) look.value())) {
-                return temp;
+                return pair;
             }
         }
         return null;
