@@ -22,6 +22,9 @@ dump
 
 remove 1 1 1 10
 dump
+intersections
+regionsearch 1 1 1 1
+hello
 
 
 

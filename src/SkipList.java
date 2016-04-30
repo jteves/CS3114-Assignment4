@@ -400,7 +400,7 @@ public class SkipList<K extends Comparable<K>, E>
                 }
                 else
                 {
-                    if (x == 0 && tPair.value().equals(look.value()))
+                    if (x == 0 && tPair.value().equals(look.value()))//
                     {
                         if (_switch == 1) {
                             if (i == 0)
