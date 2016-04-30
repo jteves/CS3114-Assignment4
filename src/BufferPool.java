@@ -361,51 +361,51 @@ public class BufferPool  {
      * @param arr the array of bytes to be received
      * 
      */
+//    public void recieveFromMerge(int beg, byte[] arr) {
+//        int dif = arr.length; // length of the array
+//        int bytesRead = 0; // keeps track of bytes written
+//        while (bytesRead < dif) {
+//            if (isContained((beg + bytesRead) / bufSize)) {
+//                int i = (beg + bytesRead) % bufSize; //finds the 
+//                // proper position in the buffer
+//                byte[] cur = ite.data; // byte array to be written to
+//                while (bytesRead < dif && i < bufSize) {
+//                    // writes to buffer
+//                    cur[i] = arr[bytesRead];
+//                    
+//                    bytesRead += 1;
+//                    i += 1;
+//                }
+//                iteNodeToHead();
+//                head.next.data = cur; // new value for data
+//            }
+//            else {
+//                if (isFull()) {
+//                    //writes to file and removes 
+//                    //node because a new byte array must
+//                    // be read
+//                    write(raf, last.pos);
+//                    remove();
+//                }
+//                read(raf, (beg + bytesRead) / bufSize); // reads bytes
+//                // gets beginning of write location in the array
+//                int i = (beg + bytesRead) % bufSize; 
+//                byte[] cur = head.next.data; //gets byte array
+//                while (bytesRead < dif && i < bufSize) {
+//                    // writes to array
+//                    cur[i] = arr[bytesRead];
+//                    
+//                    bytesRead += 1;
+//                    i += 1;
+//                }
+//                //sets data
+//                head.next.data = cur;
+//            }
+//        }
+//    }
+    
+    
     public void recieveFromMerge(int beg, byte[] arr) {
-        int dif = arr.length; // length of the array
-        int bytesRead = 0; // keeps track of bytes written
-        while (bytesRead < dif) {
-            if (isContained((beg + bytesRead) / bufSize)) {
-                int i = (beg + bytesRead) % bufSize; //finds the 
-                // proper position in the buffer
-                byte[] cur = ite.data; // byte array to be written to
-                while (bytesRead < dif && i < bufSize) {
-                    // writes to buffer
-                    cur[i] = arr[bytesRead];
-                    
-                    bytesRead += 1;
-                    i += 1;
-                }
-                iteNodeToHead();
-                head.next.data = cur; // new value for data
-            }
-            else {
-                if (isFull()) {
-                    //writes to file and removes 
-                    //node because a new byte array must
-                    // be read
-                    write(raf, last.pos);
-                    remove();
-                }
-                read(raf, (beg + bytesRead) / bufSize); // reads bytes
-                // gets beginning of write location in the array
-                int i = (beg + bytesRead) % bufSize; 
-                byte[] cur = head.next.data; //gets byte array
-                while (bytesRead < dif && i < bufSize) {
-                    // writes to array
-                    cur[i] = arr[bytesRead];
-                    
-                    bytesRead += 1;
-                    i += 1;
-                }
-                //sets data
-                head.next.data = cur;
-            }
-        }
-    }
-    
-    
-    public void recieveFromSkip(int beg, byte[] arr) {
         int dif = arr.length; // length of the array
         int bytesRead = 0; // keeps track of bytes written
         while (bytesRead < dif) {
