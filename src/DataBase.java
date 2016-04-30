@@ -108,74 +108,74 @@ public class DataBase {
                     ")");
         }
     }
-//    
-//    /**
-//     * Removes a Rectangle object with the provided coordinates if 
-//     * they are appropriate 
-//     * 
-//     * Precondition: the parameters are not null
-//     * Postcondition: The SkipList will have been updated to delete 
-//     * a Rectangle with the provided coordinates if allowed. The 
-//     * console outputs the results.
-//     * 
-//     * @param x the x coordinate
-//     * @param y the y coordinate
-//     * @param w the width
-//     * @param h the height
-//     */
-//    public void remove(int x, int y, int w, int h)
-//    {
-//        // Set up as "x y w h"
-//        String      coordinates = x + " " + y + " " + w + " " + h;
-//        // The rectangle that is supposed to be removed
-//        Rectangle   rec         = new Rectangle("a", x, y, w, h);
-//        // For outputting
-//        boolean     recExists   = false;
-//        
-//        if (rec.isLegal())
-//        {
-//            list.iteToHead();
-//            list.iteNext(); 
-//            
-//            // Traverse through the entire SkipList instance
-//            while (list.currentPair() != null)
-//            {
-//                // The rectangle is at the list's iterator position  
-//                if (list.currentPair().value().toString()
-//                        .equals(coordinates))
-//                {
-//                    rec         = list.currentPair().value();
-//                    recExists   = true;
-//                    
-//                    list.remove2(list.currentPair(), rec.toString());
-//                    
-//                    // output: "Rectangle removed: (name, x, y, w, h)"
-//                    System.out.println("Rectangle removed: (" + 
-//                            rec.getName()   + ", " + rec.getX()
-//                            + ", " + rec.getY() + ", " + 
-//                            rec.getWidth() + ", " + rec.getHeight() + 
-//                            ")");
-//                    break; // End the traversal of the SkipList
-//                }
-//                list.iteNext();
-//            }
-//            if (!recExists)
-//            {
-//                // output: "Rectangle not found: (x, y, w, h)"
-//                System.out.println("Rectangle not found: (" +
-//                        x + ", " + y + ", " + w + ", " + 
-//                        h + ")");
-//            }
-//        }
-//        else // Rectangle coordinates are illegal
-//        {
-//            // output: "Rectangle rejected: (name, x, y, w, h)"
-//            System.out.println("Rectangle rejected: (" +
-//                    x + ", " + y + ", " + w + ", " + 
-//                    h + ")");
-//        }
-//    }
-//
+    
+    /**
+     * Removes a Rectangle object with the provided coordinates if 
+     * they are appropriate 
+     * 
+     * Precondition: the parameters are not null
+     * Postcondition: The SkipList will have been updated to delete 
+     * a Rectangle with the provided coordinates if allowed. The 
+     * console outputs the results.
+     * 
+     * @param x the x coordinate
+     * @param y the y coordinate
+     * @param w the width
+     * @param h the height
+     */
+    public void remove(int x, int y, int w, int h)
+    {
+        // Set up as "x y w h"
+        String      coordinates = x + " " + y + " " + w + " " + h;
+        // The rectangle that is supposed to be removed
+        Rectangle   rec         = new Rectangle("a", x, y, w, h);
+        // For outputting
+        boolean     recExists   = false;
+        
+        if (rec.isLegal())
+        {
+            list.iteToHead();
+            list.iteNext(); 
+            
+            // Traverse through the entire SkipList instance
+            while (list.currentPair() != null)
+            {
+                // The rectangle is at the list's iterator position  
+                if (list.currentPair().value().toString()
+                        .equals(coordinates))
+                {
+                    rec         = list.currentPair().value();
+                    recExists   = true;
+                    
+                    list.remove2(list.currentPair(), rec.toString());
+                    
+                    // output: "Rectangle removed: (name, x, y, w, h)"
+                    System.out.println("Rectangle removed: (" + 
+                            rec.getName()   + ", " + rec.getX()
+                            + ", " + rec.getY() + ", " + 
+                            rec.getWidth() + ", " + rec.getHeight() + 
+                            ")");
+                    break; // End the traversal of the SkipList
+                }
+                list.iteNext();
+            }
+            if (!recExists)
+            {
+                // output: "Rectangle not found: (x, y, w, h)"
+                System.out.println("Rectangle not found: (" +
+                        x + ", " + y + ", " + w + ", " + 
+                        h + ")");
+            }
+        }
+        else // Rectangle coordinates are illegal
+        {
+            // output: "Rectangle rejected: (name, x, y, w, h)"
+            System.out.println("Rectangle rejected: (" +
+                    x + ", " + y + ", " + w + ", " + 
+                    h + ")");
+        }
+    }
+
     /**
      * This method searches for a rectangle matching 
      * the key value, recName
