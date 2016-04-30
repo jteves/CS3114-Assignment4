@@ -21,7 +21,7 @@ public class Processor {
     
     //The existing commands
     private static final String INSERT = "insert";
-//    private static final String REMOVE = "remove";
+    private static final String REMOVE = "remove";
     private static final String REGIONSEARCH = "regionsearch";
     private static final String INTERSECTIONS = "intersections";
     private static final String SEARCH = "search";
@@ -106,28 +106,28 @@ public class Processor {
                     
                     db.insert(recName, x, y, w, h);
                 }
-//                else if (command.equals(REMOVE))
-//                {
-//                    // The next word following the remove command
-//                    String next = lines.next();
-//                    
-//                    // Removal by specified [xywh] coordinates
-//                    if (Character.isDigit(next.charAt(0)) ||
-//                            next.charAt(0) == '-')
-//                    {
-//                        // string conversion to int of coordinates
-//                        x = Integer.parseInt(next);
-//                        y = Integer.parseInt(lines.next());
-//                        w = Integer.parseInt(lines.next());
-//                        h = Integer.parseInt(lines.next());
-//                        
-//                       // db.remove(x, y, w, h);
-//                    }
-//                    else // Removal by the rectangle name
-//                    {
-//                       // db.remove(next);
-//                    }
-//                }
+                else if (command.equals(REMOVE))
+                {
+                    // The next word following the remove command
+                    String next = lines.next();
+                    
+                    // Removal by specified [xywh] coordinates
+                    if (Character.isDigit(next.charAt(0)) ||
+                            next.charAt(0) == '-')
+                    {
+                        // string conversion to int of coordinates
+                        x = Integer.parseInt(next);
+                        y = Integer.parseInt(lines.next());
+                        w = Integer.parseInt(lines.next());
+                        h = Integer.parseInt(lines.next());
+                        
+                       // db.remove(x, y, w, h);
+                    }
+                    else // Removal by the rectangle name
+                    {
+                       // db.remove(next);
+                    }
+                }
                 else if (command.equals(REGIONSEARCH))
                 {
                     // string conversion to int of coordinates
