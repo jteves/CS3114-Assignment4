@@ -244,8 +244,10 @@ public class DataBase {
      * @param y the y coordinate
      * @param w the width
      * @param h the height
+     * @throws IOException 
+     * @throws ClassNotFoundException 
      */
-    public void regionSearch(int x, int y, int w, int h)
+    public void regionSearch(int x, int y, int w, int h) throws ClassNotFoundException, IOException
     {
         // output: "Rectangles intersecting region: (x, y, w, h)"
         System.out.println("Rectangles intersecting region ("
