@@ -125,7 +125,7 @@ public class Processor {
                     }
                     else // Removal by the rectangle name
                     {
-                       // db.remove(next);
+                       db.remove(next);
                     }
                 }
                 else if (command.equals(REGIONSEARCH))
