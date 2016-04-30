@@ -320,7 +320,11 @@ public class BufferPool  {
                     //removes a node if the list is 
                     //full because a new one will be
                     // read into the list
-                    write(raf, last.pos);
+                    Node node = head;
+                    while (node.next != tail) {
+                        node = node.next;
+                    }
+                    write(raf, node.pos);
                     remove();
                 }
                 read(raf, (beg + bytesRead) / bufSize); //finds
@@ -424,7 +428,11 @@ public class BufferPool  {
                     //writes to file and removes 
                     //node because a new byte array must
                     // be read
-                    write(raf, last.pos);
+                    Node node = head;
+                    while (node.next != tail) {
+                        node = node.next;
+                    }
+                    write(raf, node.pos);
                     remove();
                 }
                 if ((bytesRead + beg)/ bufSize > fileBlocks) {
