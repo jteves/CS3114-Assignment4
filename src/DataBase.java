@@ -273,69 +273,69 @@ public class DataBase {
 //        }
 //    }
 //    
-//    /**  
-//     * Searches through the SkipList for Rectangles that intersect
-//     * each other.
-//     * 
-//     * Precondition: The Rectangles in the SkipList have properties 
-//     * that aren't null.
-//     * Postcondition: Outputs all the Rectangles in the SkipList 
-//     * that intersect with each other to the console if they exist
-//     */
-//    public void intersections()
-//    {
-//        // The pair produced from the iterator
-//        KVPair<String, Rectangle> current;
-//        // The rectangle being compared to other rectangles
-//        Rectangle curRec;
-//        // The rectangles that aren't the curRec in the SkipList
-//        Rectangle curTemp;
-//        
-//        System.out.println("Intersection pairs: ");
-//        
-//        // Compares each rectangle to every other rectangle
-//        for (int i = 0; i < list.getSize(); i++)
-//        {
-//            list.iteToHead();
-//            list.iteNext();
-//            
-//            // Used for setting up the next pair in the SkipList
-//            for (int j = 0; j < i; j++)
-//            {
-//                list.iteNext();
-//            }
-//            current = list.currentPair();
-//            list.iteToHead();
-//            list.iteNext();
-//            
-//            // Compares the current pair to every other pair
-//            for (int j = 0; j < list.getSize(); j++)
-//            {
-//                if (i != j)
-//                {
-//                    curRec = current.value();
-//                    curTemp = list.currentPair().value();
-//
-//                    // output: "(name, x, y, w, h | name, x, y, w, h)"
-//                    if (curRec.intersect(curTemp) || 
-//                            curTemp.intersect(curRec))
-//                    {
-//                        System.out.println("(" + curRec.getName() + 
-//                                ", " + curRec.getX() + ", " + 
-//                                curRec.getY() + ", " + 
-//                                curRec.getWidth() + ", " + 
-//                                curRec.getHeight() + " | " + 
-//                                curTemp.getName() + ", " + 
-//                                curTemp.getX() + ", " + 
-//                                curTemp.getY() + ", " + 
-//                                curTemp.getWidth() + ", " + 
-//                                curTemp.getHeight() + ")");
-//                    }
-//                }
-//                list.iteNext();
-//            }
-//        }
-//    }
+    /**  
+     * Searches through the SkipList for Rectangles that intersect
+     * each other.
+     * 
+     * Precondition: The Rectangles in the SkipList have properties 
+     * that aren't null.
+     * Postcondition: Outputs all the Rectangles in the SkipList 
+     * that intersect with each other to the console if they exist
+     */
+    public void intersections()
+    {
+        // The pair produced from the iterator
+        KVPair<String, Rectangle> current;
+        // The rectangle being compared to other rectangles
+        Rectangle curRec;
+        // The rectangles that aren't the curRec in the SkipList
+        Rectangle curTemp;
+        
+        System.out.println("Intersection pairs: ");
+        
+        // Compares each rectangle to every other rectangle
+        for (int i = 0; i < list.getSize(); i++)
+        {
+            list.iteToHead();
+            list.iteNext();
+            
+            // Used for setting up the next pair in the SkipList
+            for (int j = 0; j < i; j++)
+            {
+                list.iteNext();
+            }
+            current = list.currentPair();
+            list.iteToHead();
+            list.iteNext();
+            
+            // Compares the current pair to every other pair
+            for (int j = 0; j < list.getSize(); j++)
+            {
+                if (i != j)
+                {
+                    curRec = current.value();
+                    curTemp = list.currentPair().value();
+
+                    // output: "(name, x, y, w, h | name, x, y, w, h)"
+                    if (curRec.intersect(curTemp) || 
+                            curTemp.intersect(curRec))
+                    {
+                        System.out.println("(" + curRec.getName() + 
+                                ", " + curRec.getX() + ", " + 
+                                curRec.getY() + ", " + 
+                                curRec.getWidth() + ", " + 
+                                curRec.getHeight() + " | " + 
+                                curTemp.getName() + ", " + 
+                                curTemp.getX() + ", " + 
+                                curTemp.getY() + ", " + 
+                                curTemp.getWidth() + ", " + 
+                                curTemp.getHeight() + ")");
+                    }
+                }
+                list.iteNext();
+            }
+        }
+    }
 
     /**
      * Gets and prints all the contents of the SkipList
