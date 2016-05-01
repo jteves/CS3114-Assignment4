@@ -55,8 +55,9 @@ public class Processor {
      * @param input the file name
      * @param size is the buffer size
      * @throws IOException 
+     * @throws ClassNotFoundException 
      */
-    public Processor(String input, int size, int num, String disk) throws IOException
+    public Processor(String input, int size, int num, String disk) throws IOException, ClassNotFoundException
     {
         db          = new DataBase(size, num, disk); 
         

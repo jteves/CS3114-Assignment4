@@ -49,14 +49,15 @@ public class SkipList<K extends Comparable<K>, E>
         // random number generator used for nodes
         rnd   = new Random();
         // creates the head node
-        head  = new SkipNode<K, E>(1, -1);
+        SkipNode<K, E> head  = new SkipNode<K, E>(1, -1);
         // represents the lists size. initially is 0
         numEl = 0;
-
-        iteToHead();
         mem = m;
-        mem.insert(head);
-        headLoc = 0;
+        headLoc = mem.insert(head);
+        iteToHead();
+       
+        
+        
 //        ser = new Serializer();
     }
 
@@ -117,7 +118,7 @@ public class SkipList<K extends Comparable<K>, E>
         int loc = mem.insert(pair);
         SkipNode<K, E> node = new SkipNode<K, E>(randomLevel(), loc);
         loc = mem.insert(node);
-        head = (SkipNode<K, E>) mem.getObj(headLoc);
+        SkipNode<K, E> head = (SkipNode<K, E>) mem.getObj(headLoc);
         KVPair<K, E> nPair = (KVPair<K, E>) mem.getObj(node.getPair());
         
         if (node.size() > head.size())
@@ -150,7 +151,7 @@ public class SkipList<K extends Comparable<K>, E>
                   }
                   else {  
                       upLoc = head.getPointer(i);
-                      
+                      mem.update(headLoc, temp);
                   }
                   
                 }
@@ -183,6 +184,10 @@ public class SkipList<K extends Comparable<K>, E>
                         if (temp != head){
                             mem.update(upLoc, temp);
                         }
+                        else {  
+                            mem.update(headLoc, temp);
+                        }
+                        
                     }
                     i--;
                 }
@@ -212,7 +217,7 @@ public class SkipList<K extends Comparable<K>, E>
     public void search(KVPair<K, E> look) throws ClassNotFoundException, IOException
     {
         //will be used to compare keys in the list with look
-        head = (SkipNode<K, E>) mem.getObj(headLoc);
+        SkipNode<K, E> head = (SkipNode<K, E>) mem.getObj(headLoc);
         SkipNode<K, E> temp = head;
         //look is inserted into be a skipnode to help compare values
         // keeps track of which level of pointer is being looked
@@ -273,7 +278,7 @@ public class SkipList<K extends Comparable<K>, E>
         // will be returned
         KVPair<K, E> ans    = null;
         // will be used to compare items in the list
-        head = (SkipNode<K, E>) mem.getObj(headLoc);
+        SkipNode<K, E> head = (SkipNode<K, E>) mem.getObj(headLoc);
         SkipNode<K, E> temp = head;
         // look is made into  a skip node to make comparisons
         // easier
@@ -319,6 +324,9 @@ public class SkipList<K extends Comparable<K>, E>
                             if (temp != head) {
                                 mem.update(upLoc, temp);
                             }
+                            else {  
+                                mem.update(headLoc, temp);
+                            }
                             _switch = 0;
                         }
                         else {
@@ -334,6 +342,9 @@ public class SkipList<K extends Comparable<K>, E>
                                 temp.setPointer(i, tNode.getPointer(i));
                                 if (temp != head) {
                                     mem.update(upLoc, temp);
+                                }
+                                else {  
+                                    mem.update(headLoc, temp);
                                 }
                                 
                             }
@@ -379,7 +390,7 @@ public class SkipList<K extends Comparable<K>, E>
      // will be returned
         KVPair<K, E> ans    = null;
         // will be used to compare items in the list
-        head = (SkipNode<K, E>) mem.getObj(headLoc);
+        SkipNode<K, E> head = (SkipNode<K, E>) mem.getObj(headLoc);
         SkipNode<K, E> temp = head;
         // look is made into  a skip node to make comparisons
         // easier
@@ -423,6 +434,9 @@ public class SkipList<K extends Comparable<K>, E>
                             if (temp != head) {
                                 mem.update(upLoc, temp);
                             }
+                            else {  
+                                mem.update(headLoc, temp);
+                            }
                             _switch = 0;
                         }
                         else {
@@ -437,6 +451,9 @@ public class SkipList<K extends Comparable<K>, E>
                                 temp.setPointer(i, tNode.getPointer(i));
                                 if (temp != head) {
                                     mem.update(upLoc, temp);
+                                }
+                                else {  
+                                    mem.update(headLoc, temp);
                                 }
                             }
                             else {
@@ -466,7 +483,7 @@ public class SkipList<K extends Comparable<K>, E>
     
     @SuppressWarnings("unchecked")
     public KVPair<K, E> searchforR(KVPair<K, E> look) throws ClassNotFoundException, IOException {
-        head = (SkipNode<K, E>) mem.getObj(headLoc);
+        SkipNode<K, E> head = (SkipNode<K, E>) mem.getObj(headLoc);
         SkipNode<K, E> temp = (SkipNode<K, E>)
                 mem.getObj(head.getPointer(0));
         int _switch = 1;

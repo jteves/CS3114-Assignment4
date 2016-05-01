@@ -22,8 +22,9 @@ public class DataBase {
      * Postcondition: A new SkipList exists
      * @param x is size of buffers
      * @throws IOException 
+     * @throws ClassNotFoundException 
      */
-    public DataBase(int size, int num, String store) throws IOException
+    public DataBase(int size, int num, String store) throws IOException, ClassNotFoundException
     {
         
         //TODO change constructor to take numbuffers and filename
