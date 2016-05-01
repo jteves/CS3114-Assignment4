@@ -31,8 +31,11 @@ public class MemMan {
         bufSize = bufsize;
         head = new FreeBlock(-1, -1);
         tail = new FreeBlock(-1, -1);
-        head.setNext(tail);
-        tail.setPrev(head);
+        FreeBlock block = new FreeBlock(0, bufsize);
+        head.setNext(block);
+        block.setNext(tail);
+        tail.setPrev(block);
+        block.setPrev(head);
         end = 0;
         bp = pool;
     }
