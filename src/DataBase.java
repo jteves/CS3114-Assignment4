@@ -21,8 +21,9 @@ public class DataBase {
      * 
      * Postcondition: A new SkipList exists
      * @param x is size of buffers
+     * @throws IOException 
      */
-    public DataBase(int size, int num, String store)
+    public DataBase(int size, int num, String store) throws IOException
     {
         
         //TODO change constructor to take numbuffers and filename
@@ -404,6 +405,10 @@ public class DataBase {
    
     public void closeFile() throws IOException {
         bp.getFile().close();
+    }
+    
+    public void flush() {
+        bp.flush();
     }
 
 }

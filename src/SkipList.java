@@ -44,8 +44,9 @@ public class SkipList<K extends Comparable<K>, E>
      * and a null KVPair
      * numEl is 0
      * ite points to the head node
+     * @throws IOException 
      */
-    public SkipList(MemMan m)
+    public SkipList(MemMan m) throws IOException
     {
         // random number generator used for nodes
         rnd   = new Random();
@@ -56,6 +57,7 @@ public class SkipList<K extends Comparable<K>, E>
 
         iteToHead();
         mem = m;
+        mem.insert(head);
 //        ser = new Serializer();
     }
 
