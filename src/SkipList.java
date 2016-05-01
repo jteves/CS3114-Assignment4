@@ -306,6 +306,8 @@ public class SkipList<K extends Comparable<K>, E>
                             {
                                 SkipNode<K, E> tNode2 = (SkipNode<K, E>)mem.getObj(temp.getPointer(0));
                                 ans = (KVPair<K, E>) mem.getObj(tNode2.getPair());
+                                mem.remove(temp.getPointer(0));
+                                mem.remove(tNode.getPair());
                             }
                             sizeMatch = tNode.size();
                             temp.setPointer(i, tNode.getPointer(i));
@@ -321,6 +323,8 @@ public class SkipList<K extends Comparable<K>, E>
                                 {
                                     SkipNode<K, E> tNode2 = (SkipNode<K, E>)mem.getObj(temp.getPointer(0));
                                     ans = (KVPair<K, E>) mem.getObj(tNode2.getPair());
+                                    mem.remove(temp.getPointer(0));
+                                    mem.remove(tNode.getPair());
                                 }
                                 temp.setPointer(i, tNode.getPointer(i));
                                 if (temp != head) {
@@ -406,6 +410,8 @@ public class SkipList<K extends Comparable<K>, E>
                             if (i == 0)
                             {
                                 ans = tPair;
+                                mem.remove(temp.getPointer(0));
+                                mem.remove(tNode.getPair());
                             }
                             sizeMatch = tNode.size();
                             temp.setPointer(i, tNode.getPointer(i));
@@ -420,6 +426,8 @@ public class SkipList<K extends Comparable<K>, E>
                                 if (i == 0)
                                 {
                                     ans = tPair;
+                                    mem.remove(temp.getPointer(0));
+                                    mem.remove(tNode.getPair());
                                 }
                                 temp.setPointer(i, tNode.getPointer(i));
                                 if (temp != head) {

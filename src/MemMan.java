@@ -155,7 +155,7 @@ public class MemMan {
         len = len & 0xff;
         int t = key[1] & 0xff;
         len = len + (t << 8);
-        FreeBlock block = new FreeBlock(loc, len);
+        FreeBlock block = new FreeBlock(loc, len + KEY);
         FreeBlock temp = head;
         while (block.next() != tail) {
             if (temp.next().getBeg() > block.getBeg()) {

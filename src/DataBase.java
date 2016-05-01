@@ -106,6 +106,7 @@ public class DataBase {
                     + ", " + rec.getX() + ", " + rec.getY() + ", "
                     + rec.getWidth() + ", " + rec.getHeight() +
                     ")");
+            
         }
     }
     
@@ -158,6 +159,7 @@ public class DataBase {
                         + ", " + rec.getY() + ", " + 
                         rec.getWidth() + ", " + rec.getHeight() + 
                         ")");
+                
             }
         }
         else // Rectangle coordinates are illegal
