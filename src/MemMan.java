@@ -149,6 +149,22 @@ public class MemMan {
         bp.recieveFromMerge(loc + KEY, arr);
     }
     
+    public void remove(int loc) {
+        byte[] key = bp.sendToMerge(loc, loc + KEY);
+        int len = key[0];
+        len = len & 0xff;
+        int t = key[1] & 0xff;
+        len = len + (t << 8);
+        FreeBlock block = new FreeBlock(loc, len);
+        FreeBlock temp = head;
+        if (temp.next().getBeg() > block.getBeg()) {
+            block.setNext(temp.next());
+            temp.setNext(block);
+            block.setPrev(temp);
+            block.next().setPrev(block);
+        }
+    }
+    
     
     
     
