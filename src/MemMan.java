@@ -157,12 +157,16 @@ public class MemMan {
         len = len + (t << 8);
         FreeBlock block = new FreeBlock(loc, len);
         FreeBlock temp = head;
-        if (temp.next().getBeg() > block.getBeg()) {
-            block.setNext(temp.next());
-            temp.setNext(block);
-            block.setPrev(temp);
-            block.next().setPrev(block);
+        while (block.next() != tail) {
+            if (temp.next().getBeg() > block.getBeg()) {
+                block.setNext(temp.next());
+                temp.setNext(block);
+                block.setPrev(temp);
+                block.next().setPrev(block);
+                break;
+            }
         }
+        joinBlocks();
     }
     
     
