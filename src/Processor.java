@@ -54,8 +54,9 @@ public class Processor {
      *  
      * @param input the file name
      * @param size is the buffer size
+     * @throws IOException 
      */
-    public Processor(String input, int size, int num, String disk)
+    public Processor(String input, int size, int num, String disk) throws IOException
     {
         db          = new DataBase(size, num, disk); 
         
@@ -165,6 +166,7 @@ public class Processor {
                     
                 }
             }
+            db.flush();
             lines.close();
             db.closeFile();
         }

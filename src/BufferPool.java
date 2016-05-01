@@ -76,6 +76,7 @@ public class BufferPool  {
         fileBlocks = 0;
         try {
             raf = new RandomAccessFile(name, "rw");
+            
             // opens the file
         } 
         catch (FileNotFoundException e) {
@@ -260,7 +261,7 @@ public class BufferPool  {
         byte[] temp;
         iteToHead();
         iteNext();
-        while (ite != null) {
+        while (ite != tail) {
             temp = ite.data;
             try {
                 raf.seek(bufSize * ite.pos); // moves 

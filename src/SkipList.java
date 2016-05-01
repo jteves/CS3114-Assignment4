@@ -32,6 +32,7 @@ public class SkipList<K extends Comparable<K>, E>
     private Random rnd;
     
     private MemMan mem;
+    private int headLoc;
 //    private Serializer ser;
     //---------------------------------------------------
 
@@ -58,6 +59,7 @@ public class SkipList<K extends Comparable<K>, E>
         iteToHead();
         mem = m;
         mem.insert(head);
+        headLoc = 0;
 //        ser = new Serializer();
     }
 
@@ -124,6 +126,8 @@ public class SkipList<K extends Comparable<K>, E>
         if (node.size() > head.size())
         {
             head.changeSize(node.size());
+            mem.remove(headLoc);
+            headLoc = mem.insert(head);
         }
         //used for later comparisons to help place the
         //new node in the proper spot
