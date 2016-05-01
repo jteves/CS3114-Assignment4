@@ -36,7 +36,7 @@ public class MemMan {
         block.setNext(tail);
         tail.setPrev(block);
         block.setPrev(head);
-        end = 0;
+        end = bufsize;
         bp = pool;
     }
     
