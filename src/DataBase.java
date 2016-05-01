@@ -143,7 +143,9 @@ public class DataBase {
             list.iteNext(); 
             
             pair = list.searchforR(pair);
-            pair = list.remove2(pair);
+            if (pair != null){
+                pair = list.remove2(pair);
+            }
                     
              // output: "Rectangle removed: (name, x, y, w, h)"
             

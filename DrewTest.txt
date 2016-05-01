@@ -16,11 +16,12 @@ insert d 1 1 100 1
 insert bob 24 454 444 44
 insert e 1 144 1 1
 insert f 1 1 15 1
-
+remove 2 2 2 2
 remove bob
 dump
 
 remove 1 1 1 10
+remove steve
 dump
 intersections
 regionsearch 1 1 1 1
