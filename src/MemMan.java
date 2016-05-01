@@ -165,6 +165,7 @@ public class MemMan {
                 block.next().setPrev(block);
                 break;
             }
+            block = block.next();
         }
         joinBlocks();
     }
