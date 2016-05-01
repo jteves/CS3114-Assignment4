@@ -166,6 +166,7 @@ public class Processor {
                 }
             }
             lines.close();
+            db.closeFile();
         }
         catch (FileNotFoundException e)
         {

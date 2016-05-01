@@ -15,6 +15,7 @@ public class DataBase {
     // Contains and handles the Rectangle objects
     private SkipList<String, Rectangle> list;
     private MemMan m;
+    BufferPool bp;
     /**
      * Default Constructor containing a SkipList of Rectangle obj
      * 
@@ -25,8 +26,8 @@ public class DataBase {
     {
         
         //TODO change constructor to take numbuffers and filename
-        BufferPool bp = new BufferPool(store, num, size);
-        bp.read(bp.getFile(), 0);
+        bp = new BufferPool(store, num, size);
+        
         m = new MemMan(size, bp);
         list = new SkipList<String, Rectangle>(m);
     }
@@ -399,6 +400,9 @@ public class DataBase {
 //        return list.getSize();
 //    }
    
+    public void closeFile() throws IOException {
+        bp.getFile().close();
+    }
 
 }
 
