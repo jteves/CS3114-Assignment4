@@ -137,7 +137,7 @@ public class Rectangle implements Serializable
     
     public boolean sameCords(Rectangle rec) {
         return rec.getX() == this.getX() 
-                && rec.getY() == this.getX()
+                && rec.getY() == this.getY()
                 && rec.getHeight() == this.getHeight() 
                 && rec.getWidth() == this.getWidth();
     }

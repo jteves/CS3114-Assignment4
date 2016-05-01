@@ -8,24 +8,31 @@ insert a 1 1 0 1024
 insert 1 1 1 1 0
 
 
+insert a 1 2 3 4
+insert a 1 2 3 4
+insert a 1 2 3 4
+insert a 1 2 3 4
+insert a 1 2 3 4
+insert a 1 2 3 4
 
-insert b 1 1 1 10
-insert a 1 1 1 1
-insert c 1 100 1 1
-insert d 1 1 100 1
+insert f 1 1 1 10
+
+insert g 1 100 1 1
+insert k 1 1 100 1
 insert bob 24 454 444 44
-insert e 1 144 1 1
-insert f 1 1 15 1
+insert tey 1 144 1 1
+insert sdf 1 1 15 1
+insert zzz 1 1 1 1
 remove 2 2 2 2
+dump
 remove bob
+remove dddddd
 dump
 
-remove 1 1 1 10
+remove 1 1 1 1
 remove steve
 dump
-intersections
-regionsearch 1 1 1 1
-hello
+
 
 
 
