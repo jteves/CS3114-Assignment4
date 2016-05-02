@@ -49,9 +49,6 @@ public class MemMan {
     public void add(int space) {
         freeSize = freeSize - (space);
         start = start + space;
-        if (freeSize <= 0) {
-            freeSize += bufSize;
-        }
     }
     
     /**

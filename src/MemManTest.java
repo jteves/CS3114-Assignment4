@@ -11,7 +11,6 @@ public class MemManTest extends TestCase {
      * Test for MemMan
      */
     public void testMemMan() {
-        //TODO not null
         MemMan m = new MemMan(1000, null);
         
         m.add(10);
