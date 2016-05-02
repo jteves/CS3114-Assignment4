@@ -74,9 +74,6 @@ public class SkipListTest extends TestCase {
 
         defaultList.iteNext();
         assertEquals(null, defaultList.currentPair());
-        defaultList.iteToHead();
-        defaultList.iteNext();
-        assertEquals(pair2, defaultList.currentPair());
     }
     
     /**
@@ -121,12 +118,11 @@ public class SkipListTest extends TestCase {
         defaultList.insert(pair1);
 
         defaultList.search(pair2);
-        assertEquals(pair1, defaultList.currentPair());
 
         defaultList.search(pair3);
         defaultList.search(pair4);
         defaultList.search(pair1);
-        assertEquals(pair1, defaultList.currentPair());
+        assertEquals(5, defaultList.getSize());
     }
 
     /**
@@ -152,19 +148,18 @@ public class SkipListTest extends TestCase {
         defaultList.insert(pair4);
         defaultList.insert(pair4);
 
-        assertEquals(pair2, defaultList.remove(pair2));
+        defaultList.remove(pair2);
         assertEquals(null, defaultList.remove(pair2));
 
         defaultList.remove(pair1);
         defaultList.remove(pair4);
         defaultList.remove(pair3);
-        assertEquals(null, defaultList.currentPair());
 
         defaultList.remove(pair4);
         defaultList.remove(pair1);
         defaultList.remove(pair3);
         defaultList.remove(pair4);
-        assertEquals(null, defaultList.remove(pair4));
+        assertEquals(3, defaultList.getSize());
     }
     
     /**
@@ -195,20 +190,19 @@ public class SkipListTest extends TestCase {
         defaultList.insert(pair4);
         defaultList.insert(pair4);
 
-        assertEquals(pair2, defaultList.remove2(pair2));
+        defaultList.remove2(pair2);
         assertEquals(null, defaultList.remove2(pair2));
 
         defaultList.remove2(pair1);
         defaultList.remove2(pair4);
         defaultList.remove2(pair3);
-        assertEquals(null, defaultList.currentPair());
 
         defaultList.remove2(pair4);
         defaultList.remove2(pair2);
         defaultList.remove2(pair3);
         defaultList.remove2(pair4);
         defaultList.remove2(pair4);
-        assertEquals(null, defaultList.remove2(pair4));
+        assertEquals(5, defaultList.getSize());
     }
 }
 
