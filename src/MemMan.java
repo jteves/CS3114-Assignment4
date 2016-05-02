@@ -78,6 +78,7 @@ public class MemMan {
     }
     
     /**
+     * Inserts an object into the bufferpool using the best fit method
      * 
      * @param obj is the object being inserted into the bufferpool
      * @return the size of the object and key value when serialized
@@ -91,9 +92,12 @@ public class MemMan {
         int loc = -1;
         //used for traversing list
         FreeBlock block;
+        //length of the array plus key value
         int length = arr.length + KEY;
+        //finds place to insert obj
         while (loc == -1) { 
             block = head.next();
+            // finds best fit
             while (block != tail) {
                 if (block.getSpace() >= length && space == -1) {
                     space = block.getSpace() - (length);
@@ -106,37 +110,43 @@ public class MemMan {
                 }
                 block = block.next();
             }
+            //if there is no fit, more space is added
             if (loc == -1) {
+                //new block being added
                 FreeBlock temp = new FreeBlock(end, bufSize);
                 tail.previous().setNext(temp);
                 temp.setPrev(tail.previous());
                 tail.setPrev(temp);
                 temp.setNext(tail);
+                //merges blocks if needed
                 joinBlocks();
                 end = end + bufSize;
             }
         }
-        
+        //block to be inserted to
         block = head.next();
+        //finds block
         while (block.getBeg() != loc) {
             block = block.next();
         }
-        
+        //inserts and sends bufferpool
         block.insert(length);
         bp.recieveFromMerge(loc + KEY, arr);
         byte[] temp = new byte[KEY];
         temp[0] = (byte) (arr.length & 0xff);
         temp[1] = (byte) ((arr.length >> 8) & 0xff);
-        //System.out.println(arr.length);
-        //System.out.println(temp[0]);
         bp.recieveFromMerge(loc, temp);
         return loc;
     }
     
-    
+    /**
+     * joins adjacent blocks into one large block
+     */
     public void joinBlocks() {
+        //used for traversing list
         FreeBlock block = head.next();
         while (block != tail) {
+            // merges blocks if they are adjacent
             if (block.previous().getBeg() + block.
                     previous().getSpace() == block.getBeg()) {
                 block.previous().setNext(block.next());
