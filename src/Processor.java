@@ -35,18 +35,19 @@ public class Processor {
      * @param input the file name
      * @param num the number of buffers
      * @param size is the buffer size
+     * @param disk the name of the storage file
      * @throws IOException 
      * @throws ClassNotFoundException 
      */
     public Processor(String input, int size, int num, String disk) 
-            throws IOException, ClassNotFoundException
+        throws IOException, ClassNotFoundException
     {
-    	if (disk == null) {
-    		System.out.println("disk name can't be null");
-    		return;
-    	}
-    	
-		db      	= new DataBase(size, num, disk); 
+        if (disk == null) {
+            System.out.println("disk name can't be null");
+            return;
+        }
+        
+        db          = new DataBase(size, num, disk); 
         fileName    = input;
         file        = new File(fileName);
     }
@@ -110,7 +111,7 @@ public class Processor {
                 }
                 else // Removal by the rectangle name
                 {
-                	db.remove(next);
+                    db.remove(next);
                 }
             }
             else if (command.equals(REGIONSEARCH))
