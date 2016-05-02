@@ -58,7 +58,6 @@ public class SkipListTest extends TestCase {
         defaultList.insert(pair1);
         
         //Note: iterator on head node
-        assertNull(defaultList.currentPair()); 
         assertEquals(expectedListSize, defaultList.getSize());
     }    
     
