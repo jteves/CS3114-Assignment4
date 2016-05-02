@@ -1,5 +1,4 @@
 import java.io.IOException;
-import java.io.RandomAccessFile;
 
 
 /**
@@ -26,9 +25,14 @@ public class MemMan {
      * tail block
      */
     private FreeBlock tail;
+    /**
+     * current end value of the free memory
+     */
     private int end;
+    /**
+     * buffer pool for writing to the storage file
+     */
     private BufferPool bp;
-    static int PAD = 0;
     static int KEY = 2;
 
     /**
