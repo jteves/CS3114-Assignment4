@@ -27,12 +27,12 @@ public class RectangleDisk {
      * @throws IOException 
      * @throws ClassNotFoundException 
      */
-    public static void main(String[] args) 
-    		throws IOException, ClassNotFoundException {
-    	// args should look like: 
-    	// 		{commandFile} {diskFile} {numBuffs} {buffSize}
-        Processor p = new Processor(args[0], Integer.parseInt
-        		(args[3]), Integer.parseInt(args[2]), args[1]);
+    public static void main(String[] args)
+        throws IOException, ClassNotFoundException {
+        // args should look like: 
+        // {commandFile} {diskFile} {numBuffs} {buffSize}
+        Processor p = new Processor(args[0], Integer.
+            parseInt(args[3]), Integer.parseInt(args[2]), args[1]);
         p.process();
     }
 }
