@@ -33,22 +33,32 @@ public class MemMan {
      * buffer pool for writing to the storage file
      */
     private BufferPool bp;
+    /**
+     * length of the key values in bytes that will be inserted into the byte 
+     * arrays
+     */
     static int KEY = 2;
 
     /**
-     * The Memory Manager that handles the data
+     * The constructor for the
+     * Memory Manager that handles the data
+     * 
      * @param bufsize the size of the buffer
+     * @param pool is the buffer pool
      */
     public MemMan(int bufsize, BufferPool pool) {
         
         bufSize = bufsize;
         head = new FreeBlock(-1, -1);
         tail = new FreeBlock(-1, -1);
+        //adds the original free block
         FreeBlock block = new FreeBlock(0, bufsize);
+        //setting pointers for head and tail
         head.setNext(block);
         block.setNext(tail);
         tail.setPrev(block);
         block.setPrev(head);
+        //current end of the list is the buffer size
         end = bufsize;
         bp = pool;
     }
@@ -60,20 +70,26 @@ public class MemMan {
         System.out.println("Freelist Blocks:");
         FreeBlock block = head.next();
         while (block != tail) {
-            System.out.println("(" + block.getBeg() + ", " + block.getSpace() + ")");
+            System.out.println("(" + block.getBeg() + ", " + 
+                    block.getSpace() + ")");
             block = block.next();
         }
         
     }
     
-    
+    /**
+     * 
+     * @param obj is the object being inserted into the bufferpool
+     * @return the size of the object and key value when serialized
+     * @throws IOException
+     */
     public int insert(Object obj) throws IOException {
         
         byte[] arr = Serializer.serialize(obj);
         int space = -1;
         int loc = -1;
         FreeBlock block;
-        int length = arr.length + KEY + PAD;
+        int length = arr.length + KEY;
         while (loc == -1) { 
             block = head.next();
             while (block != tail) {

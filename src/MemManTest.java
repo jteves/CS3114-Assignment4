@@ -13,7 +13,6 @@ public class MemManTest extends TestCase {
     public void testMemMan() {
         MemMan m = new MemMan(1000, null);
         
-        m.add(10);
         
         m.dump();
         
