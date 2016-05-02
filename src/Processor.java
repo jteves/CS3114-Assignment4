@@ -60,9 +60,11 @@ public class Processor {
     public Processor(String input, int size, int num, String disk) throws IOException, ClassNotFoundException
     {
     	if (disk == null) {
-    		System.out.println("disk name can't be null")''
+    		System.out.println("disk name can't be null");
     	}
-        db          = new DataBase(size, num, disk); 
+    	else {
+    		db          = new DataBase(size, num, disk); 
+    	}
         
         fileName    = input;
         file        = new File(fileName);
