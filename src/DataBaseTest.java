@@ -43,9 +43,9 @@ public class DataBaseTest extends TestCase {
         db.search("illegal");
         db.search("legal2");
         db.search("legal4");
-        db.search("1 1 101 2");
-        db.search("1 1 1 2");
-        db.search("1 1 100 2");
+        db.search("0 0 101 2");
+        db.search("0 1 1 2");
+        db.search("1 0 100 2");
 
         assertNotNull(db);
     }    
