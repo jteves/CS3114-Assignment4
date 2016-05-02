@@ -157,6 +157,13 @@ public class MemMan {
         }
     }
     
+    /**
+     * 
+     * @param x location of the object
+     * @return the object 
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public Object getObj(int x) throws 
             ClassNotFoundException, IOException {
         byte[] key = bp.sendToMerge(x, x + KEY);
