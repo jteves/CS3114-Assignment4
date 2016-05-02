@@ -400,6 +400,14 @@ public class DataBase {
         //dumps the memory manager
         m.dump();
     }
+    
+    /**
+     * @return the size of the list
+     */
+    public int getSize()
+    {
+        return list.getSize();
+    }
    
     /**
      * closes the storage file
