@@ -37,7 +37,7 @@ public class MemMan {
      * length of the key values in bytes that will be inserted into the byte 
      * arrays
      */
-    static int KEY = 2;
+    static final int KEY = 2;
 
     /**
      * The constructor for the
@@ -166,7 +166,7 @@ public class MemMan {
      */
     public Object getObj(int x) throws 
             ClassNotFoundException, IOException {
-    	// Gets the key of the object
+        // Gets the key of the object
         byte[] key = bp.sendToMerge(x, x + KEY);
         int len = key[0];
         len = len & 0xff;
@@ -186,7 +186,7 @@ public class MemMan {
      * @throws IOException
      */
     public void update(int loc, Object obj) throws IOException {
-    	
+        
         byte[] temp = new byte[KEY];
         byte[] arr = Serializer.serialize(obj);
        // Starting position of object
@@ -202,7 +202,7 @@ public class MemMan {
      * @param loc location of the value
      */
     public void remove(int loc) {
-    	// Gets the key
+        // Gets the key
         byte[] key = bp.sendToMerge(loc, loc + KEY);
         int len = key[0];
         len = len & 0xff;
@@ -213,7 +213,7 @@ public class MemMan {
         // Traverses the list to locate the object block location      
         while (temp.next() != tail) {
             if (temp.next().getBeg() > block.getBeg()) {
-            	// Empties the value in the located block
+                // Empties the value in the located block
                 block.setNext(temp.next());
                 temp.setNext(block);
                 block.setPrev(temp);

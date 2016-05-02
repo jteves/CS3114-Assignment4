@@ -27,7 +27,8 @@ public class DataBase {
      * @throws IOException 
      * @throws ClassNotFoundException 
      */
-    public DataBase(int size, int num, String store) throws IOException, ClassNotFoundException
+    public DataBase(int size, int num, String store) 
+            throws IOException, ClassNotFoundException
     {
         bp = new BufferPool(store, num, size);  
         m = new MemMan(size, bp);
@@ -136,8 +137,8 @@ public class DataBase {
     {
         // The rectangle coordinates that are supposed to be removed
         Rectangle   rec         = new Rectangle("a", x, y, w, h);
-        KVPair<String, Rectangle> pair = new KVPair<String, Rectangle>
-                (null, rec);       
+        KVPair<String, Rectangle> pair = new
+                KVPair<String, Rectangle>(null, rec);       
         
         if (rec.isLegal())
         {
@@ -147,7 +148,7 @@ public class DataBase {
             // finds the node to remove
             pair = list.searchforR(pair);
             //avoids null pointer exception
-            if (pair != null){
+            if (pair != null) {
                 pair = list.remove2(pair);
             }
                     
