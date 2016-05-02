@@ -20,15 +20,10 @@ public class RectangleDisk {
      * @throws IOException 
      * @throws ClassNotFoundException 
      */
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
-//        if (args.length != 4) {
-//            System.out.println("Usage: RectangleDisk <commandfile> "
-//                + "<diskFile> <numBuffs> <buffSize>");
-//        }
-//        else {
-        Processor p = new Processor(args[0], Integer.parseInt(args[3])
-                , Integer.parseInt(args[2]), args[1]);
+    public static void main(String[] args) 
+    		throws IOException, ClassNotFoundException {
+        Processor p = new Processor(args[0], Integer.parseInt
+        		(args[3]), Integer.parseInt(args[2]), args[1]);
         p.process();
-        //}
     }
 }
