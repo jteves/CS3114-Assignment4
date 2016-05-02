@@ -149,6 +149,7 @@ public class Rectangle implements Serializable
     
     /**
      * Determines if the object's name and coordinates matches this
+     * @param o the Rectangle object this is being compared to
      * @return true if their names and coordinates match
      */
     public boolean equals(Object o) {
