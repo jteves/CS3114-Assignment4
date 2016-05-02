@@ -27,7 +27,7 @@ remove a
 remove a
 remove a
 remove f
-remove 1 100 11
+remove g
 remove 2 2 2 2
 dump
 remove bob
@@ -38,7 +38,9 @@ remove 1 1 1 1
 remove steve
 remove 0 0 0 0
 remove -1 0 1 1
-remove
+remove hi
+search zzz
+remove zzz
 search zzz
 search steve
 regionsearch 1 1 1 1
