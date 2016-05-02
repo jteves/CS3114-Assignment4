@@ -28,7 +28,7 @@ public class DataBase {
      * @throws ClassNotFoundException 
      */
     public DataBase(int size, int num, String store) 
-            throws IOException, ClassNotFoundException
+        throws IOException, ClassNotFoundException
     {
         bp = new BufferPool(store, num, size);  
         m = new MemMan(size, bp);
@@ -53,7 +53,7 @@ public class DataBase {
      * @throws ClassNotFoundException 
      */
     public void insert(String recName, int x, int y, int w, int h)
-            throws ClassNotFoundException, IOException 
+        throws ClassNotFoundException, IOException 
     {
         // The rectangle to be inserted into the SkipList
         Rectangle rec = new Rectangle(recName, x, y, w, h);
