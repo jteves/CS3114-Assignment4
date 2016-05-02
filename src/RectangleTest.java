@@ -31,77 +31,77 @@ public class RectangleTest extends TestCase {
         assertEquals(expectedHeight, dum.getHeight());
     }
 
-//    /**
-//     * Test method for {@link Rectangle#intersect(Rectangle)}
-//     * when two Rectangles intersect
-//     */
-//    @Test
-//    public void testIntersect() {
-//        Rectangle dum = new Rectangle("name", 1, 2, 3, 4);
-//        Rectangle dum2 = new Rectangle("name", 1, 2, 3, 4);
-//        
-//        assertTrue(dum.intersect(dum2));
-//    }
-//
-//    /**
-//     * Test method for {@link Rectangle#intersect(Rectangle)}
-//     * when two Rectangles touch each other
-//     */
-//    @Test
-//    public void testRectanglesTouch() {
-//        Rectangle dum = new Rectangle("name", 1, 2, 1, 1);
-//        Rectangle dum2 = new Rectangle("name", 1, 1, 1, 1);
-//        
-//        assertFalse(dum.intersect(dum2));
-//    }
-//
-//    /**
-//     * Test method for {@link Rectangle#intersect(Rectangle)}
-//     * when two Rectangles don't intersect
-//     */
-//    @Test
-//    public void testNoIntersectLeft() {
-//        Rectangle dum = new Rectangle("name", 2, 2, 1, 1);
-//        Rectangle dum2 = new Rectangle("name", 0, 2, 1, 1);
-//        
-//        assertFalse(dum.intersect(dum2));
-//    }
-//
-//    /**
-//     * Test method for {@link Rectangle#intersect(Rectangle)}
-//     * when two Rectangles don't intersect
-//     */
-//    @Test
-//    public void testNoIntersectRight() {
-//        Rectangle dum = new Rectangle("name", 0, 2, 1, 1);
-//        Rectangle dum2 = new Rectangle("name", 2, 2, 1, 1);
-//        
-//        assertFalse(dum.intersect(dum2));
-//    }
-//    
-//    /**
-//     * Test method for {@link Rectangle#intersect(Rectangle)}
-//     * when two Rectangles don't intersect
-//     */
-//    @Test
-//    public void testNoIntersectTop() {
-//        Rectangle dum = new Rectangle("name", 2, 0, 1, 1);
-//        Rectangle dum2 = new Rectangle("name", 2, 2, 1, 1);
-//        
-//        assertFalse(dum.intersect(dum2));
-//    }
-//
-//    /**
-//     * Test method for {@link Rectangle#intersect(Rectangle)}
-//     * when two Rectangles don't intersect
-//     */
-//    @Test
-//    public void testNoIntersectBottom() {
-//        Rectangle dum = new Rectangle("name", 2, 2, 1, 1);
-//        Rectangle dum2 = new Rectangle("name", 2, 0, 1, 1);
-//        
-//        assertFalse(dum.intersect(dum2));
-//    }
+    /**
+     * Test method for {@link Rectangle#intersect(Rectangle)}
+     * when two Rectangles intersect
+     */
+    @Test
+    public void testIntersect() {
+        Rectangle dum = new Rectangle("name", 1, 2, 3, 4);
+        Rectangle dum2 = new Rectangle("name", 1, 2, 3, 4);
+        
+        assertTrue(dum.intersect(dum2));
+    }
+
+    /**
+     * Test method for {@link Rectangle#intersect(Rectangle)}
+     * when two Rectangles touch each other
+     */
+    @Test
+    public void testRectanglesTouch() {
+        Rectangle dum = new Rectangle("name", 1, 2, 1, 1);
+        Rectangle dum2 = new Rectangle("name", 1, 1, 1, 1);
+        
+        assertFalse(dum.intersect(dum2));
+    }
+
+    /**
+     * Test method for {@link Rectangle#intersect(Rectangle)}
+     * when two Rectangles don't intersect
+     */
+    @Test
+    public void testNoIntersectLeft() {
+        Rectangle dum = new Rectangle("name", 2, 2, 1, 1);
+        Rectangle dum2 = new Rectangle("name", 0, 2, 1, 1);
+        
+        assertFalse(dum.intersect(dum2));
+    }
+
+    /**
+     * Test method for {@link Rectangle#intersect(Rectangle)}
+     * when two Rectangles don't intersect
+     */
+    @Test
+    public void testNoIntersectRight() {
+        Rectangle dum = new Rectangle("name", 0, 2, 1, 1);
+        Rectangle dum2 = new Rectangle("name", 2, 2, 1, 1);
+        
+        assertFalse(dum.intersect(dum2));
+    }
+    
+    /**
+     * Test method for {@link Rectangle#intersect(Rectangle)}
+     * when two Rectangles don't intersect
+     */
+    @Test
+    public void testNoIntersectTop() {
+        Rectangle dum = new Rectangle("name", 2, 0, 1, 1);
+        Rectangle dum2 = new Rectangle("name", 2, 2, 1, 1);
+        
+        assertFalse(dum.intersect(dum2));
+    }
+
+    /**
+     * Test method for {@link Rectangle#intersect(Rectangle)}
+     * when two Rectangles don't intersect
+     */
+    @Test
+    public void testNoIntersectBottom() {
+        Rectangle dum = new Rectangle("name", 2, 2, 1, 1);
+        Rectangle dum2 = new Rectangle("name", 2, 0, 1, 1);
+        
+        assertFalse(dum.intersect(dum2));
+    }
 
     /**
      * Test method for {@link Rectangle#isLegal()} when the Rectangle 
