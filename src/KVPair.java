@@ -8,6 +8,8 @@ import java.io.Serializable;
  * @param <E> value
  * 
  * @version 2/3/16
+ * 
+ * The KVPair class holds a pair of records, a key and a value
  */
 public class KVPair<K extends Comparable<K>, E>
                implements Comparable<KVPair<K, E>>, Serializable {
@@ -32,14 +34,6 @@ public class KVPair<K extends Comparable<K>, E>
         return theKey.compareTo(it.key());
     }
 
-//    /**
-//     * 
-//     * @param it compares keys with it
-//     * @return the answer
-//     */
-//    public int compareTo(K it) {
-//        return theKey.compareTo(it);
-//    }
     /**
      * 
      * @return the key
@@ -54,13 +48,5 @@ public class KVPair<K extends Comparable<K>, E>
     public E value() {
         return theVal;
     }
-
-//    /**
-//     * @return the string representation
-//     * of the kvpair
-//     */
-//    public String toString() {
-//        return theKey.toString() + ", " + theVal.toString();
-//    }
     
 }

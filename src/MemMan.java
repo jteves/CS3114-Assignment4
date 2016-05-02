@@ -7,17 +7,27 @@ import java.io.RandomAccessFile;
  * @author Drew, Jacob
  * @version 4/21/16
  *
+ * The MemMan class is a memory manager
+ * it keeps track of all of the free locations on the file
+ * for the buffer pool to write to
+ * 
+ * it is implemented like a doubly linked list
  */
-
 public class MemMan {
-    
-    private int freeSize;
-    private int start;
+    /**
+     * starting size of the memory blocks
+     */
     private int bufSize;
+    /**
+     * head block
+     */
     private FreeBlock head;
+    /**
+     * tail block
+     */
     private FreeBlock tail;
     private int end;
-    BufferPool bp;
+    private BufferPool bp;
     static int PAD = 0;
     static int KEY = 2;
 
@@ -26,8 +36,7 @@ public class MemMan {
      * @param bufsize the size of the buffer
      */
     public MemMan(int bufsize, BufferPool pool) {
-        freeSize = bufsize;
-        start = 0;
+        
         bufSize = bufsize;
         head = new FreeBlock(-1, -1);
         tail = new FreeBlock(-1, -1);
@@ -38,17 +47,6 @@ public class MemMan {
         block.setPrev(head);
         end = bufsize;
         bp = pool;
-    }
-    
-    
-    /**
-     * Decreases the amount of free space, unless it needs to allocate
-     * space
-     * @param space The amount of space to take up
-     */
-    public void add(int space) {
-        freeSize = freeSize - (space);
-        start = start + space;
     }
     
     /**
