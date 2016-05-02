@@ -1,4 +1,6 @@
 import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import student.TestCase;
 
 
@@ -14,12 +16,15 @@ public class ProcessorTest extends TestCase {
 
     /**
      * Makes sure the text file was input properly to the processor  
+     * @throws IOException 
+     * @throws ClassNotFoundException 
      */
-    public void testFileInput()
+    public void testFileInput() throws ClassNotFoundException, IOException
     {
         
         // A new Processor object with an existing text file name
-        Processor pro = new Processor("test.txt", 0);
+        Processor pro;
+			pro = new Processor("test.txt", 0, 0, null);
 
         String expectedFileName = "test.txt";
 

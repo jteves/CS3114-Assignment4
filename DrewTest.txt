@@ -31,6 +31,14 @@ dump
 
 remove 1 1 1 1
 remove steve
+remove 0 0 0 0
+remove -1 0 1 1
+remove
+search zzz
+search steve
+regionsearch 1 1 1 1
+regionsearch 0 0 0 0
+intersections
 dump
 
 
