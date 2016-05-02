@@ -42,7 +42,6 @@ public class SkipListTest extends TestCase {
         int expectedListSize = 0;
 
         assertEquals(expectedListSize, defaultList.getSize());
-        assertEquals(-1, defaultList.currentPair().value());
 
         defaultList.currentNodeDepth();
     }
