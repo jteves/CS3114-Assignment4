@@ -77,7 +77,7 @@ public class SkipListTest extends TestCase {
         defaultList.iteToHead();
         defaultList.iteNext();
         defaultList.iteNext();
-        assertEquals(pair2, defaultList.currentPair());
+        assertEquals(pair1, defaultList.currentPair());
     }
     
     /**
