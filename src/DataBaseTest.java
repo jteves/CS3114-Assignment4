@@ -28,7 +28,7 @@ public class DataBaseTest extends TestCase {
      * @throws ClassNotFoundException 
      */
     public void testInsertSearch() throws ClassNotFoundException, IOException {
-        DataBase db = new DataBase(100, 0, "filename.txt");
+        DataBase db = new DataBase(100, 5, "filename.txt");
 
         db.insert("illegal", -1, 1, 0, 0);
         db.insert("legal", 1, 1, 1, 1);
