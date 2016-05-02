@@ -13,7 +13,7 @@ import java.io.Serializable;
  */
 @SuppressWarnings("serial")
 public class SkipNode<K extends Comparable<K>, E> 
-	implements Serializable
+    implements Serializable
 {
     /**
      * the array of kvpair pointers the node will hold
