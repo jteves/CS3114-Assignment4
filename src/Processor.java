@@ -17,7 +17,6 @@ public class Processor {
     private String fileName;
     private File file;
     private DataBase db;
-//    private int bufSize;
     
     //The existing commands
     private static final String INSERT = "insert";
@@ -26,24 +25,6 @@ public class Processor {
     private static final String INTERSECTIONS = "intersections";
     private static final String SEARCH = "search";
     private static final String DUMP = "dump";
-    
-//    /** 
-//     * Constructor that converts a string to a File and 
-//     * contains a DataBase object that contains the SkipList
-//     * 
-//     * Precondition: the input is a valid file in the project folder
-//     * Postcondition: a new File and Database object is made
-//     *  
-//     * @param input the file name
-//     */
-//    public Processor(String input)
-//    {
-//        db          = new DataBase(0); 
-//        
-//        fileName    = input;
-//        file        = new File(fileName);
-//        bufSize = 0;
-//    }
     
     /** 
      * Constructor that converts a string to a File and 
@@ -57,18 +38,17 @@ public class Processor {
      * @throws IOException 
      * @throws ClassNotFoundException 
      */
-    public Processor(String input, int size, int num, String disk) throws IOException, ClassNotFoundException
+    public Processor(String input, int size, int num, String disk) 
+    		throws IOException, ClassNotFoundException
     {
     	if (disk == null) {
     		System.out.println("disk name can't be null");
+    		return;
     	}
-    	else {
-    		db          = new DataBase(size, num, disk); 
-    	}
-        
+    	
+		db      	= new DataBase(size, num, disk); 
         fileName    = input;
         file        = new File(fileName);
-//      bufSize = size;
     }
 
     /**

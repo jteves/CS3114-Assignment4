@@ -158,35 +158,51 @@ public class MemMan {
     }
     
     /**
-     * 
+     * Gets the deserialized object at the x location
      * @param x location of the object
-     * @return the object 
+     * @return the object, deserialized
      * @throws ClassNotFoundException
-     * @throws IOException
+     * @throws IOException 
      */
     public Object getObj(int x) throws 
             ClassNotFoundException, IOException {
+    	// Gets the key of the object
         byte[] key = bp.sendToMerge(x, x + KEY);
         int len = key[0];
         len = len & 0xff;
         int t = key[1] & 0xff;
         len = len + (t << 8);
-        //System.out.println(len);
+        // Retrieves the object from the bufferpool based off key
         byte[] arr = bp.sendToMerge(x + KEY, x + len + KEY);
        
         return Serializer.deserialize(arr);
     }
     
+    /**
+     * Updates the bufferpool object itself and its key. 
+     * Takes place when inserting and removing from the skipList.
+     * @param loc Location in the bufferpool
+     * @param obj Object being updated
+     * @throws IOException
+     */
     public void update(int loc, Object obj) throws IOException {
+    	
         byte[] temp = new byte[KEY];
         byte[] arr = Serializer.serialize(obj);
+       // Starting position of object
         temp[0] = (byte) (arr.length & 0xff);
+       // Length of object
         temp[1] = (byte) ((arr.length >> 8) & 0xff);
         bp.recieveFromMerge(loc, temp);
         bp.recieveFromMerge(loc + KEY, arr);
     }
     
+    /**
+     * Removes the block at the provided location of the free list
+     * @param loc location of the value
+     */
     public void remove(int loc) {
+    	// Gets the key
         byte[] key = bp.sendToMerge(loc, loc + KEY);
         int len = key[0];
         len = len & 0xff;
@@ -194,8 +210,10 @@ public class MemMan {
         len = len + (t << 8);
         FreeBlock block = new FreeBlock(loc, len + KEY);
         FreeBlock temp = head;
+        // Traverses the list to locate the object block location      
         while (temp.next() != tail) {
             if (temp.next().getBeg() > block.getBeg()) {
+            	// Empties the value in the located block
                 block.setNext(temp.next());
                 temp.setNext(block);
                 block.setPrev(temp);
@@ -214,7 +232,12 @@ public class MemMan {
     
     
     
-    
+    /**
+     * A double linked list that stores the objects location and 
+     * length
+     * @author Drew Williams, Jacob Teves
+     * @version 5/02/2016
+     */
     private class FreeBlock {
         
         private FreeBlock next;
@@ -222,7 +245,10 @@ public class MemMan {
         private int len;
         private int beg;
         
-        
+        /**
+         * @param start starting free space
+         * @param space amount of free space
+         */
         private FreeBlock(int start, int space) {
             next = null;
             prev = null;
@@ -230,38 +256,70 @@ public class MemMan {
             beg = start;
         }
         
+        /**
+         * Sets the next block to the provided block
+         * @param block the block that should be next
+         */
         private void setNext(FreeBlock block) {
             next = block;
         }
-        
+
+        /**
+         * Sets the previous block to the provided block
+         * @param block the block that should be previous
+         */
         private void setPrev(FreeBlock block) {
             prev = block;
         }
         
+        /**
+         * Gets the block that's next
+         * @return the next FreeBlock node
+         */
         private FreeBlock next() {
             return next;
         }
         
+        /**
+         * Gets the block that's previous
+         * @return the previous FreeBlock node
+         */
         private FreeBlock previous() {
             return prev;
         }
         
+        /**
+         * Gets the amount of free space of the block
+         * @return the block's length
+         */
         private int getSpace() {
             return len;
         }
         
+        /**
+         * Gets the start of the block
+         * @return the block's beginning
+         */
         private int getBeg() {
             return beg;
         }
         
+        /**
+         * Used when inserting an object to lower the amount of free 
+         * space in this block
+         * @param x amount of space to be removed
+         */
         private void insert(int x) {
             beg = beg + x;
             len = len - x;
         }
         
+        /**
+         * Used in joinBlocks(). Adds space to this block
+         * @param x the amount of space added
+         */
         private void addSpace(int x) {
             len = len + x;
         }
-        
     }
 }
