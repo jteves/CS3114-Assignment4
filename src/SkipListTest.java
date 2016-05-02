@@ -24,8 +24,8 @@ public class SkipListTest extends TestCase {
      * @throws ClassNotFoundException 
      */
     public void setUp() throws ClassNotFoundException, IOException {
-    	BufferPool bp = new BufferPool("filename.txt", 4, 20);
-		MemMan m = new MemMan(512, bp);
+        BufferPool bp = new BufferPool("filename.txt", 4, 20);
+        MemMan m = new MemMan(512, bp);
         defaultList = new SkipList<String, String>(m);
 
         pair1    = new KVPair<String, String>("a", "data");
@@ -38,7 +38,7 @@ public class SkipListTest extends TestCase {
      * @throws ClassNotFoundException 
      */
     public void testConstructor() throws ClassNotFoundException, 
-    	IOException
+        IOException
     {   
         int expectedListSize = 0;
 
@@ -53,7 +53,7 @@ public class SkipListTest extends TestCase {
      * @throws ClassNotFoundException 
      */
     public void testInsertIntoEmpty() throws ClassNotFoundException, 
-    	IOException
+        IOException
     {
         int expectedListSize = 1;
         
@@ -70,7 +70,7 @@ public class SkipListTest extends TestCase {
      * @throws ClassNotFoundException 
      */
     public void testInsert2Pairs() throws ClassNotFoundException, 
-    	IOException
+        IOException
     {
         defaultList.insert(pair1);
         defaultList.insert(pair2);
@@ -86,7 +86,7 @@ public class SkipListTest extends TestCase {
      * @throws ClassNotFoundException 
      */
     public void testInsertSamePair() throws ClassNotFoundException, 
-    	IOException
+        IOException
     {
         pair1 = new KVPair<String, String>("a", "data");
         int expectedListSize = 2;
@@ -106,7 +106,7 @@ public class SkipListTest extends TestCase {
      * @throws ClassNotFoundException 
      */
     public void testSearch() throws ClassNotFoundException, 
-    	IOException
+        IOException
     {
         KVPair<String, String> pair3 = 
                 new KVPair<String, String>("c", "most");
