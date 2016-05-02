@@ -96,7 +96,7 @@ public class Processor {
             Scanner lines = new Scanner(file);
             
             // Reads through the entire file
-            while (lines.hasNext() && lines.hasNextLine())
+            while (lines.hasNext())
             {
                 // The first word of each line of the text file
                 String command = lines.next();
