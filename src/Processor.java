@@ -1,5 +1,4 @@
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -8,7 +7,7 @@ import java.util.Scanner;
  * file for each Rectangle objects
  * 
  * @author Drew Williams, Jacob Teves
- * @version 2/06/16
+ * @version 5/2/16
  *
  */
 public class Processor {
@@ -71,96 +70,86 @@ public class Processor {
         int w;
         int h;
 
-        try
+        Scanner lines = new Scanner(file);
+        
+        // Reads through the entire file
+        while (lines.hasNext())
         {
-            Scanner lines = new Scanner(file);
+            // The first word of each line of the text file
+            String command = lines.next();
             
-            // Reads through the entire file
-            while (lines.hasNext())
+            if (command.equals(INSERT))
             {
-                // The first word of each line of the text file
-                String command = lines.next();
+                recName = lines.next();
                 
-                if (command.equals(INSERT))
-                {
-                    recName = lines.next();
-                    
-                    // string conversion to int of coordinates
-                    x       = Integer.parseInt(lines.next());
-                    y       = Integer.parseInt(lines.next());
-                    w       = Integer.parseInt(lines.next());
-                    h       = Integer.parseInt(lines.next());
-                    
-                    db.insert(recName, x, y, w, h);
-                }
-                else if (command.equals(REMOVE))
-                {
-                    // The next word following the remove command
-                    String next = lines.next();
-                    
-                    // Removal by specified [xywh] coordinates
-                    if (Character.isDigit(next.charAt(0)) ||
-                            next.charAt(0) == '-')
-                    {
-                        // string conversion to int of coordinates
-                        x = Integer.parseInt(next);
-                        y = Integer.parseInt(lines.next());
-                        w = Integer.parseInt(lines.next());
-                        h = Integer.parseInt(lines.next());
-                        
-                        db.remove(x, y, w, h);
-                    }
-                    else // Removal by the rectangle name
-                    {
-                       db.remove(next);
-                    }
-                }
-                else if (command.equals(REGIONSEARCH))
+                // string conversion to int of coordinates
+                x       = Integer.parseInt(lines.next());
+                y       = Integer.parseInt(lines.next());
+                w       = Integer.parseInt(lines.next());
+                h       = Integer.parseInt(lines.next());
+                
+                db.insert(recName, x, y, w, h);
+            }
+            else if (command.equals(REMOVE))
+            {
+                // The next word following the remove command
+                String next = lines.next();
+                
+                // Removal by specified [xywh] coordinates
+                if (Character.isDigit(next.charAt(0)) ||
+                        next.charAt(0) == '-')
                 {
                     // string conversion to int of coordinates
-                    x = Integer.parseInt(lines.next());
+                    x = Integer.parseInt(next);
                     y = Integer.parseInt(lines.next());
                     w = Integer.parseInt(lines.next());
                     h = Integer.parseInt(lines.next());
                     
-                    // Rectangle width and height are valid (positive)
-                    if (w > 0 && h > 0) // 
-                    {
-                        db.regionSearch(x, y, w, h);
-                    }
-                    else 
-                    {
-                        // output: "Rectangle rejected: (x, y, w, h)"
-                        System.out.println("Rectangle rejected: " +
-                                "(" + x + ", " + y + ", " + w + ", " +
-                                h + ")");
-                    }
+                    db.remove(x, y, w, h);
                 }
-                else if (command.equals(INTERSECTIONS))
+                else // Removal by the rectangle name
                 {
-                    db.intersections();
-                }
-                else if (command.equals(SEARCH))
-                {
-                    recName = lines.next();
-                    db.search(recName);
-                }
-                else if (command.equals(DUMP))
-                {
-                    
-                    db.dump();
-                    
+                   db.remove(next);
                 }
             }
-            db.flush();
-            lines.close();
-            db.closeFile();
+            else if (command.equals(REGIONSEARCH))
+            {
+                // string conversion to int of coordinates
+                x = Integer.parseInt(lines.next());
+                y = Integer.parseInt(lines.next());
+                w = Integer.parseInt(lines.next());
+                h = Integer.parseInt(lines.next());
+                
+                // Rectangle width and height are valid (positive)
+                if (w > 0 && h > 0) // 
+                {
+                    db.regionSearch(x, y, w, h);
+                }
+                else 
+                {
+                    // output: "Rectangle rejected: (x, y, w, h)"
+                    System.out.println("Rectangle rejected: " +
+                            "(" + x + ", " + y + ", " + w + ", " +
+                            h + ")");
+                }
+            }
+            else if (command.equals(INTERSECTIONS))
+            {
+                db.intersections();
+            }
+            else if (command.equals(SEARCH))
+            {
+                recName = lines.next();
+                db.search(recName);
+            }
+            else if (command.equals(DUMP))
+            {
+                db.dump();
+            }
         }
-        catch (FileNotFoundException e)
-        {
-            e.printStackTrace();
-        }
-
+        db.flush(); // flushes the bufferpool
+        lines.close();
+        db.closeFile();
     }
 
     /**
