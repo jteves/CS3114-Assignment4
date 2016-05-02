@@ -15,7 +15,7 @@ public class BufferPoolTest extends TestCase {
      * set up
      */
     public void setUp() {
-        pool = new BufferPool(null, 6, 1);
+        pool = new BufferPool("filename.txt", 6, 1);
     }
     
     /**
