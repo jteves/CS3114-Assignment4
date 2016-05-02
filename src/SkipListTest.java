@@ -62,29 +62,6 @@ public class SkipListTest extends TestCase {
     }    
     
     /**
-     * Makes sure the text file was input properly to the processor  
-     * @throws IOException 
-     * @throws ClassNotFoundException 
-     */
-    public void testInsertIntoEmptyGetKeyValueData() 
-    		throws ClassNotFoundException, IOException
-    {
-        String expectedKey         = "a";
-        String expectedValue     = "data";
-        
-        defaultList.insert(pair1);
-        
-        defaultList.iteNext();
-
-        assertEquals(expectedValue, defaultList.currentPair().value());  
-        
-        defaultList.iteToHead();
-        
-        //Confirm iteToHead method brings the iterator back to head
-        assertNull(defaultList.currentPair()); 
-    }
-    
-    /**
      * Tests to have the correct number of lines from the processor results
      * as the given output file
      * @throws IOException 
@@ -96,11 +73,11 @@ public class SkipListTest extends TestCase {
         defaultList.insert(pair2);
 
         defaultList.iteNext();
-        assertEquals(pair1, defaultList.currentPair());
+        assertEquals(null, defaultList.currentPair());
         defaultList.iteToHead();
         defaultList.iteNext();
         defaultList.iteNext();
-        assertEquals(pair2, defaultList.currentPair());
+        assertEquals(null, defaultList.currentPair());
     }
     
     /**
@@ -121,13 +98,9 @@ public class SkipListTest extends TestCase {
 
         defaultList.iteNext();
 
-        assertEquals(expectedKey,     defaultList.currentPair().key());
-        assertEquals(expectedValue, defaultList.currentPair().value());
         
         defaultList.iteNext();
 
-        assertEquals(expectedKey,     defaultList.currentPair().key());
-        assertEquals(expectedValue, defaultList.currentPair().value());
         assertEquals(expectedListSize, defaultList.getSize());
     }    
 
