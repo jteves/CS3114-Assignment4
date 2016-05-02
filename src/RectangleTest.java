@@ -184,7 +184,7 @@ public class RectangleTest extends TestCase {
         Rectangle dum = new Rectangle("name", 1, 2, 3, 4);
         Rectangle dum2 = new Rectangle("name", 1, 2, 3, 4);
         Rectangle fail3 = new Rectangle("fail", 1, 2, 3, 4);
-        Rectangle fail4 = new Rectangle("name", 1, 0, 3, 4);
+        Rectangle fail4 = new Rectangle("name", 1, 1, 3, 4);
 
         assertTrue(dum.equals(dum2));
         assertFalse(dum.equals(fail3));
