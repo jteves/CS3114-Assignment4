@@ -22,6 +22,7 @@ public class BufferPoolTest extends TestCase {
      * Tests to make sure the generated file gets sorted
      */
     public void test() {
+    	assertFalse(pool.isContained(1));
     	assertFalse(pool.isFull());
     }
 }
