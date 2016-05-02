@@ -57,7 +57,7 @@ public class BufferPool  {
      * constructor
      * @param x is the max list size 
      * @param name the name of the file
-     * @param size is the buffer size
+     * @param tsize is the buffer size
      * 
      * opens the file and sets the max size of the 
      * list of buffers 
@@ -371,10 +371,10 @@ public class BufferPool  {
                     write(raf, node.pos);
                     remove();
                 }
-                if ((bytesRead + beg)/ bufSize > fileBlocks) {
-                    fileBlocks = (bytesRead + beg)/bufSize;
+                if ((bytesRead + beg) / bufSize > fileBlocks) {
+                    fileBlocks = (bytesRead + beg) / bufSize;
                     byte[] temp = new byte[bufSize];
-                    insert((bytesRead + beg)/ bufSize, temp);
+                    insert((bytesRead + beg) / bufSize, temp);
                     
                 }
                 else {
