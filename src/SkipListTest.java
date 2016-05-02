@@ -24,7 +24,7 @@ public class SkipListTest extends TestCase {
      * @throws ClassNotFoundException 
      */
     public void setUp() throws ClassNotFoundException, IOException {
-    	BufferPool bp = null;
+    	BufferPool bp = new BufferPool("filename.txt", 4, 20);
 		MemMan m = new MemMan(512, bp);
         defaultList = new SkipList<String, String>(m);
 
