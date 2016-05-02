@@ -88,20 +88,6 @@ public class BufferPool  {
     }
     
     /**
-     * This method should be called after
-     * creating a mergesort
-     * 
-     * The method is needed to send cache hit,
-     * read, and write statistics back to the 
-     * mergesort
-     * 
-     * @param sort is the mergesort
-     */
-//    public void addMerge(Mergesort sort) {
-//        merge = sort; 
-//    }
-    
-    /**
      * Inserts a node into the list containing
      * a byte array
      * 
