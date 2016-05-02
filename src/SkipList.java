@@ -581,15 +581,5 @@ public class SkipList<K extends Comparable<K>, E>
             return null;
         }
         return (SkipNode<K, E>) mem.getObj(node.getPointer(0));
-    }
-
-
-    //------------------------------------------------------
-
-    
+    }    
 }
-
-
-
-
-

@@ -9,7 +9,15 @@ insert 1 1 1 1 0
 
 
 insert a 1 2 3 4
+dump
+search a
+regionsearch 1 1 1 1
+remove 1 1 1 1
+remove a
+dump
 insert a 1 2 3 4
+remove a
+remove bob
 insert a 1 2 3 4
 insert a 1 2 3 4
 insert a 1 2 3 4
@@ -23,7 +31,6 @@ insert bob 24 454 444 44
 insert tey 1 144 1 1
 insert sdf 1 1 15 1
 insert zzz 1 1 1 1
-remove a
 remove a
 remove a
 remove f
@@ -45,6 +52,7 @@ search zzz
 search steve
 regionsearch 1 1 1 1
 regionsearch 0 0 0 0
+regionsearch 0 0 1 0
 intersections
 dump
 
