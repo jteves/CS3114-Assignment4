@@ -8,6 +8,7 @@ import java.io.Serializable;
  * @version 2/06/16
  *
  */
+@SuppressWarnings("serial")
 public class Rectangle implements Serializable
 {
     // The properties of a rectangle
@@ -134,7 +135,11 @@ public class Rectangle implements Serializable
                 Character.isLetter(getName().charAt(0));
     }
     
-    
+    /**
+     * Makes sure the provided rectangle coordinates matches this
+     * @param rec the Rectangle object this is being compared to
+     * @return True if their coordinates match
+     */
     public boolean sameCords(Rectangle rec) {
         return rec.getX() == this.getX() 
                 && rec.getY() == this.getY()
@@ -142,6 +147,10 @@ public class Rectangle implements Serializable
                 && rec.getWidth() == this.getWidth();
     }
     
+    /**
+     * Determines if the object's name and coordinates matches this
+     * @return true if their names and coordinates match
+     */
     public boolean equals(Object o) {
         Rectangle rec = (Rectangle) o;
         return sameCords(rec) && rec.getName().equals(name);

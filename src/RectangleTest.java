@@ -53,6 +53,8 @@ public class RectangleTest extends TestCase {
         Rectangle dum2 = new Rectangle("name", 1, 1, 1, 1);
         
         assertFalse(dum.intersect(dum2));
+        assertFalse(dum.sameCords(dum2));
+        assertFalse(dum2.sameCords(dum));
     }
 
     /**
@@ -65,6 +67,8 @@ public class RectangleTest extends TestCase {
         Rectangle dum2 = new Rectangle("name", 0, 2, 1, 1);
         
         assertFalse(dum.intersect(dum2));
+        assertFalse(dum.sameCords(dum2));
+        assertFalse(dum2.sameCords(dum));
     }
 
     /**
@@ -77,6 +81,8 @@ public class RectangleTest extends TestCase {
         Rectangle dum2 = new Rectangle("name", 2, 2, 1, 1);
         
         assertFalse(dum.intersect(dum2));
+        assertFalse(dum.sameCords(dum2));
+        assertFalse(dum2.sameCords(dum));
     }
     
     /**
@@ -89,6 +95,8 @@ public class RectangleTest extends TestCase {
         Rectangle dum2 = new Rectangle("name", 2, 2, 1, 1);
         
         assertFalse(dum.intersect(dum2));
+        assertFalse(dum.sameCords(dum2));
+        assertFalse(dum2.sameCords(dum));
     }
 
     /**
@@ -101,6 +109,8 @@ public class RectangleTest extends TestCase {
         Rectangle dum2 = new Rectangle("name", 2, 0, 1, 1);
         
         assertFalse(dum.intersect(dum2));
+        assertFalse(dum.sameCords(dum2));
+        assertFalse(dum2.sameCords(dum));
     }
 
     /**
@@ -186,6 +196,8 @@ public class RectangleTest extends TestCase {
         Rectangle fail3 = new Rectangle("fail", 1, 2, 3, 4);
         Rectangle fail4 = new Rectangle("name", 1, 1, 3, 4);
 
+        assertTrue(dum.sameCords(dum2));
+        assertTrue(dum2.sameCords(dum));
         assertTrue(dum.equals(dum2));
         assertFalse(dum.equals(fail3));
         assertFalse(dum.equals(fail4));
