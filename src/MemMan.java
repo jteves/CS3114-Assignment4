@@ -84,10 +84,12 @@ public class MemMan {
      * @throws IOException
      */
     public int insert(Object obj) throws IOException {
-        
+        //byte array when object is serialized
         byte[] arr = Serializer.serialize(obj);
+        //initializing a "null" for comparisons later on
         int space = -1;
         int loc = -1;
+        //used for traversing list
         FreeBlock block;
         int length = arr.length + KEY;
         while (loc == -1) { 
