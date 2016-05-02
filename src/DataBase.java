@@ -1,5 +1,4 @@
 import java.io.IOException;
-import java.io.RandomAccessFile;
 
 /**
  * Utilizes a SkipList that will handle Rectangle 
@@ -14,22 +13,23 @@ public class DataBase {
 
     // Contains and handles the Rectangle objects
     private SkipList<String, Rectangle> list;
+    // makes decisions for where to place the objects
+    // in the file
     private MemMan m;
-    BufferPool bp;
+    private BufferPool bp;
     /**
      * Default Constructor containing a SkipList of Rectangle obj
      * 
      * Postcondition: A new SkipList exists
-     * @param x is size of buffers
+     * @param size is the size of the buffers
+     * @param num is the number of buffers
+     * @param store is the storage file
      * @throws IOException 
      * @throws ClassNotFoundException 
      */
     public DataBase(int size, int num, String store) throws IOException, ClassNotFoundException
     {
-        
-        //TODO change constructor to take numbuffers and filename
-        bp = new BufferPool(store, num, size);
-        
+        bp = new BufferPool(store, num, size);  
         m = new MemMan(size, bp);
         list = new SkipList<String, Rectangle>(m);
     }
@@ -51,7 +51,8 @@ public class DataBase {
      * @throws IOException 
      * @throws ClassNotFoundException 
      */
-    public void insert(String recName, int x, int y, int w, int h) throws ClassNotFoundException, IOException 
+    public void insert(String recName, int x, int y, int w, int h)
+            throws ClassNotFoundException, IOException 
     {
         // The rectangle to be inserted into the SkipList
         Rectangle rec = new Rectangle(recName, x, y, w, h);
@@ -86,7 +87,8 @@ public class DataBase {
      * @throws IOException 
      * @throws ClassNotFoundException 
      */
-    public void remove(String recName) throws ClassNotFoundException, IOException
+    public void remove(String recName) throws ClassNotFoundException,
+            IOException
     {
         // KVPair containing the Rectangle that is being removed
         KVPair<String, Rectangle> pair = 
@@ -129,28 +131,28 @@ public class DataBase {
      * @throws IOException 
      * @throws ClassNotFoundException 
      */
-    public void remove(int x, int y, int w, int h) throws ClassNotFoundException, IOException
+    public void remove(int x, int y, int w, int h) throws 
+            ClassNotFoundException, IOException
     {
-        // Set up as "x y w h"
-        String      coordinates = x + " " + y + " " + w + " " + h;
-        // The rectangle that is supposed to be removed
+        // The rectangle coordinates that are supposed to be removed
         Rectangle   rec         = new Rectangle("a", x, y, w, h);
-        KVPair<String, Rectangle> pair = new KVPair<String, Rectangle>(null, rec);
-        // For outputting
-        boolean     recExists   = false;
+        KVPair<String, Rectangle> pair = new KVPair<String, Rectangle>
+                (null, rec);       
         
         if (rec.isLegal())
         {
             list.iteToHead();
             list.iteNext(); 
             
+            // finds the node to remove
             pair = list.searchforR(pair);
+            //avoids null pointer exception
             if (pair != null){
                 pair = list.remove2(pair);
             }
                     
              // output: "Rectangle removed: (name, x, y, w, h)"
-            
+            //coordinates not in list
             if (pair == null)
             {
                 // output: "Rectangle not found: (x, y, w, h)"
@@ -188,7 +190,8 @@ public class DataBase {
      * @throws IOException 
      * @throws ClassNotFoundException 
      */
-    public void search(String recName) throws ClassNotFoundException, IOException
+    public void search(String recName) throws ClassNotFoundException, 
+            IOException
     {
         // Pair with the recName parameter as the key
         KVPair<String, Rectangle> key = new 
@@ -198,7 +201,7 @@ public class DataBase {
         // The pair located at the current iterator of the SkipList
         KVPair<String, Rectangle> ans = list.currentPair();
 
-        // The rectangle doesn't exist in the list
+        // The rectangle name doesn't exist in the list
         if (ans == null)
         {
             System.out.println("Rectangle not found: " + recName);
@@ -214,13 +217,14 @@ public class DataBase {
             int y = list.currentNodeDepth();
 
             // Traverses through the list
+            // prints all rectangles with the name being searched for
             do 
             {
+                //compare value
                 x = list.currentPair().compareTo(key);
                 if (x == 0)
                 {
                     foundRec = list.currentPair().value();
-                    // output: "Rectangle rejected: (name, x, y, w, h)"
                     System.out.println("(" + foundRec.getName() + ", " +
                         foundRec.getX() + ", " + foundRec.getY() + 
                         ", " + foundRec.getWidth() + ", " + 
@@ -230,7 +234,6 @@ public class DataBase {
                 
             } while (list.currentPair() != null 
                     && list.currentNodeDepth() < y);
-            
         }
     }
     
@@ -249,7 +252,8 @@ public class DataBase {
      * @throws IOException 
      * @throws ClassNotFoundException 
      */
-    public void regionSearch(int x, int y, int w, int h) throws ClassNotFoundException, IOException
+    public void regionSearch(int x, int y, int w, int h) throws 
+            ClassNotFoundException, IOException
     {
         // output: "Rectangles intersecting region: (x, y, w, h)"
         System.out.println("Rectangles intersecting region ("
@@ -393,25 +397,23 @@ public class DataBase {
             }
             System.out.println("SkipList size is: " + list.getSize());
         }
+        //dumps the memory manager
         m.dump();
     }
-    
-//    /**
-//     * @return the size of the list
-//     */
-//    public int getSize()
-//    {
-//        return list.getSize();
-//    }
    
+    /**
+     * closes the storage file
+     * @throws IOException
+     */
     public void closeFile() throws IOException {
         bp.getFile().close();
     }
-    
+    /**
+     * flushes the bufferpool
+     */
     public void flush() {
         bp.flush();
     }
 
 }
-
 
