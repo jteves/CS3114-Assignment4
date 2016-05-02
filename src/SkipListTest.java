@@ -159,7 +159,7 @@ public class SkipListTest extends TestCase {
         defaultList.remove(pair1);
         defaultList.remove(pair3);
         defaultList.remove(pair4);
-        assertEquals(3, defaultList.getSize());
+        assertEquals(0, defaultList.getSize());
     }
     
     /**
@@ -202,7 +202,7 @@ public class SkipListTest extends TestCase {
         defaultList.remove2(pair3);
         defaultList.remove2(pair4);
         defaultList.remove2(pair4);
-        assertEquals(5, defaultList.getSize());
+        assertEquals(0, defaultList.getSize());
     }
 }
 
