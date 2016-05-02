@@ -1,7 +1,5 @@
 import java.io.Serializable;
 
-//import SkipList.SkipNode;
-
 /**
  * 
  * @author Drew Williams, Jacob Teves
@@ -13,7 +11,9 @@ import java.io.Serializable;
  * The skipnode class will be used to hold the kVPairs and their
  * nodes that they point to in the skiplist
  */
-public class SkipNode<K extends Comparable<K>, E> implements Serializable
+@SuppressWarnings("serial")
+public class SkipNode<K extends Comparable<K>, E> 
+	implements Serializable
 {
     /**
      * the array of kvpair pointers the node will hold
@@ -40,7 +40,6 @@ public class SkipNode<K extends Comparable<K>, E> implements Serializable
      * to give the skipnode
      */
 
-    @SuppressWarnings("unchecked")
     public SkipNode(int numpoint, int pair)
     {
         // initializes the size field
@@ -120,8 +119,7 @@ public class SkipNode<K extends Comparable<K>, E> implements Serializable
 
     /**
      * 
-     * @return the number of elements held in
-     * pointers[]
+     * @return the number of elements held in pointers[]
      */
     public int size()
     {
@@ -146,7 +144,6 @@ public class SkipNode<K extends Comparable<K>, E> implements Serializable
     public void changeSize(int x)
     {
         // new value for data
-        @SuppressWarnings("unchecked")
         int[] arr = new int[x];
         for (int i = 0; i < arr.length; i++) {
             arr[i] = -1;
