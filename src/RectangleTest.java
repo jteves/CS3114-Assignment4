@@ -4,7 +4,7 @@ import student.TestCase;
 
 /**
  * @author Jacob Teves, Drew Williams
- * @version 4/22/2016
+ * @version 5/02/2016
  *
  */
 public class RectangleTest extends TestCase {
@@ -189,6 +189,10 @@ public class RectangleTest extends TestCase {
         assertNotNull(dum.toString());
     }
 
+    /**
+     * Test to determine if the rectangles have matching coordinates
+     * or names or not.
+     */
     public void testEquals() {
 
         Rectangle dum = new Rectangle("name", 1, 2, 3, 4);
