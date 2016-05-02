@@ -35,7 +35,7 @@ public class DataBaseTest extends TestCase {
         db.insert("legal2", 1, 1, 1, 2);
         db.insert("legal3", 1, 1, 100, 2);
         db.insert("legal4", 1, 1, 101, 2);
-
+        assertEquals(db.getSize(), 4);
         db.search("illegal");
         
         db.search("legal2");
@@ -74,5 +74,6 @@ public class DataBaseTest extends TestCase {
 
         db.remove(0, 0, 0, 0);
         db.remove(1, 1, 1, 1);
+        assertEquals(2, db.getSize());
     }
 }
