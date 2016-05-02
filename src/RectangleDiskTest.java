@@ -28,15 +28,4 @@ public class RectangleDiskTest extends TestCase {
         RectangleDisk.main(params);
         assertNotNull(rd);
     }
-
-//    /**
-//     * This method gets you credit for testing a good
-//     * set of parameters.
-//     */
-//    public void testGoodParams() {
-//        String[] params = { "commands.txt", "dataFile.dat", "5", "4096" };
-//        RectangleDisk.main(params);
-//        assertFuzzyEquals("Found expected parameter list.", 
-//            systemOut().getHistory());
-//    }
 }
