@@ -23,6 +23,11 @@ insert bob 24 454 444 44
 insert tey 1 144 1 1
 insert sdf 1 1 15 1
 insert zzz 1 1 1 1
+remove a
+remove a
+remove a
+remove f
+remove 1 100 11
 remove 2 2 2 2
 dump
 remove bob
