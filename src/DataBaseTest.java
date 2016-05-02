@@ -16,7 +16,7 @@ public class DataBaseTest extends TestCase {
      * @throws ClassNotFoundException 
      */
     public void testDataBase() throws ClassNotFoundException, IOException {
-        DataBase db = new DataBase(100, 0, null);
+        DataBase db = new DataBase(100, 5, null);
 
         assertNotNull(db);
     }
