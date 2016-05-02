@@ -23,7 +23,7 @@ public class RectangleDiskTest extends TestCase {
      * @throws ClassNotFoundException 
      */
     public void testBadParams() 
-    		throws IOException, ClassNotFoundException {
+        throws IOException, ClassNotFoundException {
         RectangleDisk rd = new RectangleDisk();
         String[] params = { "DrewTest.txt", "filename.txt", "4", "20"};
         RectangleDisk.main(params);
