@@ -24,7 +24,9 @@ public class SkipListTest extends TestCase {
      * @throws ClassNotFoundException 
      */
     public void setUp() throws ClassNotFoundException, IOException {
-        defaultList = new SkipList<String, String>(null);
+    	BufferPool bp = null;
+		MemMan m = new MemMan(512, bp);
+        defaultList = new SkipList<String, String>(m);
 
         pair1    = new KVPair<String, String>("a", "data");
         pair2    = new KVPair<String, String>("b", "more data");
@@ -201,8 +203,10 @@ public class SkipListTest extends TestCase {
     /**
      * Tests to have the correct number of lines from the processor results
      * as the given output file
+     * @throws IOException 
+     * @throws ClassNotFoundException 
      */
-    public void testRemove2()
+    public void testRemove2() throws ClassNotFoundException, IOException
     {
         KVPair<String, String> pair3 = 
                 new KVPair<String, String>("c", "most");
