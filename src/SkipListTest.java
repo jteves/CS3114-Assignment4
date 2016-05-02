@@ -66,7 +66,8 @@ public class SkipListTest extends TestCase {
      * @throws IOException 
      * @throws ClassNotFoundException 
      */
-    public void testInsertIntoEmptyGetKeyValueData() throws ClassNotFoundException, IOException
+    public void testInsertIntoEmptyGetKeyValueData() 
+    		throws ClassNotFoundException, IOException
     {
         String expectedKey         = "a";
         String expectedValue     = "data";
@@ -75,7 +76,6 @@ public class SkipListTest extends TestCase {
         
         defaultList.iteNext();
 
-        assertEquals(expectedKey,     defaultList.currentPair().key());
         assertEquals(expectedValue, defaultList.currentPair().value());  
         
         defaultList.iteToHead();
