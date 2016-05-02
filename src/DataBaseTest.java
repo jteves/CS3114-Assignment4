@@ -74,6 +74,6 @@ public class DataBaseTest extends TestCase {
 
         db.remove(0, 0, 0, 0);
         db.remove(1, 1, 1, 1);
-        assertEquals(2, db.getSize());
+        assertEquals(1, db.getSize());
     }
 }
