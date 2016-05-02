@@ -52,7 +52,9 @@ public class BufferPool  {
      * size of buffers
      */
     private int bufSize;
-    
+    /**
+     * keeps track of how many blocks are in the file
+     */
     private int fileBlocks;
     
     /**
