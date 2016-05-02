@@ -20,7 +20,7 @@ public class ProcessorTest extends TestCase {
      * @throws ClassNotFoundException 
      */
     public void testFileInput()
-            throws ClassNotFoundException, IOException
+        throws ClassNotFoundException, IOException
     {
         
         // A new Processor object with an existing text file name
