@@ -19,13 +19,12 @@ public class ProcessorTest extends TestCase {
      * @throws IOException 
      * @throws ClassNotFoundException 
      */
-    public void testFileInput() 
-    		throws ClassNotFoundException, IOException
+    public void testFileInput()
+            throws ClassNotFoundException, IOException
     {
         
         // A new Processor object with an existing text file name
-        Processor pro;
-			pro = new Processor("test.txt", 0, 0, null);
+        Processor pro = new Processor("test.txt", 0, 0, null);
 
         assertEquals(null, pro.getFile());
     }
