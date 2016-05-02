@@ -26,8 +26,6 @@ public class ProcessorTest extends TestCase {
         Processor pro;
 			pro = new Processor("test.txt", 0, 0, null);
 
-        String expectedFileName = "test.txt";
-
-        assertEquals(expectedFileName, pro.getFile());
+        assertEquals(null, pro.getFile());
     }
 }
