@@ -35,10 +35,10 @@ public class DataBaseTest extends TestCase {
         db.insert("legal2", 1, 1, 1, 2);
 
         assertNotNull(db);
-//        db.search("illegal");
-//        
-//        db.search("legal2");
-//        db.search("legal");
+        db.search("illegal");
+        
+        db.search("legal2");
+        db.search("legal");
     }    
     
     /**
