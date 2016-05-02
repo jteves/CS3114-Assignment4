@@ -140,7 +140,7 @@ public class MemMan {
     }
     
     /**
-     * joins adjacent blocks into one large block
+     * joins adjacent free blocks into one large block
      */
     public void joinBlocks() {
         //used for traversing list
