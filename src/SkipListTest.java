@@ -4,7 +4,7 @@ import student.TestCase;
 
 
 /**
- * 
+ * Test for the SkipList class
  * @author Jacob, Drew
  * @version 3/15/2016
  *
@@ -37,7 +37,8 @@ public class SkipListTest extends TestCase {
      * @throws IOException 
      * @throws ClassNotFoundException 
      */
-    public void testConstructor() throws ClassNotFoundException, IOException
+    public void testConstructor() throws ClassNotFoundException, 
+    	IOException
     {   
         int expectedListSize = 0;
 
@@ -51,7 +52,8 @@ public class SkipListTest extends TestCase {
      * @throws IOException 
      * @throws ClassNotFoundException 
      */
-    public void testInsertIntoEmpty() throws ClassNotFoundException, IOException
+    public void testInsertIntoEmpty() throws ClassNotFoundException, 
+    	IOException
     {
         int expectedListSize = 1;
         
@@ -62,12 +64,13 @@ public class SkipListTest extends TestCase {
     }    
     
     /**
-     * Tests to have the correct number of lines from the processor results
-     * as the given output file
+     * Tests to have the correct number of lines from the processor 
+     * results as the given output file
      * @throws IOException 
      * @throws ClassNotFoundException 
      */
-    public void testInsert2Pairs() throws ClassNotFoundException, IOException
+    public void testInsert2Pairs() throws ClassNotFoundException, 
+    	IOException
     {
         defaultList.insert(pair1);
         defaultList.insert(pair2);
@@ -77,17 +80,16 @@ public class SkipListTest extends TestCase {
     }
     
     /**
-     * Tests to have the correct number of lines from the processor results
-     * as the given output file
+     * Tests to have the correct number of lines from the processor 
+     * results as the given output file
      * @throws IOException 
      * @throws ClassNotFoundException 
      */
-    public void testInsertSamePair() throws ClassNotFoundException, IOException
+    public void testInsertSamePair() throws ClassNotFoundException, 
+    	IOException
     {
-        pair1    = new KVPair<String, String>("a", "data");
-        String     expectedKey         = "a";
-        String     expectedValue         = "data";
-        int     expectedListSize    = 2;
+        pair1 = new KVPair<String, String>("a", "data");
+        int expectedListSize = 2;
 
         defaultList.insert(pair1);
         defaultList.insert(pair1);
@@ -98,12 +100,13 @@ public class SkipListTest extends TestCase {
     }    
 
     /**
-     * Tests to have the correct number of lines from the processor results
-     * as the given output file
+     * Tests to have the correct number of lines from the processor 
+     * results as the given output file
      * @throws IOException 
      * @throws ClassNotFoundException 
      */
-    public void testSearch() throws ClassNotFoundException, IOException
+    public void testSearch() throws ClassNotFoundException, 
+    	IOException
     {
         KVPair<String, String> pair3 = 
                 new KVPair<String, String>("c", "most");
@@ -126,12 +129,12 @@ public class SkipListTest extends TestCase {
     }
 
     /**
-     * Tests to have the correct number of lines from the processor results
-     * as the given output file
+     * Tests to have the correct number of lines from the processor 
+     * results as the given output file
      * @throws IOException 
      * @throws ClassNotFoundException 
      */
-    public void testRemove() throws ClassNotFoundException, IOException
+    public void testRm() throws ClassNotFoundException, IOException
     {
         KVPair<String, String> pair3 = 
                 new KVPair<String, String>("c", "most");
@@ -163,12 +166,12 @@ public class SkipListTest extends TestCase {
     }
     
     /**
-     * Tests to have the correct number of lines from the processor results
-     * as the given output file
+     * Tests to have the correct number of lines from the processor 
+     * results as the given output file
      * @throws IOException 
      * @throws ClassNotFoundException 
      */
-    public void testRemove2() throws ClassNotFoundException, IOException
+    public void testRm2() throws ClassNotFoundException, IOException
     {
         KVPair<String, String> pair3 = 
                 new KVPair<String, String>("c", "most");
