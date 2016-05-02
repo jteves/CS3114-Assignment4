@@ -45,10 +45,6 @@ public class BufferPool  {
      */
     private RandomAccessFile raf;
     /**
-     * The mergesort that will be used to sort the file
-     */
-//    private Mergesort merge;
-    /**
      * size of buffers
      */
     private int bufSize;
@@ -210,7 +206,6 @@ public class BufferPool  {
             e.printStackTrace();
         }
         insert(x, temp); //inserts the data to the list
-//        merge.upRead(); // increments the read counter
     }
     
     /**
@@ -235,7 +230,6 @@ public class BufferPool  {
         catch (IOException e) {
             e.printStackTrace();
         }
-//        merge.upWrite(); // increments byte counter
     }
     
     /**
@@ -300,7 +294,6 @@ public class BufferPool  {
                     
                     bytesRead += 1;
                     i += 1;
-//                    merge.upCache(); // increments cache
                 }
                 iteNodeToHead(); // resents ite to head
             }
